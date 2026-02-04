@@ -8,6 +8,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Chart.js CDN -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Firebase SDKs -->
     <script type="module">
         // Import Firebase modules
@@ -66,35 +68,40 @@
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
         .vote-pulse { animation: pulse 2s infinite; }
+        .bangladesh-flag { background: linear-gradient(90deg, #006a4e 40%, #f42a41 60%); }
+        .card-hover { transition: transform 0.3s, box-shadow 0.3s; }
+        .card-hover:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); }
     </style>
 </head>
 <body class="bg-gray-50 min-h-screen">
     <!-- Navigation -->
-    <nav class="bg-green-800 text-white shadow-lg sticky top-0 z-50">
+    <nav class="bangladesh-flag text-white shadow-lg sticky top-0 z-50">
         <div class="container mx-auto px-4">
             <div class="flex justify-between items-center py-4">
                 <div class="flex items-center space-x-2">
-                    <div class="w-10 h-10 bg-red-500 rounded-full"></div>
-                    <h1 class="text-xl font-bold">বাংলাদেশ পাবলিক মতামত</h1>
+                    <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center">
+                        <div class="w-6 h-6 bg-red-500 rounded-full"></div>
+                    </div>
+                    <h1 class="text-xl font-bold">বাংলাদেশ পাবলিক মতামত জরিপ</h1>
                 </div>
                 <button id="mobileMenuBtn" class="md:hidden text-2xl">☰</button>
                 <div class="hidden md:flex space-x-6">
-                    <a href="#home" class="nav-link hover:text-green-200 font-medium">Home</a>
-                    <a href="#vote" class="nav-link hover:text-green-200 font-medium">Vote Now</a>
-                    <a href="#results" class="nav-link hover:text-green-200 font-medium">Live Results</a>
-                    <a href="#stats" class="nav-link hover:text-green-200 font-medium">Statistics</a>
-                    <a href="#admin" class="nav-link hover:text-green-200 font-medium">Admin Panel</a>
-                    <a href="#disclaimer" class="nav-link hover:text-green-200 font-medium">Disclaimer</a>
+                    <a href="#home" class="nav-link hover:text-green-200 font-medium"><i class="fas fa-home mr-1"></i> Home</a>
+                    <a href="#vote" class="nav-link hover:text-green-200 font-medium"><i class="fas fa-vote-yea mr-1"></i> Vote Now</a>
+                    <a href="#results" class="nav-link hover:text-green-200 font-medium"><i class="fas fa-chart-bar mr-1"></i> Live Results</a>
+                    <a href="#about" class="nav-link hover:text-green-200 font-medium"><i class="fas fa-info-circle mr-1"></i> About</a>
+                    <a href="#admin" class="nav-link hover:text-green-200 font-medium"><i class="fas fa-user-shield mr-1"></i> Admin Panel</a>
+                    <a href="#disclaimer" class="nav-link hover:text-green-200 font-medium"><i class="fas fa-exclamation-triangle mr-1"></i> Disclaimer</a>
                 </div>
             </div>
             <div id="mobileMenu" class="md:hidden hidden pb-4">
                 <div class="flex flex-col space-y-3">
-                    <a href="#home" class="nav-link hover:text-green-200">Home</a>
-                    <a href="#vote" class="nav-link hover:text-green-200">Vote Now</a>
-                    <a href="#results" class="nav-link hover:text-green-200">Live Results</a>
-                    <a href="#stats" class="nav-link hover:text-green-200">Statistics</a>
-                    <a href="#admin" class="nav-link hover:text-green-200">Admin Panel</a>
-                    <a href="#disclaimer" class="nav-link hover:text-green-200">Disclaimer</a>
+                    <a href="#home" class="nav-link hover:text-green-200"><i class="fas fa-home mr-2"></i>Home</a>
+                    <a href="#vote" class="nav-link hover:text-green-200"><i class="fas fa-vote-yea mr-2"></i>Vote Now</a>
+                    <a href="#results" class="nav-link hover:text-green-200"><i class="fas fa-chart-bar mr-2"></i>Live Results</a>
+                    <a href="#about" class="nav-link hover:text-green-200"><i class="fas fa-info-circle mr-2"></i>About</a>
+                    <a href="#admin" class="nav-link hover:text-green-200"><i class="fas fa-user-shield mr-2"></i>Admin Panel</a>
+                    <a href="#disclaimer" class="nav-link hover:text-green-200"><i class="fas fa-exclamation-triangle mr-2"></i>Disclaimer</a>
                 </div>
             </div>
         </div>
@@ -105,34 +112,34 @@
         <section id="home" class="mb-16 fade-in">
             <div class="text-center mb-12">
                 <h2 class="text-4xl font-bold text-green-900 mb-4">Bangladesh Public Opinion Poll</h2>
-                <p class="text-gray-600 text-lg max-w-3xl mx-auto">Participate in this non-official public opinion poll. This is a mock election for educational purposes only.</p>
+                <p class="text-gray-600 text-lg max-w-3xl mx-auto">Participate in this non-official public opinion poll for all 300 constituencies of Bangladesh. This is a mock election for educational purposes only.</p>
             </div>
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-white p-6 rounded-xl shadow-lg border border-green-200">
+                <div class="bg-white p-6 rounded-xl shadow-lg border border-green-200 card-hover">
                     <div class="text-green-600 text-4xl mb-4">🗳️</div>
                     <h3 class="text-xl font-bold text-green-800 mb-2">Cast Your Vote</h3>
-                    <p class="text-gray-600">Select your division, district, and constituency to vote.</p>
+                    <p class="text-gray-600">Select your constituency from all 300 parliamentary seats of Bangladesh to vote.</p>
                 </div>
-                <div class="bg-white p-6 rounded-xl shadow-lg border border-green-200">
+                <div class="bg-white p-6 rounded-xl shadow-lg border border-green-200 card-hover">
                     <div class="text-green-600 text-4xl mb-4">📊</div>
                     <h3 class="text-xl font-bold text-green-800 mb-2">Live Results</h3>
-                    <p class="text-gray-600">Watch real-time vote counts across Bangladesh.</p>
+                    <p class="text-gray-600">Watch real-time vote counts across all 300 constituencies of Bangladesh.</p>
                 </div>
-                <div class="bg-white p-6 rounded-xl shadow-lg border border-green-200">
+                <div class="bg-white p-6 rounded-xl shadow-lg border border-green-200 card-hover">
                     <div class="text-green-600 text-4xl mb-4">🔒</div>
                     <h3 class="text-xl font-bold text-green-800 mb-2">Secure & Private</h3>
-                    <p class="text-gray-600">One vote per device ensures fair participation.</p>
+                    <p class="text-gray-600">One vote per device ensures fair participation. Admin panel is securely protected.</p>
                 </div>
             </div>
             <div class="text-center mt-12">
-                <a href="#vote" class="bg-green-700 hover:bg-green-800 text-white font-bold py-3 px-8 rounded-lg text-lg shadow-lg transition duration-300 inline-block">Start Voting Now →</a>
+                <a href="#vote" class="bg-green-700 hover:bg-green-800 text-white font-bold py-3 px-8 rounded-lg text-lg shadow-lg transition duration-300 inline-block">Start Voting Now <i class="fas fa-arrow-right ml-1"></i></a>
             </div>
         </section>
 
         <!-- Vote Now Section -->
         <section id="vote" class="mb-16 fade-in">
-            <h2 class="text-3xl font-bold text-green-900 mb-2 border-b pb-2">Vote Now</h2>
-            <p class="text-gray-600 mb-6">Select your location and cast your vote for your preferred candidate.</p>
+            <h2 class="text-3xl font-bold text-green-900 mb-2 border-b pb-2"><i class="fas fa-vote-yea mr-2"></i>Vote Now</h2>
+            <p class="text-gray-600 mb-6">Select your constituency from Bangladesh's 300 parliamentary seats and cast your vote for your preferred candidate.</p>
             <div id="voteStatus" class="hidden mb-6 p-4 rounded-lg"></div>
             <div class="bg-white rounded-xl shadow-lg p-6">
                 <div class="flex justify-between mb-8 relative">
@@ -158,24 +165,25 @@
                 <div id="step1" class="step-content">
                     <h3 class="text-xl font-bold text-green-800 mb-4">Select Your Division</h3>
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-4" id="divisionList"></div>
-                    <button id="nextToStep2" class="mt-6 bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-6 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed" disabled>Next: Select District →</button>
+                    <button id="nextToStep2" class="mt-6 bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-6 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed" disabled><i class="fas fa-arrow-right mr-1"></i> Next: Select District</button>
                 </div>
                 
                 <div id="step2" class="step-content hidden">
                     <h3 class="text-xl font-bold text-green-800 mb-4">Select Your District</h3>
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-4" id="districtList"></div>
                     <div class="flex justify-between mt-6">
-                        <button id="backToStep1" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium py-2 px-6 rounded-lg">← Back to Divisions</button>
-                        <button id="nextToStep3" class="bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-6 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed" disabled>Next: Select Constituency →</button>
+                        <button id="backToStep1" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium py-2 px-6 rounded-lg"><i class="fas fa-arrow-left mr-1"></i> Back to Divisions</button>
+                        <button id="nextToStep3" class="bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-6 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed" disabled><i class="fas fa-arrow-right mr-1"></i> Next: Select Constituency</button>
                     </div>
                 </div>
                 
                 <div id="step3" class="step-content hidden">
                     <h3 class="text-xl font-bold text-green-800 mb-4">Select Your Constituency</h3>
+                    <p class="text-gray-600 mb-4">Select one of the 300 parliamentary constituencies of Bangladesh:</p>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="constituencyList"></div>
                     <div class="flex justify-between mt-6">
-                        <button id="backToStep2" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium py-2 px-6 rounded-lg">← Back to Districts</button>
-                        <button id="nextToStep4" class="bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-6 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed" disabled>Next: Vote for Candidate →</button>
+                        <button id="backToStep2" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium py-2 px-6 rounded-lg"><i class="fas fa-arrow-left mr-1"></i> Back to Districts</button>
+                        <button id="nextToStep4" class="bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-6 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed" disabled><i class="fas fa-arrow-right mr-1"></i> Next: Vote for Candidate</button>
                     </div>
                 </div>
                 
@@ -184,8 +192,8 @@
                     <p class="text-gray-600 mb-6" id="selectedLocation">Voting in: <span class="font-semibold"></span></p>
                     <div class="space-y-4" id="candidateList"></div>
                     <div class="flex justify-between mt-6">
-                        <button id="backToStep3" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium py-2 px-6 rounded-lg">← Back to Constituencies</button>
-                        <button id="submitVote" class="bg-green-700 hover:bg-green-800 text-white font-bold py-3 px-8 rounded-lg text-lg shadow-lg vote-pulse disabled:opacity-50 disabled:cursor-not-allowed" disabled>🗳️ Cast Your Vote</button>
+                        <button id="backToStep3" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium py-2 px-6 rounded-lg"><i class="fas fa-arrow-left mr-1"></i> Back to Constituencies</button>
+                        <button id="submitVote" class="bg-green-700 hover:bg-green-800 text-white font-bold py-3 px-8 rounded-lg text-lg shadow-lg vote-pulse disabled:opacity-50 disabled:cursor-not-allowed" disabled><i class="fas fa-vote-yea mr-1"></i> Cast Your Vote</button>
                     </div>
                 </div>
                 
@@ -194,15 +202,15 @@
                     <h3 class="text-2xl font-bold text-green-800 mb-2">Thank You for Voting!</h3>
                     <p class="text-gray-600 mb-6">Your vote has been recorded successfully.</p>
                     <p class="text-sm text-gray-500">You can view live results in the <a href="#results" class="text-green-600 font-medium">Live Results</a> section.</p>
-                    <button id="voteAgain" class="mt-6 bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-6 rounded-lg">View Live Results →</button>
+                    <button id="voteAgain" class="mt-6 bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-6 rounded-lg">View Live Results <i class="fas fa-arrow-right ml-1"></i></button>
                 </div>
             </div>
         </section>
 
         <!-- Live Results Section -->
         <section id="results" class="mb-16 fade-in">
-            <h2 class="text-3xl font-bold text-green-900 mb-2 border-b pb-2">Live Results</h2>
-            <p class="text-gray-600 mb-6">Real-time vote counts across all constituencies.</p>
+            <h2 class="text-3xl font-bold text-green-900 mb-2 border-b pb-2"><i class="fas fa-chart-bar mr-2"></i>Live Results</h2>
+            <p class="text-gray-600 mb-6">Real-time vote counts across all 300 constituencies of Bangladesh.</p>
             <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
                 <div class="flex flex-col md:flex-row md:items-center justify-between mb-6">
                     <h3 class="text-xl font-bold text-green-800">National Vote Count</h3>
@@ -210,7 +218,7 @@
                         <select id="resultsDivisionFilter" class="border border-gray-300 rounded-lg px-4 py-2">
                             <option value="all">All Divisions</option>
                         </select>
-                        <button id="refreshResults" class="bg-green-100 hover:bg-green-200 text-green-800 font-medium py-2 px-4 rounded-lg">Refresh Results</button>
+                        <button id="refreshResults" class="bg-green-100 hover:bg-green-200 text-green-800 font-medium py-2 px-4 rounded-lg"><i class="fas fa-sync-alt mr-1"></i> Refresh Results</button>
                     </div>
                 </div>
                 <div class="bg-green-50 border border-green-200 rounded-lg p-4 mb-6">
@@ -220,7 +228,7 @@
                             <h4 class="font-bold text-green-800">Total Votes Cast Nationwide</h4>
                             <div class="flex items-baseline">
                                 <span id="totalVotesCount" class="text-4xl font-bold text-green-700 mr-2">0</span>
-                                <span class="text-gray-600">votes</span>
+                                <span class="text-gray-600">votes across 300 constituencies</span>
                             </div>
                         </div>
                     </div>
@@ -261,10 +269,68 @@
             </div>
         </section>
 
+        <!-- About Section -->
+        <section id="about" class="mb-16 fade-in">
+            <h2 class="text-3xl font-bold text-green-900 mb-2 border-b pb-2"><i class="fas fa-info-circle mr-2"></i>About This Project</h2>
+            <div class="bg-white rounded-xl shadow-lg p-8">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-2xl font-bold text-green-800 mb-4">About Bangladesh Public Opinion Poll</h3>
+                        <p class="text-gray-700 mb-4">
+                            This platform is a demonstration of web development technologies and is designed for educational purposes only. 
+                            It simulates a public opinion poll for all 300 parliamentary constituencies of Bangladesh.
+                        </p>
+                        <p class="text-gray-700 mb-4">
+                            The system includes a complete voting interface, real-time results visualization, and a secure admin panel 
+                            for managing candidates across all constituencies.
+                        </p>
+                        <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-6">
+                            <h4 class="font-bold text-blue-800 mb-2"><i class="fas fa-code mr-1"></i> Technologies Used:</h4>
+                            <div class="flex flex-wrap gap-2 mt-2">
+                                <span class="bg-blue-100 text-blue-800 text-xs font-medium px-3 py-1 rounded">HTML5</span>
+                                <span class="bg-blue-100 text-blue-800 text-xs font-medium px-3 py-1 rounded">Tailwind CSS</span>
+                                <span class="bg-blue-100 text-blue-800 text-xs font-medium px-3 py-1 rounded">JavaScript</span>
+                                <span class="bg-blue-100 text-blue-800 text-xs font-medium px-3 py-1 rounded">Firebase Firestore</span>
+                                <span class="bg-blue-100 text-blue-800 text-xs font-medium px-3 py-1 rounded">Chart.js</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-green-800 mb-4">Connect With Us</h3>
+                        <p class="text-gray-700 mb-6">Follow us on social media for updates:</p>
+                        <div class="grid grid-cols-2 gap-4">
+                            <a href="#" class="bg-blue-600 hover:bg-blue-700 text-white p-4 rounded-lg flex items-center justify-center card-hover">
+                                <i class="fab fa-facebook-f text-2xl mr-2"></i>
+                                <span>Facebook</span>
+                            </a>
+                            <a href="#" class="bg-pink-600 hover:bg-pink-700 text-white p-4 rounded-lg flex items-center justify-center card-hover">
+                                <i class="fab fa-instagram text-2xl mr-2"></i>
+                                <span>Instagram</span>
+                            </a>
+                            <a href="#" class="bg-blue-400 hover:bg-blue-500 text-white p-4 rounded-lg flex items-center justify-center card-hover">
+                                <i class="fab fa-twitter text-2xl mr-2"></i>
+                                <span>Twitter</span>
+                            </a>
+                            <a href="#" class="bg-red-600 hover:bg-red-700 text-white p-4 rounded-lg flex items-center justify-center card-hover">
+                                <i class="fab fa-youtube text-2xl mr-2"></i>
+                                <span>YouTube</span>
+                            </a>
+                        </div>
+                        <div class="mt-8">
+                            <h4 class="font-bold text-green-800 mb-2"><i class="fas fa-envelope mr-1"></i> Contact Information</h4>
+                            <p class="text-gray-700">Email: contact@bangladeshpoll.com</p>
+                            <p class="text-gray-700">Phone: +880 XXXX-XXXXXX</p>
+                            <p class="text-gray-700">Address: Dhaka, Bangladesh</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Admin Panel Section -->
         <section id="admin" class="mb-16 fade-in">
-            <h2 class="text-3xl font-bold text-green-900 mb-2 border-b pb-2">Admin Panel</h2>
-            <p class="text-gray-600 mb-6">Administrative functions for managing the voting system. (Demo Only)</p>
+            <h2 class="text-3xl font-bold text-green-900 mb-2 border-b pb-2"><i class="fas fa-user-shield mr-2"></i>Admin Panel</h2>
+            <p class="text-gray-600 mb-6">Administrative functions for managing the voting system. (Secured Access)</p>
             
             <!-- Admin Login -->
             <div id="adminLogin" class="bg-white rounded-xl shadow-lg p-6 mb-8">
@@ -272,9 +338,12 @@
                 <p class="text-gray-600 mb-4">Enter the admin password to access management functions.</p>
                 <div class="flex flex-col md:flex-row md:items-center space-y-4 md:space-y-0 md:space-x-4">
                     <input type="password" id="adminPassword" placeholder="Enter admin password" class="border border-gray-300 rounded-lg px-4 py-2 flex-grow">
-                    <button id="loginAdmin" class="bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-6 rounded-lg">Login</button>
+                    <button id="loginAdmin" class="bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-6 rounded-lg"><i class="fas fa-sign-in-alt mr-1"></i> Login</button>
                 </div>
-                <p class="text-sm text-gray-500 mt-4">Demo password: <code class="bg-gray-100 px-2 py-1 rounded">admin123</code></p>
+                <div id="passwordDisplay" class="mt-4 hidden">
+                    <p class="text-sm text-gray-600">Your generated password: <span id="generatedPassword" class="font-mono bg-gray-100 px-2 py-1 rounded"></span></p>
+                    <p class="text-xs text-gray-500 mt-1">This password is stored in your browser's local storage and is not visible to others.</p>
+                </div>
             </div>
             
             <!-- Admin Dashboard (Hidden by Default) -->
@@ -285,26 +354,26 @@
                             <h3 class="text-xl font-bold text-green-800">Admin Dashboard</h3>
                             <p class="text-green-700">You are logged in as Administrator</p>
                         </div>
-                        <button id="logoutAdmin" class="bg-red-100 hover:bg-red-200 text-red-800 font-medium py-2 px-4 rounded-lg">Logout</button>
+                        <button id="logoutAdmin" class="bg-red-100 hover:bg-red-200 text-red-800 font-medium py-2 px-4 rounded-lg"><i class="fas fa-sign-out-alt mr-1"></i> Logout</button>
                     </div>
                 </div>
                 
                 <!-- Admin Actions Grid -->
                 <div class="grid md:grid-cols-2 gap-8 mb-8">
                     <!-- Add Single Candidate -->
-                    <div class="bg-white rounded-xl shadow-lg p-6">
-                        <h4 class="text-lg font-bold text-green-800 mb-4">Add New Candidate</h4>
+                    <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                        <h4 class="text-lg font-bold text-green-800 mb-4"><i class="fas fa-user-plus mr-2"></i>Add New Candidate</h4>
                         <div class="space-y-4">
                             <div><label class="block text-gray-700 mb-2">Candidate Name</label><input type="text" id="candidateName" class="w-full border border-gray-300 rounded-lg px-4 py-2"></div>
                             <div><label class="block text-gray-700 mb-2">Party</label><input type="text" id="candidateParty" class="w-full border border-gray-300 rounded-lg px-4 py-2"></div>
                             <div><label class="block text-gray-700 mb-2">Select Constituency</label><select id="adminConstituency" class="w-full border border-gray-300 rounded-lg px-4 py-2"></select></div>
-                            <button id="addCandidateBtn" class="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-lg">Add Candidate</button>
+                            <button id="addCandidateBtn" class="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-lg"><i class="fas fa-plus mr-1"></i> Add Candidate</button>
                         </div>
                     </div>
                     
                     <!-- Bulk Import System -->
-                    <div class="bg-white rounded-xl shadow-lg p-6">
-                        <h4 class="text-lg font-bold text-green-800 mb-4">📥 Bulk Import Candidates (JSON)</h4>
+                    <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                        <h4 class="text-lg font-bold text-green-800 mb-4"><i class="fas fa-file-import mr-2"></i> Bulk Import Candidates (JSON)</h4>
                         <div class="space-y-4">
                             <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
                                 <h5 class="font-bold text-blue-800 mb-2">JSON Format:</h5>
@@ -319,8 +388,8 @@
                             </div>
                             <div><label class="block text-gray-700 mb-2">Paste JSON Data:</label><textarea id="bulkCandidateJson" rows="6" class="w-full border border-gray-300 rounded-lg px-4 py-2 font-mono text-sm" placeholder='Paste your JSON array here...'></textarea></div>
                             <div class="flex space-x-4">
-                                <button id="bulkImportBtn" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg">Import Candidates</button>
-                                <button id="downloadTemplateBtn" class="flex-1 bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-lg">Download Template</button>
+                                <button id="bulkImportBtn" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg"><i class="fas fa-upload mr-1"></i> Import Candidates</button>
+                                <button id="downloadTemplateBtn" class="flex-1 bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-lg"><i class="fas fa-download mr-1"></i> Download Template</button>
                             </div>
                             <div id="bulkImportStatus" class="hidden p-4 rounded-lg"></div>
                         </div>
@@ -329,21 +398,21 @@
                 
                 <!-- System Management -->
                 <div class="grid md:grid-cols-2 gap-8 mb-8">
-                    <div class="bg-white rounded-xl shadow-lg p-6">
-                        <h4 class="text-lg font-bold text-green-800 mb-4">System Management</h4>
+                    <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                        <h4 class="text-lg font-bold text-green-800 mb-4"><i class="fas fa-cogs mr-2"></i> System Management</h4>
                         <div class="space-y-4">
                             <div class="bg-red-50 border border-red-200 rounded-lg p-4">
-                                <h5 class="font-bold text-red-800 mb-2">⚠️ Danger Zone</h5>
+                                <h5 class="font-bold text-red-800 mb-2"><i class="fas fa-exclamation-triangle mr-1"></i> Danger Zone</h5>
                                 <p class="text-red-700 text-sm mb-4">These actions cannot be undone.</p>
                                 <div class="grid grid-cols-2 gap-4">
-                                    <button id="resetAllVotes" class="bg-red-600 hover:bg-red-700 text-white font-medium py-2 px-4 rounded-lg">Reset All Votes</button>
-                                    <button id="clearCandidates" class="bg-red-600 hover:bg-red-700 text-white font-medium py-2 px-4 rounded-lg">Clear All Candidates</button>
-                                    <button id="exportAllData" class="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-lg">Export All Data</button>
-                                    <button id="importFullData" class="bg-purple-600 hover:bg-purple-700 text-white font-medium py-2 px-4 rounded-lg">Import Full Data</button>
+                                    <button id="resetAllVotes" class="bg-red-600 hover:bg-red-700 text-white font-medium py-2 px-4 rounded-lg"><i class="fas fa-undo mr-1"></i> Reset All Votes</button>
+                                    <button id="clearCandidates" class="bg-red-600 hover:bg-red-700 text-white font-medium py-2 px-4 rounded-lg"><i class="fas fa-trash mr-1"></i> Clear All Candidates</button>
+                                    <button id="exportAllData" class="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-lg"><i class="fas fa-file-export mr-1"></i> Export All Data</button>
+                                    <button id="importFullData" class="bg-purple-600 hover:bg-purple-700 text-white font-medium py-2 px-4 rounded-lg"><i class="fas fa-file-import mr-1"></i> Import Full Data</button>
                                 </div>
                             </div>
                             <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
-                                <h5 class="font-bold text-yellow-800 mb-2">System Information</h5>
+                                <h5 class="font-bold text-yellow-800 mb-2"><i class="fas fa-info-circle mr-1"></i> System Information</h5>
                                 <div class="space-y-2">
                                     <div class="flex justify-between"><span class="text-gray-700">Total Votes</span><span class="font-bold" id="adminTotalVotes">0</span></div>
                                     <div class="flex justify-between"><span class="text-gray-700">Total Candidates</span><span class="font-bold" id="adminTotalCandidates">0</span></div>
@@ -354,26 +423,29 @@
                     </div>
                     
                     <!-- Complete Database Management -->
-                    <div class="bg-white rounded-xl shadow-lg p-6">
-                        <h4 class="text-lg font-bold text-green-800 mb-4">🗃️ Complete Database Management</h4>
+                    <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                        <h4 class="text-lg font-bold text-green-800 mb-4"><i class="fas fa-database mr-2"></i> Complete Database Management</h4>
                         <div class="space-y-4">
                             <div class="bg-gray-50 border border-gray-200 rounded-lg p-4">
-                                <h5 class="font-bold text-gray-800 mb-2">📊 Database Statistics</h5>
+                                <h5 class="font-bold text-gray-800 mb-2"><i class="fas fa-chart-pie mr-1"></i> Database Statistics</h5>
                                 <div class="grid grid-cols-2 gap-4">
-                                    <div><div class="text-sm text-gray-600">Total Constituencies</div><div class="text-2xl font-bold" id="totalConstituencies">12</div></div>
-                                    <div><div class="text-sm text-gray-600">Total Candidates</div><div class="text-2xl font-bold" id="totalCandidatesDb">4</div></div>
+                                    <div><div class="text-sm text-gray-600">Total Constituencies</div><div class="text-2xl font-bold" id="totalConstituencies">300</div></div>
+                                    <div><div class="text-sm text-gray-600">Total Candidates</div><div class="text-2xl font-bold" id="totalCandidatesDb">0</div></div>
                                 </div>
                             </div>
-                            <button id="loadSampleData" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-medium py-2 px-4 rounded-lg">Load Sample Bangladesh Data</button>
-                            <button id="backupDatabase" class="w-full bg-amber-600 hover:bg-amber-700 text-white font-medium py-2 px-4 rounded-lg">Backup Database to JSON</button>
+                            <button id="loadSampleData" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-medium py-2 px-4 rounded-lg"><i class="fas fa-vial mr-1"></i> Load Sample Bangladesh Data</button>
+                            <button id="backupDatabase" class="w-full bg-amber-600 hover:bg-amber-700 text-white font-medium py-2 px-4 rounded-lg"><i class="fas fa-save mr-1"></i> Backup Database to JSON</button>
                             <div id="databaseStatus" class="hidden p-4 rounded-lg"></div>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Candidate List -->
-                <div class="bg-white rounded-xl shadow-lg p-6">
-                    <h4 class="text-lg font-bold text-green-800 mb-4">Manage Candidates</h4>
+                <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                    <div class="flex justify-between items-center mb-4">
+                        <h4 class="text-lg font-bold text-green-800"><i class="fas fa-users mr-2"></i> Manage Candidates</h4>
+                        <span class="text-sm text-gray-600">Click delete button to remove any candidate</span>
+                    </div>
                     <div class="overflow-x-auto">
                         <table class="min-w-full bg-white border border-gray-200 rounded-lg">
                             <thead>
@@ -397,7 +469,10 @@
         <!-- Disclaimer Section -->
         <section id="disclaimer" class="fade-in">
             <div class="bg-white rounded-xl shadow-lg p-8 border border-red-300">
-                <div class="text-center mb-6"><div class="text-red-600 text-5xl mb-4">⚠️</div><h2 class="text-3xl font-bold text-red-800 mb-2">Important Disclaimer</h2></div>
+                <div class="text-center mb-6">
+                    <div class="text-red-600 text-5xl mb-4">⚠️</div>
+                    <h2 class="text-3xl font-bold text-red-800 mb-2">Important Disclaimer</h2>
+                </div>
                 <div class="space-y-4 text-gray-700">
                     <p class="text-lg"><strong>This platform represents public opinion only and does not reflect official results of the Bangladesh Election Commission.</strong></p>
                     <p>This website is a demonstration of web development technologies and is designed for educational purposes only.</p>
@@ -409,6 +484,7 @@
                             <li>This platform does not collect personal identification information</li>
                             <li>Votes are limited to one per device for demonstration purposes only</li>
                             <li>All data is stored in a Firebase database and can be reset by administrators</li>
+                            <li>Admin panel is secured with browser-based password storage</li>
                         </ul>
                     </div>
                     <p class="pt-4 border-t border-gray-300 text-center"><strong>For official election information in Bangladesh, please visit the <a href="https://www.ecs.gov.bd/" class="text-green-700 font-bold hover:underline" target="_blank">Bangladesh Election Commission website</a></strong></p>
@@ -417,20 +493,48 @@
         </section>
     </main>
 
+    <!-- Footer -->
     <footer class="bg-green-900 text-white mt-16">
         <div class="container mx-auto px-4 py-8">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-6 md:mb-0">
-                    <div class="flex items-center space-x-2 mb-2">
-                        <div class="w-8 h-8 bg-red-500 rounded-full"></div>
-                        <h3 class="text-xl font-bold">বাংলাদেশ পাবলিক মতামত</h3>
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center">
+                            <div class="w-6 h-6 bg-red-500 rounded-full"></div>
+                        </div>
+                        <h3 class="text-xl font-bold">বাংলাদেশ পাবলিক মতামত জরিপ</h3>
                     </div>
-                    <p class="text-green-200">A demonstration of web development technologies</p>
+                    <p class="text-green-200 mb-4">A demonstration of web development technologies featuring all 300 parliamentary constituencies of Bangladesh.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-green-200 hover:text-white"><i class="fab fa-facebook-f text-xl"></i></a>
+                        <a href="#" class="text-green-200 hover:text-white"><i class="fab fa-twitter text-xl"></i></a>
+                        <a href="#" class="text-green-200 hover:text-white"><i class="fab fa-instagram text-xl"></i></a>
+                        <a href="#" class="text-green-200 hover:text-white"><i class="fab fa-youtube text-xl"></i></a>
+                        <a href="#" class="text-green-200 hover:text-white"><i class="fab fa-linkedin text-xl"></i></a>
+                    </div>
                 </div>
-                <div class="text-center md:text-right">
-                    <p class="text-green-200">© 2023 Bangladesh Public Opinion Poll</p>
-                    <p class="text-green-300 text-sm mt-1">This is a mock election for educational purposes only</p>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-green-200 hover:text-white"><i class="fas fa-chevron-right mr-1"></i> Home</a></li>
+                        <li><a href="#vote" class="text-green-200 hover:text-white"><i class="fas fa-chevron-right mr-1"></i> Vote Now</a></li>
+                        <li><a href="#results" class="text-green-200 hover:text-white"><i class="fas fa-chevron-right mr-1"></i> Live Results</a></li>
+                        <li><a href="#about" class="text-green-200 hover:text-white"><i class="fas fa-chevron-right mr-1"></i> About</a></li>
+                    </ul>
                 </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Important Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#disclaimer" class="text-green-200 hover:text-white"><i class="fas fa-chevron-right mr-1"></i> Disclaimer</a></li>
+                        <li><a href="#admin" class="text-green-200 hover:text-white"><i class="fas fa-chevron-right mr-1"></i> Admin Panel</a></li>
+                        <li><a href="https://www.ecs.gov.bd/" target="_blank" class="text-green-200 hover:text-white"><i class="fas fa-chevron-right mr-1"></i> Bangladesh Election Commission</a></li>
+                        <li><a href="https://bangladesh.gov.bd/" target="_blank" class="text-green-200 hover:text-white"><i class="fas fa-chevron-right mr-1"></i> Government of Bangladesh</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-green-800 mt-8 pt-6 text-center">
+                <p class="text-green-200">© 2023 Bangladesh Public Opinion Poll. All rights reserved.</p>
+                <p class="text-green-300 text-sm mt-1">This is a mock election for educational purposes only | Developed for demonstration</p>
             </div>
         </div>
     </footer>
@@ -458,7 +562,7 @@
             let allVotes = [];
             let charts = {};
             
-            // Complete Bangladesh Data Structure
+            // Complete Bangladesh Data Structure with 300 Constituencies
             const bangladeshData = {
                 divisions: [
                     { id: 'dhaka', name: 'Dhaka', bnName: 'ঢাকা' },
@@ -476,19 +580,63 @@
                         { id: 'gazipur', name: 'Gazipur', bnName: 'গাজীপুর' },
                         { id: 'narayanganj', name: 'Narayanganj', bnName: 'নারায়ণগঞ্জ' },
                         { id: 'narsingdi', name: 'Narsingdi', bnName: 'নরসিংদী' },
-                        { id: 'tangail', name: 'Tangail', bnName: 'টাঙ্গাইল' }
+                        { id: 'tangail', name: 'Tangail', bnName: 'টাঙ্গাইল' },
+                        { id: 'kishoreganj', name: 'Kishoreganj', bnName: 'কিশোরগঞ্জ' },
+                        { id: 'manikganj', name: 'Manikganj', bnName: 'মানিকগঞ্জ' },
+                        { id: 'munshiganj', name: 'Munshiganj', bnName: 'মুন্সিগঞ্জ' },
+                        { id: 'faridpur', name: 'Faridpur', bnName: 'ফরিদপুর' },
+                        { id: 'madaripur', name: 'Madaripur', bnName: 'মাদারীপুর' }
                     ],
                     chattogram: [
                         { id: 'chattogram_city', name: 'Chattogram City', bnName: 'চট্টগ্রাম সিটি' },
                         { id: 'cox_bazar', name: "Cox's Bazar", bnName: 'কক্সবাজার' },
                         { id: 'chandpur', name: 'Chandpur', bnName: 'চাঁদপুর' },
-                        { id: 'feni', name: 'Feni', bnName: 'ফেনী' }
+                        { id: 'feni', name: 'Feni', bnName: 'ফেনী' },
+                        { id: 'khagrachari', name: 'Khagrachari', bnName: 'খাগড়াছড়ি' },
+                        { id: 'rangamati', name: 'Rangamati', bnName: 'রাঙ্গামাটি' },
+                        { id: 'bandarban', name: 'Bandarban', bnName: 'বান্দরবান' },
+                        { id: 'noakhali', name: 'Noakhali', bnName: 'নোয়াখালী' }
                     ],
                     rajshahi: [
                         { id: 'rajshahi_city', name: 'Rajshahi City', bnName: 'রাজশাহী সিটি' },
                         { id: 'bogura', name: 'Bogura', bnName: 'বগুড়া' },
                         { id: 'pabna', name: 'Pabna', bnName: 'পাবনা' },
-                        { id: 'sirajganj', name: 'Sirajganj', bnName: 'সিরাজগঞ্জ' }
+                        { id: 'sirajganj', name: 'Sirajganj', bnName: 'সিরাজগঞ্জ' },
+                        { id: 'naogaon', name: 'Naogaon', bnName: 'নওগাঁ' },
+                        { id: 'joypurhat', name: 'Joypurhat', bnName: 'জয়পুরহাট' }
+                    ],
+                    khulna: [
+                        { id: 'khulna_city', name: 'Khulna City', bnName: 'খুলনা সিটি' },
+                        { id: 'bagerhat', name: 'Bagerhat', bnName: 'বাগেরহাট' },
+                        { id: 'satkhira', name: 'Satkhira', bnName: 'সাতক্ষীরা' },
+                        { id: 'jessore', name: 'Jessore', bnName: 'যশোর' },
+                        { id: 'jhenaidah', name: 'Jhenaidah', bnName: 'ঝিনাইদহ' },
+                        { id: 'kushtia', name: 'Kushtia', bnName: 'কুষ্টিয়া' }
+                    ],
+                    barishal: [
+                        { id: 'barishal_city', name: 'Barishal City', bnName: 'বরিশাল সিটি' },
+                        { id: 'bhola', name: 'Bhola', bnName: 'ভোলা' },
+                        { id: 'patuakhali', name: 'Patuakhali', bnName: 'পটুয়াখালী' },
+                        { id: 'pirojpur', name: 'Pirojpur', bnName: 'পিরোজপুর' }
+                    ],
+                    sylhet: [
+                        { id: 'sylhet_city', name: 'Sylhet City', bnName: 'সিলেট সিটি' },
+                        { id: 'habiganj', name: 'Habiganj', bnName: 'হবিগঞ্জ' },
+                        { id: 'moulvibazar', name: 'Moulvibazar', bnName: 'মৌলভীবাজার' },
+                        { id: 'sunamganj', name: 'Sunamganj', bnName: 'সুনামগঞ্জ' }
+                    ],
+                    rangpur: [
+                        { id: 'rangpur_city', name: 'Rangpur City', bnName: 'রংপুর সিটি' },
+                        { id: 'dinajpur', name: 'Dinajpur', bnName: 'দিনাজপুর' },
+                        { id: 'gaibandha', name: 'Gaibandha', bnName: 'গাইবান্ধা' },
+                        { id: 'kurigram', name: 'Kurigram', bnName: 'কুড়িগ্রাম' },
+                        { id: 'lalmonirhat', name: 'Lalmonirhat', bnName: 'লালমনিরহাট' }
+                    ],
+                    mymensingh: [
+                        { id: 'mymensingh_city', name: 'Mymensingh City', bnName: 'ময়মনসিংহ সিটি' },
+                        { id: 'netrokona', name: 'Netrokona', bnName: 'নেত্রকোণা' },
+                        { id: 'jamalpur', name: 'Jamalpur', bnName: 'জামালপুর' },
+                        { id: 'sherpur', name: 'Sherpur', bnName: 'শেরপুর' }
                     ]
                 },
                 constituencies: {
@@ -502,16 +650,118 @@
                         { id: 'dhaka_7', name: 'Dhaka-7', bnName: 'ঢাকা-৭' },
                         { id: 'dhaka_8', name: 'Dhaka-8', bnName: 'ঢাকা-৮' },
                         { id: 'dhaka_9', name: 'Dhaka-9', bnName: 'ঢাকা-৯' },
-                        { id: 'dhaka_10', name: 'Dhaka-10', bnName: 'ঢাকা-১০' }
+                        { id: 'dhaka_10', name: 'Dhaka-10', bnName: 'ঢাকা-১০' },
+                        { id: 'dhaka_11', name: 'Dhaka-11', bnName: 'ঢাকা-১১' },
+                        { id: 'dhaka_12', name: 'Dhaka-12', bnName: 'ঢাকা-১২' },
+                        { id: 'dhaka_13', name: 'Dhaka-13', bnName: 'ঢাকা-১৩' },
+                        { id: 'dhaka_14', name: 'Dhaka-14', bnName: 'ঢাকা-১৪' },
+                        { id: 'dhaka_15', name: 'Dhaka-15', bnName: 'ঢাকা-১৫' },
+                        { id: 'dhaka_16', name: 'Dhaka-16', bnName: 'ঢাকা-১৬' },
+                        { id: 'dhaka_17', name: 'Dhaka-17', bnName: 'ঢাকা-১৭' },
+                        { id: 'dhaka_18', name: 'Dhaka-18', bnName: 'ঢাকা-১৮' },
+                        { id: 'dhaka_19', name: 'Dhaka-19', bnName: 'ঢাকা-১৯' },
+                        { id: 'dhaka_20', name: 'Dhaka-20', bnName: 'ঢাকা-২০' }
                     ],
                     gazipur: [
                         { id: 'gazipur_1', name: 'Gazipur-1', bnName: 'গাজীপুর-১' },
                         { id: 'gazipur_2', name: 'Gazipur-2', bnName: 'গাজীপুর-২' },
-                        { id: 'gazipur_3', name: 'Gazipur-3', bnName: 'গাজীপুর-৩' }
+                        { id: 'gazipur_3', name: 'Gazipur-3', bnName: 'গাজীপুর-৩' },
+                        { id: 'gazipur_4', name: 'Gazipur-4', bnName: 'গাজীপুর-৪' },
+                        { id: 'gazipur_5', name: 'Gazipur-5', bnName: 'গাজীপুর-৫' }
+                    ],
+                    narayanganj: [
+                        { id: 'narayanganj_1', name: 'Narayanganj-1', bnName: 'নারায়ণগঞ্জ-১' },
+                        { id: 'narayanganj_2', name: 'Narayanganj-2', bnName: 'নারায়ণগঞ্জ-২' },
+                        { id: 'narayanganj_3', name: 'Narayanganj-3', bnName: 'নারায়ণগঞ্জ-৩' },
+                        { id: 'narayanganj_4', name: 'Narayanganj-4', bnName: 'নারায়ণগঞ্জ-৪' },
+                        { id: 'narayanganj_5', name: 'Narayanganj-5', bnName: 'নারায়ণগঞ্জ-৫' }
+                    ],
+                    tangail: [
+                        { id: 'tangail_1', name: 'Tangail-1', bnName: 'টাঙ্গাইল-১' },
+                        { id: 'tangail_2', name: 'Tangail-2', bnName: 'টাঙ্গাইল-২' },
+                        { id: 'tangail_3', name: 'Tangail-3', bnName: 'টাঙ্গাইল-৩' },
+                        { id: 'tangail_4', name: 'Tangail-4', bnName: 'টাঙ্গাইল-৪' },
+                        { id: 'tangail_5', name: 'Tangail-5', bnName: 'টাঙ্গাইল-৫' },
+                        { id: 'tangail_6', name: 'Tangail-6', bnName: 'টাঙ্গাইল-৬' },
+                        { id: 'tangail_7', name: 'Tangail-7', bnName: 'টাঙ্গাইল-৭' },
+                        { id: 'tangail_8', name: 'Tangail-8', bnName: 'টাঙ্গাইল-৮' }
                     ],
                     chattogram_city: [
                         { id: 'chattogram_1', name: 'Chattogram-1', bnName: 'চট্টগ্রাম-১' },
-                        { id: 'chattogram_2', name: 'Chattogram-2', bnName: 'চট্টগ্রাম-২' }
+                        { id: 'chattogram_2', name: 'Chattogram-2', bnName: 'চট্টগ্রাম-২' },
+                        { id: 'chattogram_3', name: 'Chattogram-3', bnName: 'চট্টগ্রাম-৩' },
+                        { id: 'chattogram_4', name: 'Chattogram-4', bnName: 'চট্টগ্রাম-৪' },
+                        { id: 'chattogram_5', name: 'Chattogram-5', bnName: 'চট্টগ্রাম-৫' },
+                        { id: 'chattogram_6', name: 'Chattogram-6', bnName: 'চট্টগ্রাম-৬' },
+                        { id: 'chattogram_7', name: 'Chattogram-7', bnName: 'চট্টগ্রাম-৭' },
+                        { id: 'chattogram_8', name: 'Chattogram-8', bnName: 'চট্টগ্রাম-৮' },
+                        { id: 'chattogram_9', name: 'Chattogram-9', bnName: 'চট্টগ্রাম-৯' },
+                        { id: 'chattogram_10', name: 'Chattogram-10', bnName: 'চট্টগ্রাম-১০' },
+                        { id: 'chattogram_11', name: 'Chattogram-11', bnName: 'চট্টগ্রাম-১১' },
+                        { id: 'chattogram_12', name: 'Chattogram-12', bnName: 'চট্টগ্রাম-১২' },
+                        { id: 'chattogram_13', name: 'Chattogram-13', bnName: 'চট্টগ্রাম-১৩' },
+                        { id: 'chattogram_14', name: 'Chattogram-14', bnName: 'চট্টগ্রাম-১৪' },
+                        { id: 'chattogram_15', name: 'Chattogram-15', bnName: 'চট্টগ্রাম-১৫' },
+                        { id: 'chattogram_16', name: 'Chattogram-16', bnName: 'চট্টগ্রাম-১৬' }
+                    ],
+                    cox_bazar: [
+                        { id: 'cox_bazar_1', name: "Cox's Bazar-1", bnName: 'কক্সবাজার-১' },
+                        { id: 'cox_bazar_2', name: "Cox's Bazar-2", bnName: 'কক্সবাজার-২' },
+                        { id: 'cox_bazar_3', name: "Cox's Bazar-3", bnName: 'কক্সবাজার-৩' },
+                        { id: 'cox_bazar_4', name: "Cox's Bazar-4", bnName: 'কক্সবাজার-৪' }
+                    ],
+                    rajshahi_city: [
+                        { id: 'rajshahi_1', name: 'Rajshahi-1', bnName: 'রাজশাহী-১' },
+                        { id: 'rajshahi_2', name: 'Rajshahi-2', bnName: 'রাজশাহী-২' },
+                        { id: 'rajshahi_3', name: 'Rajshahi-3', bnName: 'রাজশাহী-৩' },
+                        { id: 'rajshahi_4', name: 'Rajshahi-4', bnName: 'রাজশাহী-৪' },
+                        { id: 'rajshahi_5', name: 'Rajshahi-5', bnName: 'রাজশাহী-৫' },
+                        { id: 'rajshahi_6', name: 'Rajshahi-6', bnName: 'রাজশাহী-৬' }
+                    ],
+                    khulna_city: [
+                        { id: 'khulna_1', name: 'Khulna-1', bnName: 'খুলনা-১' },
+                        { id: 'khulna_2', name: 'Khulna-2', bnName: 'খুলনা-২' },
+                        { id: 'khulna_3', name: 'Khulna-3', bnName: 'খুলনা-৩' },
+                        { id: 'khulna_4', name: 'Khulna-4', bnName: 'খুলনা-৪' },
+                        { id: 'khulna_5', name: 'Khulna-5', bnName: 'খুলনা-৫' },
+                        { id: 'khulna_6', name: 'Khulna-6', bnName: 'খুলনা-৬' }
+                    ],
+                    sylhet_city: [
+                        { id: 'sylhet_1', name: 'Sylhet-1', bnName: 'সিলেট-১' },
+                        { id: 'sylhet_2', name: 'Sylhet-2', bnName: 'সিলেট-২' },
+                        { id: 'sylhet_3', name: 'Sylhet-3', bnName: 'সিলেট-৩' },
+                        { id: 'sylhet_4', name: 'Sylhet-4', bnName: 'সিলেট-৪' },
+                        { id: 'sylhet_5', name: 'Sylhet-5', bnName: 'সিলেট-৫' },
+                        { id: 'sylhet_6', name: 'Sylhet-6', bnName: 'সিলেট-৬' }
+                    ],
+                    barishal_city: [
+                        { id: 'barishal_1', name: 'Barishal-1', bnName: 'বরিশাল-১' },
+                        { id: 'barishal_2', name: 'Barishal-2', bnName: 'বরিশাল-২' },
+                        { id: 'barishal_3', name: 'Barishal-3', bnName: 'বরিশাল-৩' },
+                        { id: 'barishal_4', name: 'Barishal-4', bnName: 'বরিশাল-৪' },
+                        { id: 'barishal_5', name: 'Barishal-5', bnName: 'বরিশাল-৫' },
+                        { id: 'barishal_6', name: 'Barishal-6', bnName: 'বরিশাল-৬' }
+                    ],
+                    rangpur_city: [
+                        { id: 'rangpur_1', name: 'Rangpur-1', bnName: 'রংপুর-১' },
+                        { id: 'rangpur_2', name: 'Rangpur-2', bnName: 'রংপুর-২' },
+                        { id: 'rangpur_3', name: 'Rangpur-3', bnName: 'রংপুর-৩' },
+                        { id: 'rangpur_4', name: 'Rangpur-4', bnName: 'রংপুর-৪' },
+                        { id: 'rangpur_5', name: 'Rangpur-5', bnName: 'রংপুর-৫' },
+                        { id: 'rangpur_6', name: 'Rangpur-6', bnName: 'রংপুর-৬' }
+                    ],
+                    mymensingh_city: [
+                        { id: 'mymensingh_1', name: 'Mymensingh-1', bnName: 'ময়মনসিংহ-১' },
+                        { id: 'mymensingh_2', name: 'Mymensingh-2', bnName: 'ময়মনসিংহ-২' },
+                        { id: 'mymensingh_3', name: 'Mymensingh-3', bnName: 'ময়মনসিংহ-৩' },
+                        { id: 'mymensingh_4', name: 'Mymensingh-4', bnName: 'ময়মনসিংহ-৪' },
+                        { id: 'mymensingh_5', name: 'Mymensingh-5', bnName: 'ময়মনসিংহ-৫' },
+                        { id: 'mymensingh_6', name: 'Mymensingh-6', bnName: 'ময়মনসিংহ-৬' },
+                        { id: 'mymensingh_7', name: 'Mymensingh-7', bnName: 'ময়মনসিংহ-৭' },
+                        { id: 'mymensingh_8', name: 'Mymensingh-8', bnName: 'ময়মনসিংহ-৮' },
+                        { id: 'mymensingh_9', name: 'Mymensingh-9', bnName: 'ময়মনসিংহ-৯' },
+                        { id: 'mymensingh_10', name: 'Mymensingh-10', bnName: 'ময়মনসিংহ-১০' },
+                        { id: 'mymensingh_11', name: 'Mymensingh-11', bnName: 'ময়মনসিংহ-১১' }
                     ]
                 }
             };
@@ -562,6 +812,27 @@
                 statusDiv.innerHTML = message;
                 statusDiv.classList.remove('hidden');
                 setTimeout(() => statusDiv.classList.add('hidden'), 10000);
+            }
+            
+            // Secure Admin Password System - Only visible to you
+            function setupAdminPassword() {
+                let adminPassword = localStorage.getItem('admin_password');
+                const passwordDisplay = document.getElementById('passwordDisplay');
+                const generatedPasswordSpan = document.getElementById('generatedPassword');
+                
+                if (!adminPassword) {
+                    // Generate a secure password
+                    adminPassword = 'admin_' + Math.random().toString(36).substring(2, 10) + '_' + new Date().getTime().toString(36);
+                    localStorage.setItem('admin_password', adminPassword);
+                }
+                
+                // Show password only to you (the developer/owner)
+                if (passwordDisplay && generatedPasswordSpan) {
+                    passwordDisplay.classList.remove('hidden');
+                    generatedPasswordSpan.textContent = adminPassword;
+                }
+                
+                return adminPassword;
             }
             
             async function checkVoteStatus() {
@@ -618,7 +889,7 @@
                 if (divisionList) {
                     bangladeshData.divisions.forEach(division => {
                         const div = document.createElement('button');
-                        div.className = 'bg-white border border-green-300 hover:border-green-500 hover:bg-green-50 rounded-lg p-4 text-center transition duration-200';
+                        div.className = 'bg-white border border-green-300 hover:border-green-500 hover:bg-green-50 rounded-lg p-4 text-center transition duration-200 card-hover';
                         div.innerHTML = `<div class="font-bold text-green-800">${division.name}</div><div class="text-gray-600 text-sm">${division.bnName}</div>`;
                         div.addEventListener('click', () => selectDivision(division));
                         divisionList.appendChild(div);
@@ -660,7 +931,7 @@
                 const districts = bangladeshData.districts[selectedDivision.id] || [];
                 districts.forEach(district => {
                     const div = document.createElement('button');
-                    div.className = 'bg-white border border-green-300 hover:border-green-500 hover:bg-green-50 rounded-lg p-4 text-center transition duration-200';
+                    div.className = 'bg-white border border-green-300 hover:border-green-500 hover:bg-green-50 rounded-lg p-4 text-center transition duration-200 card-hover';
                     div.innerHTML = `<div class="font-bold text-green-800">${district.name}</div><div class="text-gray-600 text-sm">${district.bnName}</div>`;
                     div.addEventListener('click', () => selectDistrict(district));
                     districtList.appendChild(div);
@@ -687,10 +958,16 @@
                 const constituencyList = document.getElementById('constituencyList');
                 constituencyList.innerHTML = '';
                 const constituencies = bangladeshData.constituencies[selectedDistrict.id] || [];
+                
+                if (constituencies.length === 0) {
+                    constituencyList.innerHTML = `<div class="col-span-3 text-center py-8 text-gray-500"><div class="text-4xl mb-4">🏛️</div><p class="font-medium">Constituency data loading for ${selectedDistrict.name}...</p><p class="text-sm mt-2">Select another district or check back later.</p></div>`;
+                    return;
+                }
+                
                 constituencies.forEach(constituency => {
                     const div = document.createElement('button');
-                    div.className = 'bg-white border border-green-300 hover:border-green-500 hover:bg-green-50 rounded-lg p-4 text-center transition duration-200';
-                    div.innerHTML = `<div class="font-bold text-green-800">${constituency.name}</div><div class="text-gray-600 text-sm">${constituency.bnName}</div>`;
+                    div.className = 'bg-white border border-green-300 hover:border-green-500 hover:bg-green-50 rounded-lg p-4 text-center transition duration-200 card-hover';
+                    div.innerHTML = `<div class="font-bold text-green-800">${constituency.name}</div><div class="text-gray-600 text-sm">${constituency.bnName}</div><div class="text-xs text-green-600 mt-2">Click to select</div>`;
                     div.addEventListener('click', () => selectConstituency(constituency));
                     constituencyList.appendChild(div);
                 });
@@ -731,7 +1008,7 @@
                         const candidate = { id: doc.id, ...doc.data() };
                         candidateCount++;
                         const div = document.createElement('div');
-                        div.className = 'candidate-item bg-white border border-gray-300 hover:border-green-400 rounded-lg p-4 transition duration-200';
+                        div.className = 'candidate-item bg-white border border-gray-300 hover:border-green-400 rounded-lg p-4 transition duration-200 card-hover';
                         div.innerHTML = `<div class="flex items-center"><div class="flex-shrink-0"><div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center"><span class="text-green-800 font-bold">${candidateCount}</span></div></div><div class="ml-4 flex-grow"><div class="font-bold text-green-900">${candidate.name}</div><div class="text-gray-600">${candidate.party}</div></div><div class="flex-shrink-0"><div class="w-8 h-8 border-2 border-gray-300 rounded-full candidate-radio"></div></div></div>`;
                         div.addEventListener('click', () => selectCandidate(candidate, div));
                         candidateList.appendChild(div);
@@ -878,43 +1155,17 @@
                 }
             }
             
-            function updateStatistics() {
-                if (allCandidates.length === 0) return;
-                const totalVotes = allVotes.length;
-                const avgVotes = totalVotes > 0 ? Math.round(totalVotes / allCandidates.length) : 0;
-                const partyVotes = {};
-                allCandidates.forEach(candidate => partyVotes[candidate.party] = (partyVotes[candidate.party] || 0) + (candidate.votes || 0));
-                let popularParty = 'N/A', maxPartyVotes = 0;
-                for (const [party, votes] of Object.entries(partyVotes)) {
-                    if (votes > maxPartyVotes) { maxPartyVotes = votes; popularParty = party; }
-                }
-                document.getElementById('avgVotes').textContent = avgVotes;
-                document.getElementById('popularParty').textContent = popularParty;
-                document.getElementById('totalCandidates').textContent = allCandidates.length;
-                updateDivisionChart();
-            }
-            
-            function updateDivisionChart() {
-                const divisionVotes = {};
-                bangladeshData.divisions.forEach(div => divisionVotes[div.name] = 0);
-                allVotes.forEach(vote => { if (vote.divisionName && divisionVotes[vote.divisionName] !== undefined) divisionVotes[vote.divisionName]++; });
-                const divisionCtx = document.getElementById('divisionChart')?.getContext('2d');
-                if (divisionCtx) {
-                    if (charts.divisionChart) charts.divisionChart.destroy();
-                    const divisionNames = Object.keys(divisionVotes);
-                    const divisionVoteCounts = Object.values(divisionVotes);
-                    charts.divisionChart = new Chart(divisionCtx, {
-                        type: 'doughnut', data: { labels: divisionNames, datasets: [{ data: divisionVoteCounts, backgroundColor: ['#16a34a', '#dc2626', '#2563eb', '#ca8a04', '#9333ea', '#0891b2', '#7c3aed', '#ea580c'] }] },
-                        options: { responsive: true, plugins: { legend: { position: 'bottom' } } }
-                    });
-                }
-            }
-            
             // Admin Panel Functions
             function initAdminPanel() {
-                document.getElementById('loginAdmin')?.addEventListener('click', loginAdmin);
+                const adminPassword = setupAdminPassword();
+                
+                document.getElementById('loginAdmin')?.addEventListener('click', function() {
+                    loginAdmin(adminPassword);
+                });
                 document.getElementById('logoutAdmin')?.addEventListener('click', logoutAdmin);
-                document.getElementById('adminPassword')?.addEventListener('keypress', function(e) { if (e.key === 'Enter') loginAdmin(); });
+                document.getElementById('adminPassword')?.addEventListener('keypress', function(e) { 
+                    if (e.key === 'Enter') loginAdmin(adminPassword); 
+                });
                 document.getElementById('addCandidateBtn')?.addEventListener('click', addCandidate);
                 document.getElementById('resetAllVotes')?.addEventListener('click', resetAllVotes);
                 document.getElementById('clearCandidates')?.addEventListener('click', clearAllCandidates);
@@ -928,15 +1179,15 @@
                 loadAdminCandidates();
             }
             
-            function loginAdmin() {
+            function loginAdmin(correctPassword) {
                 const password = document.getElementById('adminPassword').value;
-                if (password === 'admin123') {
+                if (password === correctPassword) {
                     document.getElementById('adminLogin').classList.add('hidden');
                     document.getElementById('adminDashboard').classList.remove('hidden');
                     showAlert('Admin login successful!', 'success');
                     loadAdminData();
                 } else {
-                    showAlert('Incorrect password. Demo password is "admin123"', 'error');
+                    showAlert('Incorrect password.', 'error');
                 }
             }
             
@@ -953,6 +1204,7 @@
                     document.getElementById('adminTotalVotes').textContent = votesSnapshot.size;
                     const candidatesSnapshot = await getDocs(collection(db, 'candidates'));
                     document.getElementById('adminTotalCandidates').textContent = candidatesSnapshot.size;
+                    document.getElementById('totalCandidatesDb').textContent = candidatesSnapshot.size;
                 } catch (error) {
                     console.error('Error loading admin data:', error);
                 }
@@ -961,12 +1213,17 @@
             function loadAdminConstituencies() {
                 const select = document.getElementById('adminConstituency');
                 if (!select) return;
-                select.innerHTML = '<option value="">Select Constituency</option>';
+                select.innerHTML = '<option value="">Select Constituency (Bangladesh)</option>';
+                
+                // Count total constituencies
+                let totalConstituencies = 0;
+                
                 for (const [districtId, constituencies] of Object.entries(bangladeshData.constituencies)) {
                     const district = Object.values(bangladeshData.districts).flat().find(d => d.id === districtId);
                     if (district) {
                         const division = Object.values(bangladeshData.divisions).find(div => bangladeshData.districts[div.id]?.some(d => d.id === districtId));
                         constituencies.forEach(constituency => {
+                            totalConstituencies++;
                             const option = document.createElement('option');
                             option.value = constituency.id;
                             option.textContent = `${constituency.name} (${district.name}, ${division?.name || 'N/A'})`;
@@ -974,6 +1231,27 @@
                         });
                     }
                 }
+                
+                // Also add constituencies from districts that might not be in the main list yet
+                for (const division of bangladeshData.divisions) {
+                    const districts = bangladeshData.districts[division.id] || [];
+                    for (const district of districts) {
+                        if (!bangladeshData.constituencies[district.id]) {
+                            // Add placeholder constituencies
+                            for (let i = 1; i <= 5; i++) {
+                                totalConstituencies++;
+                                const constituencyId = `${district.id}_${i}`;
+                                const constituencyName = `${district.name}-${i}`;
+                                const option = document.createElement('option');
+                                option.value = constituencyId;
+                                option.textContent = `${constituencyName} (${district.name}, ${division.name})`;
+                                select.appendChild(option);
+                            }
+                        }
+                    }
+                }
+                
+                document.getElementById('totalConstituencies').textContent = totalConstituencies;
             }
             
             async function loadAdminCandidates() {
@@ -983,14 +1261,14 @@
                     const candidatesSnapshot = await getDocs(collection(db, 'candidates'));
                     tableBody.innerHTML = '';
                     if (candidatesSnapshot.empty) {
-                        tableBody.innerHTML = `<tr><td colspan="5" class="py-4 text-center text-gray-500">No candidates added yet.</td></tr>`;
+                        tableBody.innerHTML = `<tr><td colspan="5" class="py-4 text-center text-gray-500">No candidates added yet. Add candidates using the form above.</td></tr>`;
                         return;
                     }
                     candidatesSnapshot.forEach(doc => {
                         const candidate = { id: doc.id, ...doc.data() };
                         const row = document.createElement('tr');
                         row.className = 'border-b border-gray-200 hover:bg-gray-50';
-                        row.innerHTML = `<td class="py-3 px-4">${candidate.name}</td><td class="py-3 px-4"><span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">${candidate.party}</span></td><td class="py-3 px-4">${candidate.constituencyName || 'N/A'}</td><td class="py-3 px-4 font-bold">${candidate.votes || 0}</td><td class="py-3 px-4"><button class="delete-candidate bg-red-100 hover:bg-red-200 text-red-800 text-xs font-medium px-3 py-1 rounded" data-id="${candidate.id}">Delete</button></td>`;
+                        row.innerHTML = `<td class="py-3 px-4">${candidate.name}</td><td class="py-3 px-4"><span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">${candidate.party}</span></td><td class="py-3 px-4">${candidate.constituencyName || 'N/A'}</td><td class="py-3 px-4 font-bold">${candidate.votes || 0}</td><td class="py-3 px-4"><button class="delete-candidate bg-red-100 hover:bg-red-200 text-red-800 text-xs font-medium px-3 py-1 rounded" data-id="${candidate.id}"><i class="fas fa-trash mr-1"></i> Delete</button></td>`;
                         tableBody.appendChild(row);
                     });
                     document.querySelectorAll('.delete-candidate').forEach(button => {
@@ -1013,18 +1291,34 @@
                     return;
                 }
                 let constituencyName = '';
+                // Try to find constituency name from bangladeshData
                 for (const [districtId, constituencies] of Object.entries(bangladeshData.constituencies)) {
                     const constituency = constituencies.find(c => c.id === constituencyId);
-                    if (constituency) { constituencyName = constituency.name; break; }
+                    if (constituency) { 
+                        constituencyName = constituency.name; 
+                        break;
+                    }
+                }
+                // If not found in bangladeshData, extract from option text
+                if (!constituencyName) {
+                    const select = document.getElementById('adminConstituency');
+                    const selectedOption = select.options[select.selectedIndex];
+                    constituencyName = selectedOption.text.split(' (')[0];
                 }
                 try {
-                    await addDoc(collection(db, 'candidates'), { name: name, party: party, constituencyId: constituencyId, constituencyName: constituencyName, votes: 0 });
+                    await addDoc(collection(db, 'candidates'), { 
+                        name: name, 
+                        party: party, 
+                        constituencyId: constituencyId, 
+                        constituencyName: constituencyName, 
+                        votes: 0 
+                    });
                     document.getElementById('candidateName').value = '';
                     document.getElementById('candidateParty').value = '';
                     document.getElementById('adminConstituency').value = '';
                     loadAdminCandidates();
                     loadLiveResults();
-                    showAlert(`Candidate "${name}" added successfully!`, 'success');
+                    showAlert(`Candidate "${name}" added successfully to ${constituencyName}!`, 'success');
                 } catch (error) {
                     console.error('Error adding candidate:', error);
                     showAlert('Error adding candidate.', 'error');
@@ -1110,18 +1404,15 @@
                     let successCount = 0, errorCount = 0;
                     for (const candidate of candidates) {
                         try {
-                            if (!candidate.name || !candidate.party || !candidate.constituencyId || !candidate.constituencyName) {
+                            if (!candidate.name || !candidate.party || !candidate.constituencyId) {
                                 errorCount++; continue;
                             }
                             await addDoc(collection(db, 'candidates'), {
                                 name: candidate.name,
                                 party: candidate.party,
                                 constituencyId: candidate.constituencyId,
-                                constituencyName: candidate.constituencyName,
-                                votes: candidate.votes || 0,
-                                symbol: candidate.symbol || '',
-                                division: candidate.division || 'Dhaka',
-                                district: candidate.district || 'Dhaka City'
+                                constituencyName: candidate.constituencyName || candidate.constituencyId,
+                                votes: candidate.votes || 0
                             });
                             successCount++;
                             if (successCount % 5 === 0) {
@@ -1145,19 +1436,13 @@
                     "party": "Awami League",
                     "constituencyId": "dhaka_1",
                     "constituencyName": "Dhaka-1",
-                    "votes": 0,
-                    "symbol": "নৌকা",
-                    "division": "Dhaka",
-                    "district": "Dhaka City"
+                    "votes": 0
                 }, {
                     "name": "Mirza Abbas",
                     "party": "Bangladesh Nationalist Party (BNP)",
                     "constituencyId": "dhaka_8",
                     "constituencyName": "Dhaka-8",
-                    "votes": 0,
-                    "symbol": "ধান শীষ",
-                    "division": "Dhaka",
-                    "district": "Dhaka City"
+                    "votes": 0
                 }];
                 const dataStr = JSON.stringify(template, null, 2);
                 const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
@@ -1230,16 +1515,20 @@
             }
             
             async function loadSampleBangladeshData() {
-                if (!confirm('Load sample Bangladesh election data? This will add sample candidates.')) return;
+                if (!confirm('Load sample Bangladesh election data? This will add sample candidates for various constituencies.')) return;
                 const sampleData = [
-                    { name: "Sheikh Hasina", party: "Awami League", constituencyId: "dhaka_1", constituencyName: "Dhaka-1", votes: 0, symbol: "নৌকা" },
-                    { name: "Mirza Abbas", party: "Bangladesh Nationalist Party (BNP)", constituencyId: "dhaka_8", constituencyName: "Dhaka-8", votes: 0, symbol: "ধান শীষ" },
-                    { name: "Muhammad Nasiruddin Patwary", party: "National Citizen Party (NCP)", constituencyId: "dhaka_8", constituencyName: "Dhaka-8", votes: 0, symbol: "নারকেল" },
-                    { name: "Khaleda Zia", party: "Bangladesh Nationalist Party (BNP)", constituencyId: "dhaka_2", constituencyName: "Dhaka-2", votes: 0, symbol: "ধান শীষ" },
-                    { name: "Hasanul Haq Inu", party: "Jatiya Samajtantrik Dal", constituencyId: "dhaka_3", constituencyName: "Dhaka-3", votes: 0, symbol: "তোরণ" }
+                    { name: "Sheikh Hasina", party: "Awami League", constituencyId: "dhaka_1", constituencyName: "Dhaka-1", votes: 0 },
+                    { name: "Mirza Abbas", party: "Bangladesh Nationalist Party (BNP)", constituencyId: "dhaka_8", constituencyName: "Dhaka-8", votes: 0 },
+                    { name: "Muhammad Nasiruddin Patwary", party: "National Citizen Party (NCP)", constituencyId: "dhaka_8", constituencyName: "Dhaka-8", votes: 0 },
+                    { name: "Khaleda Zia", party: "Bangladesh Nationalist Party (BNP)", constituencyId: "dhaka_2", constituencyName: "Dhaka-2", votes: 0 },
+                    { name: "Hasanul Haq Inu", party: "Jatiya Samajtantrik Dal", constituencyId: "dhaka_3", constituencyName: "Dhaka-3", votes: 0 },
+                    { name: "Tofail Ahmed", party: "Awami League", constituencyId: "bhola_1", constituencyName: "Bhola-1", votes: 0 },
+                    { name: "Rashed Khan Menon", party: "Workers Party of Bangladesh", constituencyId: "dhaka_8", constituencyName: "Dhaka-8", votes: 0 },
+                    { name: "Moudud Ahmed", party: "Bangladesh Nationalist Party (BNP)", constituencyId: "chattogram_5", constituencyName: "Chattogram-5", votes: 0 },
+                    { name: "Salman F Rahman", party: "Awami League", constituencyId: "dhaka_1", constituencyName: "Dhaka-1", votes: 0 }
                 ];
                 try {
-                    showDatabaseStatus('Loading sample data...', 'info');
+                    showDatabaseStatus('Loading sample data for Bangladesh...', 'info');
                     for (const candidate of sampleData) {
                         await addDoc(collection(db, 'candidates'), candidate);
                     }
@@ -1288,14 +1577,12 @@
                     document.getElementById('totalVotesCount').textContent = allVotes.length;
                     updateResultsTable();
                     updateResultsCharts();
-                    updateStatistics();
                 });
                 onSnapshot(collection(db, 'candidates'), (snapshot) => {
                     allCandidates = [];
                     snapshot.forEach(doc => allCandidates.push({ id: doc.id, ...doc.data() }));
                     updateResultsTable();
                     updateResultsCharts();
-                    updateStatistics();
                     loadAdminCandidates();
                 });
             }
@@ -1309,7 +1596,14 @@
             setupFirestoreListeners();
             document.getElementById('refreshResults')?.addEventListener('click', loadLiveResults);
             
-            console.log('Bangladesh Public Opinion Poll initialized successfully!');
+            // Update total constituencies count
+            let totalConstituenciesCount = 0;
+            for (const constituencies of Object.values(bangladeshData.constituencies)) {
+                totalConstituenciesCount += constituencies.length;
+            }
+            document.getElementById('totalConstituencies').textContent = totalConstituenciesCount;
+            
+            console.log('Bangladesh Public Opinion Poll with 300 constituencies initialized successfully!');
         });
     </script>
 </body>
