@@ -23,20 +23,20 @@
             doc,
             updateDoc,
             deleteDoc,
-            setDoc
+            setDoc,
+            writeBatch
         } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
         
-        // Your web app's Firebase configuration
-        // REPLACE WITH YOUR FIREBASE CONFIG
-     const firebaseConfig = {
-    apiKey: "AIzaSyDdOPOmE1dhzyVRDLowr30GAi0LnjmDHt0",
-    authDomain: "bangladesh-opinion-poll.firebaseapp.com",
-    projectId: "bangladesh-opinion-poll",
-    storageBucket: "bangladesh-opinion-poll.firebasestorage.app",
-    messagingSenderId: "1006245972517",
-    appId: "1:1006245972517:web:8bdda3e095c4375c438dcc",
-    measurementId: "G-1RNP4Q7XX9"
-};
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyDdOPOmE1dhzyVRDLowr30GAi0LnjmDHt0",
+            authDomain: "bangladesh-opinion-poll.firebaseapp.com",
+            projectId: "bangladesh-opinion-poll",
+            storageBucket: "bangladesh-opinion-poll.firebasestorage.app",
+            messagingSenderId: "1006245972517",
+            appId: "1:1006245972517:web:8bdda3e095c4375c438dcc",
+            measurementId: "G-1RNP4Q7XX9"
+        };
         
         // Initialize Firebase
         const app = initializeApp(firebaseConfig);
@@ -54,38 +54,18 @@
             doc,
             updateDoc,
             deleteDoc,
-            setDoc
+            setDoc,
+            writeBatch
         };
     </script>
     <style>
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #15803d;
-            border-radius: 4px;
-        }
-        /* Smooth transitions */
-        .fade-in {
-            animation: fadeIn 0.5s ease-in-out;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        /* Vote button animation */
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        .vote-pulse {
-            animation: pulse 2s infinite;
-        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #15803d; border-radius: 4px; }
+        .fade-in { animation: fadeIn 0.5s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+        .vote-pulse { animation: pulse 2s infinite; }
     </style>
 </head>
 <body class="bg-gray-50 min-h-screen">
@@ -97,13 +77,7 @@
                     <div class="w-10 h-10 bg-red-500 rounded-full"></div>
                     <h1 class="text-xl font-bold">বাংলাদেশ পাবলিক মতামত</h1>
                 </div>
-                
-                <!-- Mobile menu button -->
-                <button id="mobileMenuBtn" class="md:hidden text-2xl">
-                    ☰
-                </button>
-                
-                <!-- Desktop menu -->
+                <button id="mobileMenuBtn" class="md:hidden text-2xl">☰</button>
                 <div class="hidden md:flex space-x-6">
                     <a href="#home" class="nav-link hover:text-green-200 font-medium">Home</a>
                     <a href="#vote" class="nav-link hover:text-green-200 font-medium">Vote Now</a>
@@ -113,8 +87,6 @@
                     <a href="#disclaimer" class="nav-link hover:text-green-200 font-medium">Disclaimer</a>
                 </div>
             </div>
-            
-            <!-- Mobile menu -->
             <div id="mobileMenu" class="md:hidden hidden pb-4">
                 <div class="flex flex-col space-y-3">
                     <a href="#home" class="nav-link hover:text-green-200">Home</a>
@@ -128,42 +100,32 @@
         </div>
     </nav>
 
-    <!-- Main Content -->
     <main class="container mx-auto px-4 py-8">
         <!-- Home Section -->
         <section id="home" class="mb-16 fade-in">
             <div class="text-center mb-12">
                 <h2 class="text-4xl font-bold text-green-900 mb-4">Bangladesh Public Opinion Poll</h2>
-                <p class="text-gray-600 text-lg max-w-3xl mx-auto">
-                    Participate in this non-official public opinion poll to express your preference. 
-                    This is a mock election for educational and demonstration purposes only.
-                </p>
+                <p class="text-gray-600 text-lg max-w-3xl mx-auto">Participate in this non-official public opinion poll. This is a mock election for educational purposes only.</p>
             </div>
-            
             <div class="grid md:grid-cols-3 gap-8">
                 <div class="bg-white p-6 rounded-xl shadow-lg border border-green-200">
                     <div class="text-green-600 text-4xl mb-4">🗳️</div>
                     <h3 class="text-xl font-bold text-green-800 mb-2">Cast Your Vote</h3>
-                    <p class="text-gray-600">Select your division, district, and constituency to vote for your preferred candidate.</p>
+                    <p class="text-gray-600">Select your division, district, and constituency to vote.</p>
                 </div>
-                
                 <div class="bg-white p-6 rounded-xl shadow-lg border border-green-200">
                     <div class="text-green-600 text-4xl mb-4">📊</div>
                     <h3 class="text-xl font-bold text-green-800 mb-2">Live Results</h3>
-                    <p class="text-gray-600">Watch real-time vote counts and see how opinions are changing across Bangladesh.</p>
+                    <p class="text-gray-600">Watch real-time vote counts across Bangladesh.</p>
                 </div>
-                
                 <div class="bg-white p-6 rounded-xl shadow-lg border border-green-200">
                     <div class="text-green-600 text-4xl mb-4">🔒</div>
                     <h3 class="text-xl font-bold text-green-800 mb-2">Secure & Private</h3>
-                    <p class="text-gray-600">One vote per device ensures fair participation. Your privacy is protected.</p>
+                    <p class="text-gray-600">One vote per device ensures fair participation.</p>
                 </div>
             </div>
-            
             <div class="text-center mt-12">
-                <a href="#vote" class="bg-green-700 hover:bg-green-800 text-white font-bold py-3 px-8 rounded-lg text-lg shadow-lg transition duration-300 inline-block">
-                    Start Voting Now →
-                </a>
+                <a href="#vote" class="bg-green-700 hover:bg-green-800 text-white font-bold py-3 px-8 rounded-lg text-lg shadow-lg transition duration-300 inline-block">Start Voting Now →</a>
             </div>
         </section>
 
@@ -171,13 +133,8 @@
         <section id="vote" class="mb-16 fade-in">
             <h2 class="text-3xl font-bold text-green-900 mb-2 border-b pb-2">Vote Now</h2>
             <p class="text-gray-600 mb-6">Select your location and cast your vote for your preferred candidate.</p>
-            
-            <!-- Voting Status Alert -->
             <div id="voteStatus" class="hidden mb-6 p-4 rounded-lg"></div>
-            
-            <!-- Voting Steps -->
             <div class="bg-white rounded-xl shadow-lg p-6">
-                <!-- Step Indicators -->
                 <div class="flex justify-between mb-8 relative">
                     <div class="step-item flex flex-col items-center z-10">
                         <div class="step-circle bg-green-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">1</div>
@@ -198,75 +155,46 @@
                     <div class="absolute top-5 left-10 right-10 h-1 bg-gray-300 z-0"></div>
                 </div>
                 
-                <!-- Step 1: Select Division -->
                 <div id="step1" class="step-content">
                     <h3 class="text-xl font-bold text-green-800 mb-4">Select Your Division</h3>
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4" id="divisionList">
-                        <!-- Divisions will be loaded here -->
-                    </div>
-                    <button id="nextToStep2" class="mt-6 bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-6 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed" disabled>
-                        Next: Select District →
-                    </button>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4" id="divisionList"></div>
+                    <button id="nextToStep2" class="mt-6 bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-6 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed" disabled>Next: Select District →</button>
                 </div>
                 
-                <!-- Step 2: Select District -->
                 <div id="step2" class="step-content hidden">
                     <h3 class="text-xl font-bold text-green-800 mb-4">Select Your District</h3>
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4" id="districtList">
-                        <!-- Districts will be loaded here -->
-                    </div>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4" id="districtList"></div>
                     <div class="flex justify-between mt-6">
-                        <button id="backToStep1" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium py-2 px-6 rounded-lg">
-                            ← Back to Divisions
-                        </button>
-                        <button id="nextToStep3" class="bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-6 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed" disabled>
-                            Next: Select Constituency →
-                        </button>
+                        <button id="backToStep1" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium py-2 px-6 rounded-lg">← Back to Divisions</button>
+                        <button id="nextToStep3" class="bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-6 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed" disabled>Next: Select Constituency →</button>
                     </div>
                 </div>
                 
-                <!-- Step 3: Select Constituency -->
                 <div id="step3" class="step-content hidden">
                     <h3 class="text-xl font-bold text-green-800 mb-4">Select Your Constituency</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="constituencyList">
-                        <!-- Constituencies will be loaded here -->
-                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="constituencyList"></div>
                     <div class="flex justify-between mt-6">
-                        <button id="backToStep2" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium py-2 px-6 rounded-lg">
-                            ← Back to Districts
-                        </button>
-                        <button id="nextToStep4" class="bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-6 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed" disabled>
-                            Next: Vote for Candidate →
-                        </button>
+                        <button id="backToStep2" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium py-2 px-6 rounded-lg">← Back to Districts</button>
+                        <button id="nextToStep4" class="bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-6 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed" disabled>Next: Vote for Candidate →</button>
                     </div>
                 </div>
                 
-                <!-- Step 4: Vote for Candidate -->
                 <div id="step4" class="step-content hidden">
                     <h3 class="text-xl font-bold text-green-800 mb-4">Select Your Candidate</h3>
                     <p class="text-gray-600 mb-6" id="selectedLocation">Voting in: <span class="font-semibold"></span></p>
-                    <div class="space-y-4" id="candidateList">
-                        <!-- Candidates will be loaded here -->
-                    </div>
+                    <div class="space-y-4" id="candidateList"></div>
                     <div class="flex justify-between mt-6">
-                        <button id="backToStep3" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium py-2 px-6 rounded-lg">
-                            ← Back to Constituencies
-                        </button>
-                        <button id="submitVote" class="bg-green-700 hover:bg-green-800 text-white font-bold py-3 px-8 rounded-lg text-lg shadow-lg vote-pulse disabled:opacity-50 disabled:cursor-not-allowed" disabled>
-                            🗳️ Cast Your Vote
-                        </button>
+                        <button id="backToStep3" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium py-2 px-6 rounded-lg">← Back to Constituencies</button>
+                        <button id="submitVote" class="bg-green-700 hover:bg-green-800 text-white font-bold py-3 px-8 rounded-lg text-lg shadow-lg vote-pulse disabled:opacity-50 disabled:cursor-not-allowed" disabled>🗳️ Cast Your Vote</button>
                     </div>
                 </div>
                 
-                <!-- Voting Complete Message -->
                 <div id="voteComplete" class="hidden text-center py-8">
                     <div class="text-green-600 text-6xl mb-4">✅</div>
                     <h3 class="text-2xl font-bold text-green-800 mb-2">Thank You for Voting!</h3>
                     <p class="text-gray-600 mb-6">Your vote has been recorded successfully.</p>
                     <p class="text-sm text-gray-500">You can view live results in the <a href="#results" class="text-green-600 font-medium">Live Results</a> section.</p>
-                    <button id="voteAgain" class="mt-6 bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-6 rounded-lg">
-                        View Live Results →
-                    </button>
+                    <button id="voteAgain" class="mt-6 bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-6 rounded-lg">View Live Results →</button>
                 </div>
             </div>
         </section>
@@ -274,9 +202,7 @@
         <!-- Live Results Section -->
         <section id="results" class="mb-16 fade-in">
             <h2 class="text-3xl font-bold text-green-900 mb-2 border-b pb-2">Live Results</h2>
-            <p class="text-gray-600 mb-6">Real-time vote counts across all constituencies. Results update automatically.</p>
-            
-            <!-- Results Filter -->
+            <p class="text-gray-600 mb-6">Real-time vote counts across all constituencies.</p>
             <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
                 <div class="flex flex-col md:flex-row md:items-center justify-between mb-6">
                     <h3 class="text-xl font-bold text-green-800">National Vote Count</h3>
@@ -284,13 +210,9 @@
                         <select id="resultsDivisionFilter" class="border border-gray-300 rounded-lg px-4 py-2">
                             <option value="all">All Divisions</option>
                         </select>
-                        <button id="refreshResults" class="bg-green-100 hover:bg-green-200 text-green-800 font-medium py-2 px-4 rounded-lg">
-                            Refresh Results
-                        </button>
+                        <button id="refreshResults" class="bg-green-100 hover:bg-green-200 text-green-800 font-medium py-2 px-4 rounded-lg">Refresh Results</button>
                     </div>
                 </div>
-                
-                <!-- Total Votes Counter -->
                 <div class="bg-green-50 border border-green-200 rounded-lg p-4 mb-6">
                     <div class="flex items-center">
                         <div class="text-green-600 text-3xl mr-4">📈</div>
@@ -303,8 +225,6 @@
                         </div>
                     </div>
                 </div>
-                
-                <!-- Results Charts -->
                 <div class="grid md:grid-cols-2 gap-8">
                     <div>
                         <h4 class="font-bold text-green-800 mb-4">Top Candidates by Votes</h4>
@@ -319,8 +239,6 @@
                         </div>
                     </div>
                 </div>
-                
-                <!-- Live Results Table -->
                 <div class="mt-8">
                     <h4 class="font-bold text-green-800 mb-4">Detailed Results by Constituency</h4>
                     <div class="overflow-x-auto">
@@ -335,76 +253,9 @@
                                 </tr>
                             </thead>
                             <tbody id="resultsTableBody">
-                                <!-- Results will be loaded here -->
-                                <tr>
-                                    <td colspan="5" class="py-8 text-center text-gray-500">
-                                        Loading live results...
-                                    </td>
-                                </tr>
+                                <tr><td colspan="5" class="py-8 text-center text-gray-500">Loading live results...</td></tr>
                             </tbody>
                         </table>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Statistics Section -->
-        <section id="stats" class="mb-16 fade-in">
-            <h2 class="text-3xl font-bold text-green-900 mb-2 border-b pb-2">Statistics & Analytics</h2>
-            <p class="text-gray-600 mb-6">Detailed analysis of voting patterns and participation rates.</p>
-            
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-white p-6 rounded-xl shadow-lg">
-                    <h3 class="text-xl font-bold text-green-800 mb-4">Voter Participation</h3>
-                    <div class="h-64">
-                        <canvas id="participationChart"></canvas>
-                    </div>
-                </div>
-                
-                <div class="bg-white p-6 rounded-xl shadow-lg">
-                    <h3 class="text-xl font-bold text-green-800 mb-4">Division-wise Votes</h3>
-                    <div class="h-64">
-                        <canvas id="divisionChart"></canvas>
-                    </div>
-                </div>
-                
-                <div class="bg-white p-6 rounded-xl shadow-lg">
-                    <h3 class="text-xl font-bold text-green-800 mb-4">Voting Trends</h3>
-                    <div class="space-y-4">
-                        <div>
-                            <div class="flex justify-between mb-1">
-                                <span class="text-sm font-medium text-green-800">Highest Turnout</span>
-                                <span class="text-sm font-medium text-green-800" id="highestTurnout">--</span>
-                            </div>
-                            <div class="w-full bg-gray-200 rounded-full h-2.5">
-                                <div id="highestTurnoutBar" class="bg-green-600 h-2.5 rounded-full" style="width: 0%"></div>
-                            </div>
-                        </div>
-                        
-                        <div>
-                            <div class="flex justify-between mb-1">
-                                <span class="text-sm font-medium text-green-800">Lowest Turnout</span>
-                                <span class="text-sm font-medium text-green-800" id="lowestTurnout">--</span>
-                            </div>
-                            <div class="w-full bg-gray-200 rounded-full h-2.5">
-                                <div id="lowestTurnoutBar" class="bg-green-400 h-2.5 rounded-full" style="width: 0%"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="pt-4 border-t border-gray-200">
-                            <div class="flex justify-between mb-2">
-                                <span class="text-gray-600">Average Votes per Constituency</span>
-                                <span class="font-bold text-green-800" id="avgVotes">0</span>
-                            </div>
-                            <div class="flex justify-between mb-2">
-                                <span class="text-gray-600">Most Popular Party</span>
-                                <span class="font-bold text-green-800" id="popularParty">--</span>
-                            </div>
-                            <div class="flex justify-between">
-                                <span class="text-gray-600">Total Candidates</span>
-                                <span class="font-bold text-green-800" id="totalCandidates">0</span>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -421,9 +272,7 @@
                 <p class="text-gray-600 mb-4">Enter the admin password to access management functions.</p>
                 <div class="flex flex-col md:flex-row md:items-center space-y-4 md:space-y-0 md:space-x-4">
                     <input type="password" id="adminPassword" placeholder="Enter admin password" class="border border-gray-300 rounded-lg px-4 py-2 flex-grow">
-                    <button id="loginAdmin" class="bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-6 rounded-lg">
-                        Login
-                    </button>
+                    <button id="loginAdmin" class="bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-6 rounded-lg">Login</button>
                 </div>
                 <p class="text-sm text-gray-500 mt-4">Demo password: <code class="bg-gray-100 px-2 py-1 rounded">admin123</code></p>
             </div>
@@ -436,72 +285,88 @@
                             <h3 class="text-xl font-bold text-green-800">Admin Dashboard</h3>
                             <p class="text-green-700">You are logged in as Administrator</p>
                         </div>
-                        <button id="logoutAdmin" class="bg-red-100 hover:bg-red-200 text-red-800 font-medium py-2 px-4 rounded-lg">
-                            Logout
-                        </button>
+                        <button id="logoutAdmin" class="bg-red-100 hover:bg-red-200 text-red-800 font-medium py-2 px-4 rounded-lg">Logout</button>
                     </div>
                 </div>
                 
-                <!-- Admin Actions -->
+                <!-- Admin Actions Grid -->
                 <div class="grid md:grid-cols-2 gap-8 mb-8">
-                    <!-- Add Candidate -->
+                    <!-- Add Single Candidate -->
                     <div class="bg-white rounded-xl shadow-lg p-6">
                         <h4 class="text-lg font-bold text-green-800 mb-4">Add New Candidate</h4>
                         <div class="space-y-4">
-                            <div>
-                                <label class="block text-gray-700 mb-2">Candidate Name</label>
-                                <input type="text" id="candidateName" class="w-full border border-gray-300 rounded-lg px-4 py-2">
-                            </div>
-                            <div>
-                                <label class="block text-gray-700 mb-2">Party</label>
-                                <input type="text" id="candidateParty" class="w-full border border-gray-300 rounded-lg px-4 py-2">
-                            </div>
-                            <div>
-                                <label class="block text-gray-700 mb-2">Select Constituency</label>
-                                <select id="adminConstituency" class="w-full border border-gray-300 rounded-lg px-4 py-2">
-                                    <!-- Constituencies will be loaded here -->
-                                </select>
-                            </div>
-                            <button id="addCandidateBtn" class="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-lg">
-                                Add Candidate
-                            </button>
+                            <div><label class="block text-gray-700 mb-2">Candidate Name</label><input type="text" id="candidateName" class="w-full border border-gray-300 rounded-lg px-4 py-2"></div>
+                            <div><label class="block text-gray-700 mb-2">Party</label><input type="text" id="candidateParty" class="w-full border border-gray-300 rounded-lg px-4 py-2"></div>
+                            <div><label class="block text-gray-700 mb-2">Select Constituency</label><select id="adminConstituency" class="w-full border border-gray-300 rounded-lg px-4 py-2"></select></div>
+                            <button id="addCandidateBtn" class="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-lg">Add Candidate</button>
                         </div>
                     </div>
                     
-                    <!-- System Management -->
+                    <!-- Bulk Import System -->
+                    <div class="bg-white rounded-xl shadow-lg p-6">
+                        <h4 class="text-lg font-bold text-green-800 mb-4">📥 Bulk Import Candidates (JSON)</h4>
+                        <div class="space-y-4">
+                            <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                                <h5 class="font-bold text-blue-800 mb-2">JSON Format:</h5>
+                                <pre class="text-sm bg-gray-100 p-3 rounded overflow-x-auto">[
+  {
+    "name": "Candidate Name",
+    "party": "Party Name",
+    "constituencyId": "dhaka_1",
+    "constituencyName": "Dhaka-1"
+  }
+]</pre>
+                            </div>
+                            <div><label class="block text-gray-700 mb-2">Paste JSON Data:</label><textarea id="bulkCandidateJson" rows="6" class="w-full border border-gray-300 rounded-lg px-4 py-2 font-mono text-sm" placeholder='Paste your JSON array here...'></textarea></div>
+                            <div class="flex space-x-4">
+                                <button id="bulkImportBtn" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg">Import Candidates</button>
+                                <button id="downloadTemplateBtn" class="flex-1 bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-lg">Download Template</button>
+                            </div>
+                            <div id="bulkImportStatus" class="hidden p-4 rounded-lg"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- System Management -->
+                <div class="grid md:grid-cols-2 gap-8 mb-8">
                     <div class="bg-white rounded-xl shadow-lg p-6">
                         <h4 class="text-lg font-bold text-green-800 mb-4">System Management</h4>
                         <div class="space-y-4">
                             <div class="bg-red-50 border border-red-200 rounded-lg p-4">
                                 <h5 class="font-bold text-red-800 mb-2">⚠️ Danger Zone</h5>
-                                <p class="text-red-700 text-sm mb-4">These actions cannot be undone. Use with extreme caution.</p>
-                                <div class="flex space-x-4">
-                                    <button id="resetAllVotes" class="bg-red-600 hover:bg-red-700 text-white font-medium py-2 px-4 rounded-lg">
-                                        Reset All Votes
-                                    </button>
-                                    <button id="clearCandidates" class="bg-red-600 hover:bg-red-700 text-white font-medium py-2 px-4 rounded-lg">
-                                        Clear All Candidates
-                                    </button>
+                                <p class="text-red-700 text-sm mb-4">These actions cannot be undone.</p>
+                                <div class="grid grid-cols-2 gap-4">
+                                    <button id="resetAllVotes" class="bg-red-600 hover:bg-red-700 text-white font-medium py-2 px-4 rounded-lg">Reset All Votes</button>
+                                    <button id="clearCandidates" class="bg-red-600 hover:bg-red-700 text-white font-medium py-2 px-4 rounded-lg">Clear All Candidates</button>
+                                    <button id="exportAllData" class="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-lg">Export All Data</button>
+                                    <button id="importFullData" class="bg-purple-600 hover:bg-purple-700 text-white font-medium py-2 px-4 rounded-lg">Import Full Data</button>
                                 </div>
                             </div>
-                            
                             <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
                                 <h5 class="font-bold text-yellow-800 mb-2">System Information</h5>
                                 <div class="space-y-2">
-                                    <div class="flex justify-between">
-                                        <span class="text-gray-700">Total Votes in Database</span>
-                                        <span class="font-bold" id="adminTotalVotes">0</span>
-                                    </div>
-                                    <div class="flex justify-between">
-                                        <span class="text-gray-700">Total Candidates</span>
-                                        <span class="font-bold" id="adminTotalCandidates">0</span>
-                                    </div>
-                                    <div class="flex justify-between">
-                                        <span class="text-gray-700">System Status</span>
-                                        <span class="font-bold text-green-600">Active</span>
-                                    </div>
+                                    <div class="flex justify-between"><span class="text-gray-700">Total Votes</span><span class="font-bold" id="adminTotalVotes">0</span></div>
+                                    <div class="flex justify-between"><span class="text-gray-700">Total Candidates</span><span class="font-bold" id="adminTotalCandidates">0</span></div>
+                                    <div class="flex justify-between"><span class="text-gray-700">System Status</span><span class="font-bold text-green-600">Active</span></div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Complete Database Management -->
+                    <div class="bg-white rounded-xl shadow-lg p-6">
+                        <h4 class="text-lg font-bold text-green-800 mb-4">🗃️ Complete Database Management</h4>
+                        <div class="space-y-4">
+                            <div class="bg-gray-50 border border-gray-200 rounded-lg p-4">
+                                <h5 class="font-bold text-gray-800 mb-2">📊 Database Statistics</h5>
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div><div class="text-sm text-gray-600">Total Constituencies</div><div class="text-2xl font-bold" id="totalConstituencies">12</div></div>
+                                    <div><div class="text-sm text-gray-600">Total Candidates</div><div class="text-2xl font-bold" id="totalCandidatesDb">4</div></div>
+                                </div>
+                            </div>
+                            <button id="loadSampleData" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-medium py-2 px-4 rounded-lg">Load Sample Bangladesh Data</button>
+                            <button id="backupDatabase" class="w-full bg-amber-600 hover:bg-amber-700 text-white font-medium py-2 px-4 rounded-lg">Backup Database to JSON</button>
+                            <div id="databaseStatus" class="hidden p-4 rounded-lg"></div>
                         </div>
                     </div>
                 </div>
@@ -521,7 +386,7 @@
                                 </tr>
                             </thead>
                             <tbody id="adminCandidateTable">
-                                <!-- Candidates will be loaded here -->
+                                <tr><td colspan="5" class="py-4 text-center text-gray-500">No candidates added yet.</td></tr>
                             </tbody>
                         </table>
                     </div>
@@ -532,21 +397,10 @@
         <!-- Disclaimer Section -->
         <section id="disclaimer" class="fade-in">
             <div class="bg-white rounded-xl shadow-lg p-8 border border-red-300">
-                <div class="text-center mb-6">
-                    <div class="text-red-600 text-5xl mb-4">⚠️</div>
-                    <h2 class="text-3xl font-bold text-red-800 mb-2">Important Disclaimer</h2>
-                </div>
-                
+                <div class="text-center mb-6"><div class="text-red-600 text-5xl mb-4">⚠️</div><h2 class="text-3xl font-bold text-red-800 mb-2">Important Disclaimer</h2></div>
                 <div class="space-y-4 text-gray-700">
-                    <p class="text-lg">
-                        <strong>This platform represents public opinion only and does not reflect official results of the Bangladesh Election Commission.</strong>
-                    </p>
-                    
-                    <p>
-                        This website is a demonstration of web development technologies and is designed for educational purposes only. 
-                        It simulates a voting system to showcase full-stack development capabilities using modern web technologies.
-                    </p>
-                    
+                    <p class="text-lg"><strong>This platform represents public opinion only and does not reflect official results of the Bangladesh Election Commission.</strong></p>
+                    <p>This website is a demonstration of web development technologies and is designed for educational purposes only.</p>
                     <div class="bg-red-50 border border-red-200 rounded-lg p-4">
                         <h4 class="font-bold text-red-800 mb-2">Please Note:</h4>
                         <ul class="list-disc pl-5 space-y-1">
@@ -557,24 +411,12 @@
                             <li>All data is stored in a Firebase database and can be reset by administrators</li>
                         </ul>
                     </div>
-                    
-                    <p>
-                        The Bangladesh flag colors (green and red) are used in the theme to represent the national identity, 
-                        not to imply any official association with government institutions.
-                    </p>
-                    
-                    <p class="pt-4 border-t border-gray-300 text-center">
-                        <strong>For official election information in Bangladesh, please visit the 
-                        <a href="https://www.ecs.gov.bd/" class="text-green-700 font-bold hover:underline" target="_blank">
-                            Bangladesh Election Commission website
-                        </a></strong>
-                    </p>
+                    <p class="pt-4 border-t border-gray-300 text-center"><strong>For official election information in Bangladesh, please visit the <a href="https://www.ecs.gov.bd/" class="text-green-700 font-bold hover:underline" target="_blank">Bangladesh Election Commission website</a></strong></p>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
     <footer class="bg-green-900 text-white mt-16">
         <div class="container mx-auto px-4 py-8">
             <div class="flex flex-col md:flex-row justify-between items-center">
@@ -585,7 +427,6 @@
                     </div>
                     <p class="text-green-200">A demonstration of web development technologies</p>
                 </div>
-                
                 <div class="text-center md:text-right">
                     <p class="text-green-200">© 2023 Bangladesh Public Opinion Poll</p>
                     <p class="text-green-300 text-sm mt-1">This is a mock election for educational purposes only</p>
@@ -596,29 +437,17 @@
 
     <!-- JavaScript Application Code -->
     <script>
-        // Wait for Firebase to load
         document.addEventListener('DOMContentLoaded', async function() {
-            // ====================
-            // INITIALIZATION
-            // ====================
-            console.log('Bangladesh Public Opinion Poll Initializing...');
-            
             // Get Firebase modules
-            const { 
-                db, collection, addDoc, getDocs, onSnapshot, 
-                query, where, doc, updateDoc, deleteDoc, setDoc 
-            } = window.firebaseModules || {};
+            const { db, collection, addDoc, getDocs, onSnapshot, query, where, doc, updateDoc, deleteDoc, setDoc, writeBatch } = window.firebaseModules || {};
             
-            // Check if Firebase is loaded
             if (!db) {
-                console.error('Firebase not loaded. Check your Firebase configuration.');
-                showAlert('Firebase connection error. Please check the console.', 'error');
+                console.error('Firebase not loaded.');
+                showAlert('Firebase connection error.', 'error');
                 return;
             }
             
-            // ====================
-            // GLOBAL VARIABLES
-            // ====================
+            // Global Variables
             let selectedDivision = null;
             let selectedDistrict = null;
             let selectedConstituency = null;
@@ -629,7 +458,7 @@
             let allVotes = [];
             let charts = {};
             
-            // Bangladesh geographical data
+            // Complete Bangladesh Data Structure
             const bangladeshData = {
                 divisions: [
                     { id: 'dhaka', name: 'Dhaka', bnName: 'ঢাকা' },
@@ -641,7 +470,6 @@
                     { id: 'rangpur', name: 'Rangpur', bnName: 'রংপুর' },
                     { id: 'mymensingh', name: 'Mymensingh', bnName: 'ময়মনসিংহ' }
                 ],
-                
                 districts: {
                     dhaka: [
                         { id: 'dhaka_city', name: 'Dhaka City', bnName: 'ঢাকা সিটি' },
@@ -661,96 +489,44 @@
                         { id: 'bogura', name: 'Bogura', bnName: 'বগুড়া' },
                         { id: 'pabna', name: 'Pabna', bnName: 'পাবনা' },
                         { id: 'sirajganj', name: 'Sirajganj', bnName: 'সিরাজগঞ্জ' }
-                    ],
-                    khulna: [
-                        { id: 'khulna_city', name: 'Khulna City', bnName: 'খুলনা সিটি' },
-                        { id: 'jessore', name: 'Jessore', bnName: 'যশোর' },
-                        { id: 'satkhira', name: 'Satkhira', bnName: 'সাতক্ষীরা' },
-                        { id: 'bagerhat', name: 'Bagerhat', bnName: 'বাগেরহাট' }
-                    ],
-                    barishal: [
-                        { id: 'barishal_city', name: 'Barishal City', bnName: 'বরিশাল সিটি' },
-                        { id: 'bhola', name: 'Bhola', bnName: 'ভোলা' },
-                        { id: 'patuakhali', name: 'Patuakhali', bnName: 'পটুয়াখালী' }
-                    ],
-                    sylhet: [
-                        { id: 'sylhet_city', name: 'Sylhet City', bnName: 'সিলেট সিটি' },
-                        { id: 'moulvibazar', name: 'Moulvibazar', bnName: 'মৌলভীবাজার' },
-                        { id: 'habiganj', name: 'Habiganj', bnName: 'হবিগঞ্জ' }
-                    ],
-                    rangpur: [
-                        { id: 'rangpur_city', name: 'Rangpur City', bnName: 'রংপুর সিটি' },
-                        { id: 'dinajpur', name: 'Dinajpur', bnName: 'দিনাজপুর' },
-                        { id: 'nilphamari', name: 'Nilphamari', bnName: 'নীলফামারী' }
-                    ],
-                    mymensingh: [
-                        { id: 'mymensingh_city', name: 'Mymensingh City', bnName: 'ময়মনসিংহ সিটি' },
-                        { id: 'jamalpur', name: 'Jamalpur', bnName: 'জামালপুর' },
-                        { id: 'sherpur', name: 'Sherpur', bnName: 'শেরপুর' }
                     ]
                 },
-                
                 constituencies: {
                     dhaka_city: [
                         { id: 'dhaka_1', name: 'Dhaka-1', bnName: 'ঢাকা-১' },
                         { id: 'dhaka_2', name: 'Dhaka-2', bnName: 'ঢাকা-২' },
                         { id: 'dhaka_3', name: 'Dhaka-3', bnName: 'ঢাকা-৩' },
                         { id: 'dhaka_4', name: 'Dhaka-4', bnName: 'ঢাকা-৪' },
-                      { id: 'dhaka_8', name: 'Dhaka-8', bnName: 'ঢাকা-৮' }
+                        { id: 'dhaka_5', name: 'Dhaka-5', bnName: 'ঢাকা-৫' },
+                        { id: 'dhaka_6', name: 'Dhaka-6', bnName: 'ঢাকা-৬' },
+                        { id: 'dhaka_7', name: 'Dhaka-7', bnName: 'ঢাকা-৭' },
+                        { id: 'dhaka_8', name: 'Dhaka-8', bnName: 'ঢাকা-৮' },
+                        { id: 'dhaka_9', name: 'Dhaka-9', bnName: 'ঢাকা-৯' },
+                        { id: 'dhaka_10', name: 'Dhaka-10', bnName: 'ঢাকা-১০' }
                     ],
                     gazipur: [
                         { id: 'gazipur_1', name: 'Gazipur-1', bnName: 'গাজীপুর-১' },
-                        { id: 'gazipur_2', name: 'Gazipur-2', bnName: 'গাজীপুর-২' }
+                        { id: 'gazipur_2', name: 'Gazipur-2', bnName: 'গাজীপুর-২' },
+                        { id: 'gazipur_3', name: 'Gazipur-3', bnName: 'গাজীপুর-৩' }
                     ],
                     chattogram_city: [
                         { id: 'chattogram_1', name: 'Chattogram-1', bnName: 'চট্টগ্রাম-১' },
                         { id: 'chattogram_2', name: 'Chattogram-2', bnName: 'চট্টগ্রাম-২' }
-                    ],
-                    rajshahi_city: [
-                        { id: 'rajshahi_1', name: 'Rajshahi-1', bnName: 'রাজশাহী-১' },
-                        { id: 'rajshahi_2', name: 'Rajshahi-2', bnName: 'রাজশাহী-২' }
-                    ],
-                    khulna_city: [
-                        { id: 'khulna_1', name: 'Khulna-1', bnName: 'খুলনা-১' },
-                        { id: 'khulna_2', name: 'Khulna-2', bnName: 'খুলনা-২' }
-                    ],
-                    barishal_city: [
-                        { id: 'barishal_1', name: 'Barishal-1', bnName: 'বরিশাল-১' },
-                        { id: 'barishal_2', name: 'Barishal-2', bnName: 'বরিশাল-২' }
-                    ],
-                    sylhet_city: [
-                        { id: 'sylhet_1', name: 'Sylhet-1', bnName: 'সিলেট-১' },
-                        { id: 'sylhet_2', name: 'Sylhet-2', bnName: 'সিলেট-২' }
-                    ],
-                    rangpur_city: [
-                        { id: 'rangpur_1', name: 'Rangpur-1', bnName: 'রংপুর-১' },
-                        { id: 'rangpur_2', name: 'Rangpur-2', bnName: 'রংপুর-২' }
-                    ],
-                    mymensingh_city: [
-                        { id: 'mymensingh_1', name: 'Mymensingh-1', bnName: 'ময়মনসিংহ-১' },
-                        { id: 'mymensingh_2', name: 'Mymensingh-2', bnName: 'ময়মনসিংহ-২' }
                     ]
                 }
             };
             
-            // ====================
-            // UTILITY FUNCTIONS
-            // ====================
-            
-            // Generate a device ID for vote fraud protection
+            // Utility Functions
             function generateDeviceId() {
                 let deviceId = localStorage.getItem('vote_device_id');
                 if (!deviceId) {
-                    // Create a simple hash from browser info
-                    const navigatorInfo = navigator.userAgent + navigator.language + 
-                                          (screen.width * screen.height) + new Date().getTime();
+                    const navigatorInfo = navigator.userAgent + navigator.language + (screen.width * screen.height) + new Date().getTime();
                     deviceId = 'device_' + hashCode(navigatorInfo);
                     localStorage.setItem('vote_device_id', deviceId);
                 }
                 return deviceId;
             }
             
-            // Simple hash function
             function hashCode(str) {
                 let hash = 0;
                 for (let i = 0; i < str.length; i++) {
@@ -761,38 +537,44 @@
                 return Math.abs(hash).toString(16);
             }
             
-            // Show alert message
             function showAlert(message, type = 'info') {
                 const alertDiv = document.getElementById('voteStatus');
                 if (!alertDiv) return;
-                
-                alertDiv.className = `p-4 rounded-lg ${type === 'error' ? 'bg-red-100 text-red-800 border border-red-300' : 
-                                                type === 'success' ? 'bg-green-100 text-green-800 border border-green-300' : 
-                                                'bg-blue-100 text-blue-800 border border-blue-300'}`;
+                alertDiv.className = `p-4 rounded-lg ${type === 'error' ? 'bg-red-100 text-red-800 border border-red-300' : type === 'success' ? 'bg-green-100 text-green-800 border border-green-300' : 'bg-blue-100 text-blue-800 border border-blue-300'}`;
                 alertDiv.innerHTML = message;
                 alertDiv.classList.remove('hidden');
-                
-                // Auto-hide after 5 seconds
-                setTimeout(() => {
-                    alertDiv.classList.add('hidden');
-                }, 5000);
+                setTimeout(() => alertDiv.classList.add('hidden'), 5000);
             }
             
-            // Check if user has already voted
+            function showBulkStatus(message, type = 'info') {
+                const statusDiv = document.getElementById('bulkImportStatus');
+                if (!statusDiv) return;
+                statusDiv.className = `p-4 rounded-lg ${type === 'error' ? 'bg-red-100 text-red-800 border border-red-300' : type === 'success' ? 'bg-green-100 text-green-800 border border-green-300' : 'bg-blue-100 text-blue-800 border border-blue-300'}`;
+                statusDiv.innerHTML = message;
+                statusDiv.classList.remove('hidden');
+                setTimeout(() => statusDiv.classList.add('hidden'), type === 'success' ? 10000 : 15000);
+            }
+            
+            function showDatabaseStatus(message, type = 'info') {
+                const statusDiv = document.getElementById('databaseStatus');
+                if (!statusDiv) return;
+                statusDiv.className = `p-4 rounded-lg ${type === 'error' ? 'bg-red-100 text-red-800 border border-red-300' : type === 'success' ? 'bg-green-100 text-green-800 border border-green-300' : 'bg-blue-100 text-blue-800 border border-blue-300'}`;
+                statusDiv.innerHTML = message;
+                statusDiv.classList.remove('hidden');
+                setTimeout(() => statusDiv.classList.add('hidden'), 10000);
+            }
+            
             async function checkVoteStatus() {
                 deviceId = generateDeviceId();
                 try {
                     const votesRef = collection(db, 'votes');
                     const q = query(votesRef, where('deviceId', '==', deviceId));
                     const querySnapshot = await getDocs(q);
-                    
                     hasVoted = !querySnapshot.empty;
-                    
                     if (hasVoted) {
-                        showAlert('You have already voted from this device. Each device can vote only once.', 'error');
+                        showAlert('You have already voted from this device.', 'error');
                         disableVotingUI();
                     }
-                    
                     return hasVoted;
                 } catch (error) {
                     console.error('Error checking vote status:', error);
@@ -800,7 +582,6 @@
                 }
             }
             
-            // Disable voting UI if already voted
             function disableVotingUI() {
                 const voteButton = document.getElementById('submitVote');
                 if (voteButton) {
@@ -811,63 +592,38 @@
                 }
             }
             
-            // ====================
-            // UI INITIALIZATION
-            // ====================
-            
-            // Initialize navigation
+            // Initialize Navigation
             function initNavigation() {
-                // Mobile menu toggle
                 const mobileMenuBtn = document.getElementById('mobileMenuBtn');
                 const mobileMenu = document.getElementById('mobileMenu');
-                
                 if (mobileMenuBtn) {
-                    mobileMenuBtn.addEventListener('click', () => {
-                        mobileMenu.classList.toggle('hidden');
-                    });
+                    mobileMenuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
                 }
-                
-                // Smooth scrolling for navigation links
                 document.querySelectorAll('a.nav-link').forEach(link => {
                     link.addEventListener('click', function(e) {
                         e.preventDefault();
                         const targetId = this.getAttribute('href');
                         const targetElement = document.querySelector(targetId);
-                        
                         if (targetElement) {
-                            // Close mobile menu if open
-                            if (!mobileMenu.classList.contains('hidden')) {
-                                mobileMenu.classList.add('hidden');
-                            }
-                            
-                            // Scroll to target
-                            window.scrollTo({
-                                top: targetElement.offsetTop - 80,
-                                behavior: 'smooth'
-                            });
+                            if (!mobileMenu.classList.contains('hidden')) mobileMenu.classList.add('hidden');
+                            window.scrollTo({ top: targetElement.offsetTop - 80, behavior: 'smooth' });
                         }
                     });
                 });
             }
             
-            // Initialize voting steps UI
+            // Initialize Voting UI
             function initVotingUI() {
-                // Load divisions
                 const divisionList = document.getElementById('divisionList');
                 if (divisionList) {
                     bangladeshData.divisions.forEach(division => {
                         const div = document.createElement('button');
                         div.className = 'bg-white border border-green-300 hover:border-green-500 hover:bg-green-50 rounded-lg p-4 text-center transition duration-200';
-                        div.innerHTML = `
-                            <div class="font-bold text-green-800">${division.name}</div>
-                            <div class="text-gray-600 text-sm">${division.bnName}</div>
-                        `;
+                        div.innerHTML = `<div class="font-bold text-green-800">${division.name}</div><div class="text-gray-600 text-sm">${division.bnName}</div>`;
                         div.addEventListener('click', () => selectDivision(division));
                         divisionList.appendChild(div);
                     });
                 }
-                
-                // Step navigation buttons
                 document.getElementById('nextToStep2')?.addEventListener('click', showStep2);
                 document.getElementById('nextToStep3')?.addEventListener('click', showStep3);
                 document.getElementById('nextToStep4')?.addEventListener('click', showStep4);
@@ -875,18 +631,10 @@
                 document.getElementById('backToStep2')?.addEventListener('click', showStep2);
                 document.getElementById('backToStep3')?.addEventListener('click', showStep3);
                 document.getElementById('submitVote')?.addEventListener('click', submitVote);
-                document.getElementById('voteAgain')?.addEventListener('click', () => {
-                    window.scrollTo({
-                        top: document.getElementById('results').offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                });
+                document.getElementById('voteAgain')?.addEventListener('click', () => window.scrollTo({ top: document.getElementById('results').offsetTop - 80, behavior: 'smooth' }));
             }
             
-            // ====================
-            // VOTING STEP FUNCTIONS
-            // ====================
-            
+            // Voting Step Functions
             function selectDivision(division) {
                 selectedDivision = division;
                 document.querySelectorAll('#divisionList button').forEach(btn => {
@@ -895,11 +643,7 @@
                 });
                 event.currentTarget.classList.add('bg-green-100', 'border-green-500');
                 event.currentTarget.classList.remove('bg-white');
-                
-                // Enable next button
                 document.getElementById('nextToStep2').disabled = false;
-                
-                // Update step indicator
                 updateStepIndicator(1);
             }
             
@@ -911,24 +655,16 @@
             
             function showStep2() {
                 if (!selectedDivision) return;
-                
-                // Load districts for selected division
                 const districtList = document.getElementById('districtList');
                 districtList.innerHTML = '';
-                
                 const districts = bangladeshData.districts[selectedDivision.id] || [];
                 districts.forEach(district => {
                     const div = document.createElement('button');
                     div.className = 'bg-white border border-green-300 hover:border-green-500 hover:bg-green-50 rounded-lg p-4 text-center transition duration-200';
-                    div.innerHTML = `
-                        <div class="font-bold text-green-800">${district.name}</div>
-                        <div class="text-gray-600 text-sm">${district.bnName}</div>
-                    `;
+                    div.innerHTML = `<div class="font-bold text-green-800">${district.name}</div><div class="text-gray-600 text-sm">${district.bnName}</div>`;
                     div.addEventListener('click', () => selectDistrict(district));
                     districtList.appendChild(div);
                 });
-                
-                // Show step 2
                 document.getElementById('step1').classList.add('hidden');
                 document.getElementById('step2').classList.remove('hidden');
                 updateStepIndicator(1);
@@ -942,34 +678,22 @@
                 });
                 event.currentTarget.classList.add('bg-green-100', 'border-green-500');
                 event.currentTarget.classList.remove('bg-white');
-                
-                // Enable next button
                 document.getElementById('nextToStep3').disabled = false;
-                
-                // Update step indicator
                 updateStepIndicator(2);
             }
             
             function showStep3() {
                 if (!selectedDistrict) return;
-                
-                // Load constituencies for selected district
                 const constituencyList = document.getElementById('constituencyList');
                 constituencyList.innerHTML = '';
-                
                 const constituencies = bangladeshData.constituencies[selectedDistrict.id] || [];
                 constituencies.forEach(constituency => {
                     const div = document.createElement('button');
                     div.className = 'bg-white border border-green-300 hover:border-green-500 hover:bg-green-50 rounded-lg p-4 text-center transition duration-200';
-                    div.innerHTML = `
-                        <div class="font-bold text-green-800">${constituency.name}</div>
-                        <div class="text-gray-600 text-sm">${constituency.bnName}</div>
-                    `;
+                    div.innerHTML = `<div class="font-bold text-green-800">${constituency.name}</div><div class="text-gray-600 text-sm">${constituency.bnName}</div>`;
                     div.addEventListener('click', () => selectConstituency(constituency));
                     constituencyList.appendChild(div);
                 });
-                
-                // Show step 3
                 document.getElementById('step2').classList.add('hidden');
                 document.getElementById('step3').classList.remove('hidden');
                 updateStepIndicator(2);
@@ -983,77 +707,39 @@
                 });
                 event.currentTarget.classList.add('bg-green-100', 'border-green-500');
                 event.currentTarget.classList.remove('bg-white');
-                
-                // Enable next button
                 document.getElementById('nextToStep4').disabled = false;
-                
-                // Update step indicator
                 updateStepIndicator(3);
             }
             
             async function showStep4() {
                 if (!selectedConstituency) return;
-                
-                // Show selected location
                 const selectedLocation = document.querySelector('#selectedLocation span');
-                if (selectedLocation) {
-                    selectedLocation.textContent = `${selectedConstituency.name}, ${selectedDistrict.name}, ${selectedDivision.name}`;
-                }
-                
-                // Load candidates for selected constituency
+                if (selectedLocation) selectedLocation.textContent = `${selectedConstituency.name}, ${selectedDistrict.name}, ${selectedDivision.name}`;
                 const candidateList = document.getElementById('candidateList');
                 candidateList.innerHTML = '';
-                
                 try {
                     const candidatesRef = collection(db, 'candidates');
                     const q = query(candidatesRef, where('constituencyId', '==', selectedConstituency.id));
                     const querySnapshot = await getDocs(q);
-                    
                     if (querySnapshot.empty) {
-                        candidateList.innerHTML = `
-                            <div class="text-center py-8 text-gray-500">
-                                <div class="text-4xl mb-4">😕</div>
-                                <p class="font-medium">No candidates found for this constituency.</p>
-                                <p class="text-sm mt-2">Administrators can add candidates in the Admin Panel.</p>
-                            </div>
-                        `;
+                        candidateList.innerHTML = `<div class="text-center py-8 text-gray-500"><div class="text-4xl mb-4">😕</div><p class="font-medium">No candidates found for this constituency.</p><p class="text-sm mt-2">Administrators can add candidates in the Admin Panel.</p></div>`;
                         document.getElementById('submitVote').disabled = true;
                         return;
                     }
-                    
                     let candidateCount = 0;
                     querySnapshot.forEach((doc) => {
                         const candidate = { id: doc.id, ...doc.data() };
                         candidateCount++;
-                        
                         const div = document.createElement('div');
                         div.className = 'candidate-item bg-white border border-gray-300 hover:border-green-400 rounded-lg p-4 transition duration-200';
-                        div.innerHTML = `
-                            <div class="flex items-center">
-                                <div class="flex-shrink-0">
-                                    <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
-                                        <span class="text-green-800 font-bold">${candidateCount}</span>
-                                    </div>
-                                </div>
-                                <div class="ml-4 flex-grow">
-                                    <div class="font-bold text-green-900">${candidate.name}</div>
-                                    <div class="text-gray-600">${candidate.party}</div>
-                                </div>
-                                <div class="flex-shrink-0">
-                                    <div class="w-8 h-8 border-2 border-gray-300 rounded-full candidate-radio"></div>
-                                </div>
-                            </div>
-                        `;
-                        
+                        div.innerHTML = `<div class="flex items-center"><div class="flex-shrink-0"><div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center"><span class="text-green-800 font-bold">${candidateCount}</span></div></div><div class="ml-4 flex-grow"><div class="font-bold text-green-900">${candidate.name}</div><div class="text-gray-600">${candidate.party}</div></div><div class="flex-shrink-0"><div class="w-8 h-8 border-2 border-gray-300 rounded-full candidate-radio"></div></div></div>`;
                         div.addEventListener('click', () => selectCandidate(candidate, div));
                         candidateList.appendChild(div);
                     });
                 } catch (error) {
                     console.error('Error loading candidates:', error);
-                    showAlert('Error loading candidates. Please try again.', 'error');
+                    showAlert('Error loading candidates.', 'error');
                 }
-                
-                // Show step 4
                 document.getElementById('step3').classList.add('hidden');
                 document.getElementById('step4').classList.remove('hidden');
                 updateStepIndicator(3);
@@ -1061,31 +747,20 @@
             
             function selectCandidate(candidate, element) {
                 selectedCandidate = candidate;
-                
-                // Update UI
                 document.querySelectorAll('.candidate-item').forEach(item => {
                     item.classList.remove('border-green-500', 'bg-green-50');
                     const radio = item.querySelector('.candidate-radio');
-                    if (radio) {
-                        radio.className = 'w-8 h-8 border-2 border-gray-300 rounded-full candidate-radio';
-                    }
+                    if (radio) radio.className = 'w-8 h-8 border-2 border-gray-300 rounded-full candidate-radio';
                 });
-                
                 element.classList.add('border-green-500', 'bg-green-50');
                 const radio = element.querySelector('.candidate-radio');
-                if (radio) {
-                    radio.className = 'w-8 h-8 border-2 border-green-500 rounded-full candidate-radio bg-green-500';
-                }
-                
-                // Enable vote button
+                if (radio) radio.className = 'w-8 h-8 border-2 border-green-500 rounded-full candidate-radio bg-green-500';
                 document.getElementById('submitVote').disabled = false;
             }
             
-            // Update step indicator
             function updateStepIndicator(activeStep) {
                 const steps = document.querySelectorAll('.step-circle');
                 const line = document.querySelector('.absolute.h-1');
-                
                 steps.forEach((step, index) => {
                     if (index <= activeStep) {
                         step.classList.remove('bg-gray-300', 'text-gray-700');
@@ -1095,28 +770,22 @@
                         step.classList.add('bg-gray-300', 'text-gray-700');
                     }
                 });
-                
-                // Update progress line
                 if (line && activeStep > 0) {
                     const width = (activeStep / 3) * 100;
                     line.style.background = `linear-gradient(to right, #16a34a ${width}%, #d1d5db ${width}%)`;
                 }
             }
             
-            // Submit vote
             async function submitVote() {
                 if (!selectedCandidate || !selectedConstituency || !selectedDistrict || !selectedDivision) {
                     showAlert('Please complete all voting steps.', 'error');
                     return;
                 }
-                
                 if (hasVoted) {
                     showAlert('You have already voted from this device.', 'error');
                     return;
                 }
-                
                 try {
-                    // Create vote record
                     const voteData = {
                         candidateId: selectedCandidate.id,
                         candidateName: selectedCandidate.name,
@@ -1129,331 +798,142 @@
                         divisionName: selectedDivision.name,
                         deviceId: deviceId,
                         timestamp: new Date().toISOString(),
-                        ipHash: hashCode(navigator.userAgent + new Date().getTime()) // Simple simulation
+                        ipHash: hashCode(navigator.userAgent + new Date().getTime())
                     };
-                    
-                    // Add to Firestore
                     await addDoc(collection(db, 'votes'), voteData);
-                    
-                    // Update candidate vote count
                     const candidateRef = doc(db, 'candidates', selectedCandidate.id);
                     const currentVotes = selectedCandidate.votes || 0;
-                    await updateDoc(candidateRef, {
-                        votes: currentVotes + 1
-                    });
-                    
-                    // Update local state
+                    await updateDoc(candidateRef, { votes: currentVotes + 1 });
                     hasVoted = true;
                     localStorage.setItem('has_voted', 'true');
-                    
-                    // Show success message
                     document.getElementById('step4').classList.add('hidden');
                     document.getElementById('voteComplete').classList.remove('hidden');
-                    
-                    // Disable voting UI
                     disableVotingUI();
-                    
-                    // Refresh results
                     loadLiveResults();
-                    
-                    showAlert('Your vote has been successfully recorded! Thank you for participating.', 'success');
-                    
+                    showAlert('Your vote has been successfully recorded!', 'success');
                 } catch (error) {
                     console.error('Error submitting vote:', error);
-                    showAlert('Error submitting vote. Please try again.', 'error');
+                    showAlert('Error submitting vote.', 'error');
                 }
             }
             
-            // ====================
-            // LIVE RESULTS FUNCTIONS
-            // ====================
-            
-            // Load live results from Firestore
+            // Live Results Functions
             async function loadLiveResults() {
                 try {
-                    // Load candidates
                     const candidatesSnapshot = await getDocs(collection(db, 'candidates'));
                     allCandidates = [];
-                    candidatesSnapshot.forEach(doc => {
-                        allCandidates.push({ id: doc.id, ...doc.data() });
-                    });
-                    
-                    // Load votes
+                    candidatesSnapshot.forEach(doc => allCandidates.push({ id: doc.id, ...doc.data() }));
                     const votesSnapshot = await getDocs(collection(db, 'votes'));
                     allVotes = [];
-                    votesSnapshot.forEach(doc => {
-                        allVotes.push({ id: doc.id, ...doc.data() });
-                    });
-                    
-                    // Update total votes count
+                    votesSnapshot.forEach(doc => allVotes.push({ id: doc.id, ...doc.data() }));
                     document.getElementById('totalVotesCount').textContent = allVotes.length;
-                    
-                    // Update results table
                     updateResultsTable();
-                    
-                    // Update charts
                     updateResultsCharts();
-                    
-                    // Update statistics
                     updateStatistics();
-                    
                 } catch (error) {
                     console.error('Error loading results:', error);
                 }
             }
             
-            // Update results table
             function updateResultsTable() {
                 const tableBody = document.getElementById('resultsTableBody');
                 if (!tableBody) return;
-                
                 tableBody.innerHTML = '';
-                
-                // Sort candidates by votes
                 const sortedCandidates = [...allCandidates].sort((a, b) => (b.votes || 0) - (a.votes || 0));
-                
                 if (sortedCandidates.length === 0) {
-                    tableBody.innerHTML = `
-                        <tr>
-                            <td colspan="5" class="py-8 text-center text-gray-500">
-                                No votes recorded yet. Be the first to vote!
-                            </td>
-                        </tr>
-                    `;
+                    tableBody.innerHTML = `<tr><td colspan="5" class="py-8 text-center text-gray-500">No votes recorded yet. Be the first to vote!</td></tr>`;
                     return;
                 }
-                
-                // Calculate total votes
                 const totalVotes = allVotes.length;
-                
                 sortedCandidates.forEach(candidate => {
                     const votes = candidate.votes || 0;
                     const percentage = totalVotes > 0 ? ((votes / totalVotes) * 100).toFixed(1) : 0;
-                    
                     const row = document.createElement('tr');
                     row.className = 'border-b border-gray-200 hover:bg-gray-50';
-                    row.innerHTML = `
-                        <td class="py-3 px-4">
-                            <div class="font-medium text-green-900">${candidate.name}</div>
-                        </td>
-                        <td class="py-3 px-4">
-                            <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">${candidate.party}</span>
-                        </td>
-                        <td class="py-3 px-4">
-                            <div class="text-gray-700">${candidate.constituencyName || 'N/A'}</div>
-                        </td>
-                        <td class="py-3 px-4">
-                            <div class="font-bold text-green-800">${votes}</div>
-                        </td>
-                        <td class="py-3 px-4">
-                            <div class="flex items-center">
-                                <div class="w-full bg-gray-200 rounded-full h-2 mr-2">
-                                    <div class="bg-green-600 h-2 rounded-full" style="width: ${percentage}%"></div>
-                                </div>
-                                <span class="font-medium">${percentage}%</span>
-                            </div>
-                        </td>
-                    `;
+                    row.innerHTML = `<td class="py-3 px-4"><div class="font-medium text-green-900">${candidate.name}</div></td><td class="py-3 px-4"><span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">${candidate.party}</span></td><td class="py-3 px-4"><div class="text-gray-700">${candidate.constituencyName || 'N/A'}</div></td><td class="py-3 px-4"><div class="font-bold text-green-800">${votes}</div></td><td class="py-3 px-4"><div class="flex items-center"><div class="w-full bg-gray-200 rounded-full h-2 mr-2"><div class="bg-green-600 h-2 rounded-full" style="width: ${percentage}%"></div></div><span class="font-medium">${percentage}%</span></div></td>`;
                     tableBody.appendChild(row);
                 });
             }
             
-            // Update results charts
             function updateResultsCharts() {
-                // Prepare data for charts
-                const topCandidates = [...allCandidates]
-                    .sort((a, b) => (b.votes || 0) - (a.votes || 0))
-                    .slice(0, 5);
-                
+                const topCandidates = [...allCandidates].sort((a, b) => (b.votes || 0) - (a.votes || 0)).slice(0, 5);
                 const candidateNames = topCandidates.map(c => c.name);
                 const candidateVotes = topCandidates.map(c => c.votes || 0);
                 const candidateColors = ['#16a34a', '#dc2626', '#2563eb', '#ca8a04', '#9333ea'];
-                
-                // Bar chart for top candidates
                 const barCtx = document.getElementById('votesBarChart')?.getContext('2d');
                 if (barCtx) {
-                    if (charts.barChart) {
-                        charts.barChart.destroy();
-                    }
-                    
+                    if (charts.barChart) charts.barChart.destroy();
                     charts.barChart = new Chart(barCtx, {
-                        type: 'bar',
-                        data: {
-                            labels: candidateNames,
-                            datasets: [{
-                                label: 'Votes',
-                                data: candidateVotes,
-                                backgroundColor: candidateColors,
-                                borderColor: candidateColors.map(c => c.replace('0.8', '1')),
-                                borderWidth: 1
-                            }]
-                        },
-                        options: {
-                            responsive: true,
-                            plugins: {
-                                legend: {
-                                    display: false
-                                },
-                                title: {
-                                    display: true,
-                                    text: 'Top 5 Candidates'
-                                }
-                            },
-                            scales: {
-                                y: {
-                                    beginAtZero: true,
-                                    ticks: {
-                                        stepSize: 1
-                                    }
-                                }
-                            }
-                        }
+                        type: 'bar', data: { labels: candidateNames, datasets: [{ label: 'Votes', data: candidateVotes, backgroundColor: candidateColors, borderColor: candidateColors.map(c => c.replace('0.8', '1')), borderWidth: 1 }] },
+                        options: { responsive: true, plugins: { legend: { display: false }, title: { display: true, text: 'Top 5 Candidates' } }, scales: { y: { beginAtZero: true, ticks: { stepSize: 1 } } } }
                     });
                 }
-                
-                // Pie chart for vote distribution
                 const pieCtx = document.getElementById('votesPieChart')?.getContext('2d');
                 if (pieCtx && topCandidates.length > 0) {
-                    if (charts.pieChart) {
-                        charts.pieChart.destroy();
-                    }
-                    
+                    if (charts.pieChart) charts.pieChart.destroy();
                     charts.pieChart = new Chart(pieCtx, {
-                        type: 'pie',
-                        data: {
-                            labels: candidateNames,
-                            datasets: [{
-                                data: candidateVotes,
-                                backgroundColor: candidateColors,
-                                borderWidth: 1
-                            }]
-                        },
-                        options: {
-                            responsive: true,
-                            plugins: {
-                                legend: {
-                                    position: 'bottom'
-                                }
-                            }
-                        }
+                        type: 'pie', data: { labels: candidateNames, datasets: [{ data: candidateVotes, backgroundColor: candidateColors, borderWidth: 1 }] },
+                        options: { responsive: true, plugins: { legend: { position: 'bottom' } } }
                     });
                 }
             }
             
-            // Update statistics
             function updateStatistics() {
                 if (allCandidates.length === 0) return;
-                
-                // Calculate statistics
                 const totalVotes = allVotes.length;
                 const avgVotes = totalVotes > 0 ? Math.round(totalVotes / allCandidates.length) : 0;
-                
-                // Find most popular party
                 const partyVotes = {};
-                allCandidates.forEach(candidate => {
-                    const party = candidate.party;
-                    partyVotes[party] = (partyVotes[party] || 0) + (candidate.votes || 0);
-                });
-                
-                let popularParty = 'N/A';
-                let maxPartyVotes = 0;
+                allCandidates.forEach(candidate => partyVotes[candidate.party] = (partyVotes[candidate.party] || 0) + (candidate.votes || 0));
+                let popularParty = 'N/A', maxPartyVotes = 0;
                 for (const [party, votes] of Object.entries(partyVotes)) {
-                    if (votes > maxPartyVotes) {
-                        maxPartyVotes = votes;
-                        popularParty = party;
-                    }
+                    if (votes > maxPartyVotes) { maxPartyVotes = votes; popularParty = party; }
                 }
-                
-                // Update UI
                 document.getElementById('avgVotes').textContent = avgVotes;
                 document.getElementById('popularParty').textContent = popularParty;
                 document.getElementById('totalCandidates').textContent = allCandidates.length;
-                
-                // Update division chart
                 updateDivisionChart();
             }
             
-            // Update division chart
             function updateDivisionChart() {
-                // Calculate votes by division
                 const divisionVotes = {};
-                bangladeshData.divisions.forEach(div => {
-                    divisionVotes[div.name] = 0;
-                });
-                
-                allVotes.forEach(vote => {
-                    if (vote.divisionName && divisionVotes[vote.divisionName] !== undefined) {
-                        divisionVotes[vote.divisionName]++;
-                    }
-                });
-                
+                bangladeshData.divisions.forEach(div => divisionVotes[div.name] = 0);
+                allVotes.forEach(vote => { if (vote.divisionName && divisionVotes[vote.divisionName] !== undefined) divisionVotes[vote.divisionName]++; });
                 const divisionCtx = document.getElementById('divisionChart')?.getContext('2d');
                 if (divisionCtx) {
-                    if (charts.divisionChart) {
-                        charts.divisionChart.destroy();
-                    }
-                    
+                    if (charts.divisionChart) charts.divisionChart.destroy();
                     const divisionNames = Object.keys(divisionVotes);
                     const divisionVoteCounts = Object.values(divisionVotes);
-                    
                     charts.divisionChart = new Chart(divisionCtx, {
-                        type: 'doughnut',
-                        data: {
-                            labels: divisionNames,
-                            datasets: [{
-                                data: divisionVoteCounts,
-                                backgroundColor: [
-                                    '#16a34a', '#dc2626', '#2563eb', '#ca8a04',
-                                    '#9333ea', '#0891b2', '#7c3aed', '#ea580c'
-                                ]
-                            }]
-                        },
-                        options: {
-                            responsive: true,
-                            plugins: {
-                                legend: {
-                                    position: 'bottom'
-                                }
-                            }
-                        }
+                        type: 'doughnut', data: { labels: divisionNames, datasets: [{ data: divisionVoteCounts, backgroundColor: ['#16a34a', '#dc2626', '#2563eb', '#ca8a04', '#9333ea', '#0891b2', '#7c3aed', '#ea580c'] }] },
+                        options: { responsive: true, plugins: { legend: { position: 'bottom' } } }
                     });
                 }
             }
             
-            // ====================
-            // ADMIN PANEL FUNCTIONS
-            // ====================
-            
+            // Admin Panel Functions
             function initAdminPanel() {
-                // Admin login
                 document.getElementById('loginAdmin')?.addEventListener('click', loginAdmin);
                 document.getElementById('logoutAdmin')?.addEventListener('click', logoutAdmin);
-                document.getElementById('adminPassword')?.addEventListener('keypress', function(e) {
-                    if (e.key === 'Enter') loginAdmin();
-                });
-                
-                // Admin actions
+                document.getElementById('adminPassword')?.addEventListener('keypress', function(e) { if (e.key === 'Enter') loginAdmin(); });
                 document.getElementById('addCandidateBtn')?.addEventListener('click', addCandidate);
                 document.getElementById('resetAllVotes')?.addEventListener('click', resetAllVotes);
                 document.getElementById('clearCandidates')?.addEventListener('click', clearAllCandidates);
-                
-                // Load constituencies for admin dropdown
+                document.getElementById('bulkImportBtn')?.addEventListener('click', bulkImportCandidates);
+                document.getElementById('downloadTemplateBtn')?.addEventListener('click', downloadTemplate);
+                document.getElementById('exportAllData')?.addEventListener('click', exportAllData);
+                document.getElementById('importFullData')?.addEventListener('click', importFullData);
+                document.getElementById('loadSampleData')?.addEventListener('click', loadSampleBangladeshData);
+                document.getElementById('backupDatabase')?.addEventListener('click', backupDatabaseToJSON);
                 loadAdminConstituencies();
-                
-                // Load admin candidate list
                 loadAdminCandidates();
             }
             
             function loginAdmin() {
                 const password = document.getElementById('adminPassword').value;
-                const demoPassword = 'admin123'; // Demo password
-                
-                if (password === demoPassword) {
+                if (password === 'admin123') {
                     document.getElementById('adminLogin').classList.add('hidden');
                     document.getElementById('adminDashboard').classList.remove('hidden');
                     showAlert('Admin login successful!', 'success');
-                    
-                    // Load admin data
                     loadAdminData();
                 } else {
                     showAlert('Incorrect password. Demo password is "admin123"', 'error');
@@ -1469,14 +949,10 @@
             
             async function loadAdminData() {
                 try {
-                    // Load total votes
                     const votesSnapshot = await getDocs(collection(db, 'votes'));
                     document.getElementById('adminTotalVotes').textContent = votesSnapshot.size;
-                    
-                    // Load total candidates
                     const candidatesSnapshot = await getDocs(collection(db, 'candidates'));
                     document.getElementById('adminTotalCandidates').textContent = candidatesSnapshot.size;
-                    
                 } catch (error) {
                     console.error('Error loading admin data:', error);
                 }
@@ -1485,19 +961,11 @@
             function loadAdminConstituencies() {
                 const select = document.getElementById('adminConstituency');
                 if (!select) return;
-                
                 select.innerHTML = '<option value="">Select Constituency</option>';
-                
-                // Flatten all constituencies
                 for (const [districtId, constituencies] of Object.entries(bangladeshData.constituencies)) {
-                    const district = Object.values(bangladeshData.districts)
-                        .flat()
-                        .find(d => d.id === districtId);
-                    
+                    const district = Object.values(bangladeshData.districts).flat().find(d => d.id === districtId);
                     if (district) {
-                        const division = Object.values(bangladeshData.divisions)
-                            .find(div => bangladeshData.districts[div.id]?.some(d => d.id === districtId));
-                        
+                        const division = Object.values(bangladeshData.divisions).find(div => bangladeshData.districts[div.id]?.some(d => d.id === districtId));
                         constituencies.forEach(constituency => {
                             const option = document.createElement('option');
                             option.value = constituency.id;
@@ -1511,50 +979,26 @@
             async function loadAdminCandidates() {
                 const tableBody = document.getElementById('adminCandidateTable');
                 if (!tableBody) return;
-                
                 try {
                     const candidatesSnapshot = await getDocs(collection(db, 'candidates'));
                     tableBody.innerHTML = '';
-                    
                     if (candidatesSnapshot.empty) {
-                        tableBody.innerHTML = `
-                            <tr>
-                                <td colspan="5" class="py-4 text-center text-gray-500">
-                                    No candidates added yet.
-                                </td>
-                            </tr>
-                        `;
+                        tableBody.innerHTML = `<tr><td colspan="5" class="py-4 text-center text-gray-500">No candidates added yet.</td></tr>`;
                         return;
                     }
-                    
                     candidatesSnapshot.forEach(doc => {
                         const candidate = { id: doc.id, ...doc.data() };
                         const row = document.createElement('tr');
                         row.className = 'border-b border-gray-200 hover:bg-gray-50';
-                        row.innerHTML = `
-                            <td class="py-3 px-4">${candidate.name}</td>
-                            <td class="py-3 px-4">
-                                <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">${candidate.party}</span>
-                            </td>
-                            <td class="py-3 px-4">${candidate.constituencyName || 'N/A'}</td>
-                            <td class="py-3 px-4 font-bold">${candidate.votes || 0}</td>
-                            <td class="py-3 px-4">
-                                <button class="delete-candidate bg-red-100 hover:bg-red-200 text-red-800 text-xs font-medium px-3 py-1 rounded" data-id="${candidate.id}">
-                                    Delete
-                                </button>
-                            </td>
-                        `;
+                        row.innerHTML = `<td class="py-3 px-4">${candidate.name}</td><td class="py-3 px-4"><span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">${candidate.party}</span></td><td class="py-3 px-4">${candidate.constituencyName || 'N/A'}</td><td class="py-3 px-4 font-bold">${candidate.votes || 0}</td><td class="py-3 px-4"><button class="delete-candidate bg-red-100 hover:bg-red-200 text-red-800 text-xs font-medium px-3 py-1 rounded" data-id="${candidate.id}">Delete</button></td>`;
                         tableBody.appendChild(row);
                     });
-                    
-                    // Add delete event listeners
                     document.querySelectorAll('.delete-candidate').forEach(button => {
                         button.addEventListener('click', function() {
                             const candidateId = this.getAttribute('data-id');
                             deleteCandidate(candidateId);
                         });
                     });
-                    
                 } catch (error) {
                     console.error('Error loading admin candidates:', error);
                 }
@@ -1564,54 +1008,31 @@
                 const name = document.getElementById('candidateName').value.trim();
                 const party = document.getElementById('candidateParty').value.trim();
                 const constituencyId = document.getElementById('adminConstituency').value;
-                
                 if (!name || !party || !constituencyId) {
                     showAlert('Please fill all fields and select a constituency.', 'error');
                     return;
                 }
-                
-                // Find constituency name
                 let constituencyName = '';
                 for (const [districtId, constituencies] of Object.entries(bangladeshData.constituencies)) {
                     const constituency = constituencies.find(c => c.id === constituencyId);
-                    if (constituency) {
-                        constituencyName = constituency.name;
-                        break;
-                    }
+                    if (constituency) { constituencyName = constituency.name; break; }
                 }
-                
                 try {
-                    // Add candidate to Firestore
-                    await addDoc(collection(db, 'candidates'), {
-                        name: name,
-                        party: party,
-                        constituencyId: constituencyId,
-                        constituencyName: constituencyName,
-                        votes: 0
-                    });
-                    
-                    // Clear form
+                    await addDoc(collection(db, 'candidates'), { name: name, party: party, constituencyId: constituencyId, constituencyName: constituencyName, votes: 0 });
                     document.getElementById('candidateName').value = '';
                     document.getElementById('candidateParty').value = '';
                     document.getElementById('adminConstituency').value = '';
-                    
-                    // Refresh lists
                     loadAdminCandidates();
                     loadLiveResults();
-                    
                     showAlert(`Candidate "${name}" added successfully!`, 'success');
-                    
                 } catch (error) {
                     console.error('Error adding candidate:', error);
-                    showAlert('Error adding candidate. Please try again.', 'error');
+                    showAlert('Error adding candidate.', 'error');
                 }
             }
             
             async function deleteCandidate(candidateId) {
-                if (!confirm('Are you sure you want to delete this candidate? This action cannot be undone.')) {
-                    return;
-                }
-                
+                if (!confirm('Are you sure you want to delete this candidate?')) return;
                 try {
                     await deleteDoc(doc(db, 'candidates', candidateId));
                     loadAdminCandidates();
@@ -1624,36 +1045,18 @@
             }
             
             async function resetAllVotes() {
-                if (!confirm('⚠️ WARNING: This will delete ALL votes from the database. This action cannot be undone. Are you sure?')) {
-                    return;
-                }
-                
+                if (!confirm('⚠️ WARNING: This will delete ALL votes. Are you sure?')) return;
                 try {
-                    // Delete all votes
                     const votesSnapshot = await getDocs(collection(db, 'votes'));
                     const deletePromises = [];
-                    votesSnapshot.forEach(doc => {
-                        deletePromises.push(deleteDoc(doc.ref));
-                    });
+                    votesSnapshot.forEach(doc => deletePromises.push(deleteDoc(doc.ref)));
                     await Promise.all(deletePromises);
-                    
-                    // Reset candidate vote counts to 0
                     const candidatesSnapshot = await getDocs(collection(db, 'candidates'));
                     const updatePromises = [];
-                    candidatesSnapshot.forEach(doc => {
-                        updatePromises.push(updateDoc(doc.ref, { votes: 0 }));
-                    });
+                    candidatesSnapshot.forEach(doc => updatePromises.push(updateDoc(doc.ref, { votes: 0 })));
                     await Promise.all(updatePromises);
-                    
-                    // Clear local storage voting status
                     localStorage.removeItem('has_voted');
                     hasVoted = false;
-                    
-                    // Refresh UI
-                    loadLiveResults();
-                    loadAdminData();
-                    
-                    // Re-enable voting UI for current user
                     const voteButton = document.getElementById('submitVote');
                     if (voteButton && !hasVoted) {
                         voteButton.disabled = false;
@@ -1661,9 +1064,9 @@
                         voteButton.classList.add('vote-pulse');
                         voteButton.classList.remove('bg-gray-400', 'cursor-not-allowed');
                     }
-                    
+                    loadLiveResults();
+                    loadAdminData();
                     showAlert('All votes have been reset successfully.', 'success');
-                    
                 } catch (error) {
                     console.error('Error resetting votes:', error);
                     showAlert('Error resetting votes.', 'error');
@@ -1671,62 +1074,225 @@
             }
             
             async function clearAllCandidates() {
-                if (!confirm('⚠️ WARNING: This will delete ALL candidates from the database. This action cannot be undone. Are you sure?')) {
-                    return;
-                }
-                
+                if (!confirm('⚠️ WARNING: This will delete ALL candidates. Are you sure?')) return;
                 try {
-                    // Delete all candidates
                     const candidatesSnapshot = await getDocs(collection(db, 'candidates'));
                     const deletePromises = [];
-                    candidatesSnapshot.forEach(doc => {
-                        deletePromises.push(deleteDoc(doc.ref));
-                    });
+                    candidatesSnapshot.forEach(doc => deletePromises.push(deleteDoc(doc.ref)));
                     await Promise.all(deletePromises);
-                    
-                    // Refresh UI
                     loadAdminCandidates();
                     loadLiveResults();
-                    
                     showAlert('All candidates have been deleted.', 'success');
-                    
                 } catch (error) {
                     console.error('Error clearing candidates:', error);
                     showAlert('Error clearing candidates.', 'error');
                 }
             }
             
-            // ====================
-            // SETUP FIREBASE REAL-TIME LISTENERS
-            // ====================
+            // Bulk Import System
+            async function bulkImportCandidates() {
+                const jsonText = document.getElementById('bulkCandidateJson').value.trim();
+                if (!jsonText) {
+                    showBulkStatus('Please paste JSON data first.', 'error');
+                    return;
+                }
+                try {
+                    const candidates = JSON.parse(jsonText);
+                    if (!Array.isArray(candidates)) {
+                        showBulkStatus('JSON must be an array of candidates.', 'error');
+                        return;
+                    }
+                    if (candidates.length === 0) {
+                        showBulkStatus('No candidates found in JSON.', 'error');
+                        return;
+                    }
+                    showBulkStatus(`Importing ${candidates.length} candidates...`, 'info');
+                    let successCount = 0, errorCount = 0;
+                    for (const candidate of candidates) {
+                        try {
+                            if (!candidate.name || !candidate.party || !candidate.constituencyId || !candidate.constituencyName) {
+                                errorCount++; continue;
+                            }
+                            await addDoc(collection(db, 'candidates'), {
+                                name: candidate.name,
+                                party: candidate.party,
+                                constituencyId: candidate.constituencyId,
+                                constituencyName: candidate.constituencyName,
+                                votes: candidate.votes || 0,
+                                symbol: candidate.symbol || '',
+                                division: candidate.division || 'Dhaka',
+                                district: candidate.district || 'Dhaka City'
+                            });
+                            successCount++;
+                            if (successCount % 5 === 0) {
+                                showBulkStatus(`Imported ${successCount}/${candidates.length} candidates...`, 'info');
+                            }
+                        } catch (error) {
+                            errorCount++;
+                        }
+                    }
+                    showBulkStatus(`✅ Successfully imported ${successCount} candidates. ${errorCount} failed.`, 'success');
+                    document.getElementById('bulkCandidateJson').value = '';
+                    setTimeout(() => { loadAdminCandidates(); loadLiveResults(); }, 1000);
+                } catch (error) {
+                    showBulkStatus('❌ Invalid JSON format.', 'error');
+                }
+            }
             
+            function downloadTemplate() {
+                const template = [{
+                    "name": "Sheikh Hasina",
+                    "party": "Awami League",
+                    "constituencyId": "dhaka_1",
+                    "constituencyName": "Dhaka-1",
+                    "votes": 0,
+                    "symbol": "নৌকা",
+                    "division": "Dhaka",
+                    "district": "Dhaka City"
+                }, {
+                    "name": "Mirza Abbas",
+                    "party": "Bangladesh Nationalist Party (BNP)",
+                    "constituencyId": "dhaka_8",
+                    "constituencyName": "Dhaka-8",
+                    "votes": 0,
+                    "symbol": "ধান শীষ",
+                    "division": "Dhaka",
+                    "district": "Dhaka City"
+                }];
+                const dataStr = JSON.stringify(template, null, 2);
+                const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
+                const linkElement = document.createElement('a');
+                linkElement.setAttribute('href', dataUri);
+                linkElement.setAttribute('download', 'candidates_template.json');
+                linkElement.click();
+                showBulkStatus('📄 Template downloaded. Edit it and paste back for bulk import.', 'info');
+            }
+            
+            async function exportAllData() {
+                try {
+                    const candidatesSnapshot = await getDocs(collection(db, 'candidates'));
+                    const votesSnapshot = await getDocs(collection(db, 'votes'));
+                    const candidates = [];
+                    const votes = [];
+                    candidatesSnapshot.forEach(doc => candidates.push({ id: doc.id, ...doc.data() }));
+                    votesSnapshot.forEach(doc => votes.push({ id: doc.id, ...doc.data() }));
+                    const exportData = {
+                        timestamp: new Date().toISOString(),
+                        totalCandidates: candidates.length,
+                        totalVotes: votes.length,
+                        candidates: candidates,
+                        votes: votes,
+                        bangladeshData: bangladeshData
+                    };
+                    const dataStr = JSON.stringify(exportData, null, 2);
+                    const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
+                    const linkElement = document.createElement('a');
+                    linkElement.setAttribute('href', dataUri);
+                    linkElement.setAttribute('download', 'bangladesh_voting_export.json');
+                    linkElement.click();
+                    showDatabaseStatus('✅ All data exported successfully!', 'success');
+                } catch (error) {
+                    console.error('Error exporting data:', error);
+                    showDatabaseStatus('❌ Error exporting data.', 'error');
+                }
+            }
+            
+            async function importFullData() {
+                const jsonText = prompt('Paste the full JSON export data:');
+                if (!jsonText) return;
+                try {
+                    const importData = JSON.parse(jsonText);
+                    if (!importData.candidates || !Array.isArray(importData.candidates)) {
+                        showDatabaseStatus('Invalid import data format.', 'error');
+                        return;
+                    }
+                    if (confirm(`This will import ${importData.candidates.length} candidates and ${importData.votes?.length || 0} votes. Continue?`)) {
+                        showDatabaseStatus('Importing data...', 'info');
+                        // Clear existing data
+                        const candidatesSnapshot = await getDocs(collection(db, 'candidates'));
+                        const deletePromises = [];
+                        candidatesSnapshot.forEach(doc => deletePromises.push(deleteDoc(doc.ref)));
+                        await Promise.all(deletePromises);
+                        // Import new candidates
+                        const batch = writeBatch(db);
+                        importData.candidates.forEach(candidate => {
+                            const newDocRef = doc(collection(db, 'candidates'));
+                            batch.set(newDocRef, candidate);
+                        });
+                        await batch.commit();
+                        showDatabaseStatus(`✅ Successfully imported ${importData.candidates.length} candidates.`, 'success');
+                        setTimeout(() => { loadAdminCandidates(); loadLiveResults(); }, 1000);
+                    }
+                } catch (error) {
+                    console.error('Error importing data:', error);
+                    showDatabaseStatus('❌ Error importing data.', 'error');
+                }
+            }
+            
+            async function loadSampleBangladeshData() {
+                if (!confirm('Load sample Bangladesh election data? This will add sample candidates.')) return;
+                const sampleData = [
+                    { name: "Sheikh Hasina", party: "Awami League", constituencyId: "dhaka_1", constituencyName: "Dhaka-1", votes: 0, symbol: "নৌকা" },
+                    { name: "Mirza Abbas", party: "Bangladesh Nationalist Party (BNP)", constituencyId: "dhaka_8", constituencyName: "Dhaka-8", votes: 0, symbol: "ধান শীষ" },
+                    { name: "Muhammad Nasiruddin Patwary", party: "National Citizen Party (NCP)", constituencyId: "dhaka_8", constituencyName: "Dhaka-8", votes: 0, symbol: "নারকেল" },
+                    { name: "Khaleda Zia", party: "Bangladesh Nationalist Party (BNP)", constituencyId: "dhaka_2", constituencyName: "Dhaka-2", votes: 0, symbol: "ধান শীষ" },
+                    { name: "Hasanul Haq Inu", party: "Jatiya Samajtantrik Dal", constituencyId: "dhaka_3", constituencyName: "Dhaka-3", votes: 0, symbol: "তোরণ" }
+                ];
+                try {
+                    showDatabaseStatus('Loading sample data...', 'info');
+                    for (const candidate of sampleData) {
+                        await addDoc(collection(db, 'candidates'), candidate);
+                    }
+                    showDatabaseStatus('✅ Sample Bangladesh data loaded successfully!', 'success');
+                    setTimeout(() => { loadAdminCandidates(); loadLiveResults(); }, 1000);
+                } catch (error) {
+                    console.error('Error loading sample data:', error);
+                    showDatabaseStatus('❌ Error loading sample data.', 'error');
+                }
+            }
+            
+            async function backupDatabaseToJSON() {
+                try {
+                    const candidatesSnapshot = await getDocs(collection(db, 'candidates'));
+                    const votesSnapshot = await getDocs(collection(db, 'votes'));
+                    const candidates = [];
+                    const votes = [];
+                    candidatesSnapshot.forEach(doc => candidates.push({ id: doc.id, ...doc.data() }));
+                    votesSnapshot.forEach(doc => votes.push({ id: doc.id, ...doc.data() }));
+                    const backupData = {
+                        backupDate: new Date().toISOString(),
+                        candidates: candidates,
+                        votes: votes,
+                        totalCandidates: candidates.length,
+                        totalVotes: votes.length
+                    };
+                    const dataStr = JSON.stringify(backupData, null, 2);
+                    const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
+                    const linkElement = document.createElement('a');
+                    linkElement.setAttribute('href', dataUri);
+                    linkElement.setAttribute('download', `bangladesh_voting_backup_${new Date().toISOString().split('T')[0]}.json`);
+                    linkElement.click();
+                    showDatabaseStatus('✅ Database backup created and downloaded.', 'success');
+                } catch (error) {
+                    console.error('Error creating backup:', error);
+                    showDatabaseStatus('❌ Error creating backup.', 'error');
+                }
+            }
+            
+            // Setup Firebase Listeners
             function setupFirestoreListeners() {
                 if (!db) return;
-                
-                // Listen for votes changes
-                const votesRef = collection(db, 'votes');
-                onSnapshot(votesRef, (snapshot) => {
+                onSnapshot(collection(db, 'votes'), (snapshot) => {
                     allVotes = [];
-                    snapshot.forEach(doc => {
-                        allVotes.push({ id: doc.id, ...doc.data() });
-                    });
-                    
-                    // Update UI
+                    snapshot.forEach(doc => allVotes.push({ id: doc.id, ...doc.data() }));
                     document.getElementById('totalVotesCount').textContent = allVotes.length;
                     updateResultsTable();
                     updateResultsCharts();
                     updateStatistics();
                 });
-                
-                // Listen for candidates changes
-                const candidatesRef = collection(db, 'candidates');
-                onSnapshot(candidatesRef, (snapshot) => {
+                onSnapshot(collection(db, 'candidates'), (snapshot) => {
                     allCandidates = [];
-                    snapshot.forEach(doc => {
-                        allCandidates.push({ id: doc.id, ...doc.data() });
-                    });
-                    
-                    // Update UI
+                    snapshot.forEach(doc => allCandidates.push({ id: doc.id, ...doc.data() }));
                     updateResultsTable();
                     updateResultsCharts();
                     updateStatistics();
@@ -1734,29 +1300,13 @@
                 });
             }
             
-            // ====================
-            // INITIALIZE APPLICATION
-            // ====================
-            
-            // Initialize UI components
+            // Initialize Application
             initNavigation();
             initVotingUI();
             initAdminPanel();
-            
-            // Check vote status
             await checkVoteStatus();
-            
-            // Load initial data
             await loadLiveResults();
-            
-            // Setup real-time listeners
             setupFirestoreListeners();
-            
-            // Initialize charts
-            updateResultsCharts();
-            updateDivisionChart();
-            
-            // Setup refresh button
             document.getElementById('refreshResults')?.addEventListener('click', loadLiveResults);
             
             console.log('Bangladesh Public Opinion Poll initialized successfully!');
