@@ -509,318 +509,102 @@
             </div>
         </section>
 
-       // Add this to your existing JavaScript code
-
-// Meme Generator Data
-const memeData = {
-    emojis: ["😂", "🤣", "😆", "🎭", "🌾", "🌱", "📱", "🔥", "💥", "✨", "🎯", "🎪", "🎤", "🎉", "🏆"],
+      <!-- Fun Section -->
+<section id="fun" class="mb-16 fade-in">
+    <h2 class="text-3xl font-bold text-gray-900 mb-2 border-b pb-2"><i class="fas fa-laugh-beam mr-2"></i>মজার অংশ</h2>
+    <p class="text-gray-600 mb-6">ঢাকা-৮ আসনের ভোটযুদ্ধ নিয়ে মজার কিছু তথ্য এবং গেম</p>
     
-    memes: [
-        "ধান শীষ যখন দোলে, ভোট আসে গোলে গোলে!",
-        "শাপলা কলি যখন ফোটে, ভোটের বাক্স ভরে ওঠে!",
-        "লাইক শেয়ার কমেন্ট দাও, প্রার্থীকে সামনে নিয়ে যাও!",
-        "সোশ্যাল মিডিয়া জ্বলে উঠেছে, ঢাকা-৮ গরম হয়ে গেছে!",
-        "ধান শীষ নিয়ে আসি, উন্নয়ন দেখাই, শাপলা কলি দিয়ে যাই, নতুন আশা জাগাই!",
-        "ফেসবুকে লাইভ চলে, কমেন্টের ঝড় ওঠে, কে জিতবে ঢাকা-৮? উত্তর কেউ জানে না!",
-        "আব্বাস স্যারের ধানের শীষ, পাটোয়ারীর শাপলা কলি, দুজনের প্রতীকেই আছে, বাংলাদেশের বলি!",
-        "ভোটের মাঠে ধান শীষ, সোশ্যাল মিডিয়ায় শাপলা কলি, দুই নেতার দুই মিশন!",
-        "ধান শীষের ঝলকানি, শাপলা কলির সজীবতা, ঢাকা-৮ এর ভোটযুদ্ধে রংবেরংের ভোটারতা!",
-        "আব্বাস স্যার বলে: ধান শীষে দেশ গড়ি, পাটোয়ারী বলে: শাপলা কলিতে ভোট জড়ি!",
-        "ফেসবুক লাইভে রেকর্ড ভাঙছে, ইউটিউবে সাবস্ক্রাইবার বাড়ছে, ঢাকা-৮ তে কে হবে চ্যাম্পিয়ন?",
-        "ধান শীষের সোনালি আভা, শাপলা কলির সাদা ছটা, দুজনার ডিজিটাল ক্যাম্পেইনেই আছে মজা!",
-        "আব্বাস স্যারের পোস্টে লাইক ১০K, পাটোয়ারীর পোস্টে লাইক ১২K, কে কার চেয়ে এগিয়ে দেখুন এবার!",
-        "শাপলা কলি ফুটবে বলে, পাটোয়ারী ভাই লাইভে দুলে, আব্বাস স্যার হেসে বলে: ধান শীষের জয় হবেই!",
-        "ডিজিটাল ক্যাম্পেইনে দুই নেতা, ফেসবুক-টিকটক-ইউটিউবে ভোটারদের নেতা!"
-    ],
-    
-    rhymes: [
-        "ঢাকা-৮ আসনটা গরম গরম, ধান শীষ নাকি শাপলা কলি কে হবে মন? ফেসবুকে লাইভ, টিকটকে ড্যান্স, ভোট দিয়ে বলো কার হবে চান্স!",
-        "ধান শীষের ঝংকার, শাপলা কলির সুর, দুই নেতার প্রচারে ভোটারদের দূর!",
-        "আব্বাস স্যারের বক্তৃতা দীর্ঘ, পাটোয়ারীর কথা মিষ্টি, কে জিতবে ঢাকা-৮? ভোটেই আছে ইতি!",
-        "সোশ্যাল মিডিয়ায় আলোচনা, ট্রেন্ডিং তো নয়কো ফাঁকা, ধান শীষ বনাম শাপলা কলির এই যুদ্ধে কে হবে সাক্ষী?"
-    ]
-};
-
-// Initialize Fun Section
-function initFunSection() {
-    // Funny quotes
-    let quoteIndex = 0;
-    const funnyQuoteElement = document.getElementById('funnyQuote');
-    const nextQuoteButton = document.getElementById('nextQuote');
-    const quoteNumberElement = document.getElementById('quoteNumber');
-    const totalQuotesElement = document.getElementById('totalQuotes');
-    const copyQuoteButton = document.getElementById('copyQuote');
-    
-    // Set total quotes count
-    if (totalQuotesElement) {
-        totalQuotesElement.textContent = funnyQuotes.length;
-    }
-    
-    if (funnyQuoteElement && nextQuoteButton) {
-        nextQuoteButton.addEventListener('click', function() {
-            quoteIndex = (quoteIndex + 1) % funnyQuotes.length;
-            funnyQuoteElement.textContent = funnyQuotes[quoteIndex];
-            if (quoteNumberElement) {
-                quoteNumberElement.textContent = quoteIndex + 1;
-            }
+    <div class="grid md:grid-cols-2 gap-8">
+        <!-- Meme Gallery -->
+        <div class="bg-white rounded-2xl shadow-xl p-8">
+            <h3 class="text-2xl font-bold text-gray-800 mb-6">মেমেস গ্যালারি</h3>
+            <div class="grid grid-cols-2 gap-4">
+                <div class="bg-gray-100 rounded-xl p-4 text-center hover:bg-yellow-50 transition duration-300">
+                    <div class="text-4xl mb-2">😂</div>
+                    <p class="text-sm text-gray-700 font-medium">"আব্বাস স্যার বললেন: পাটোয়ারী ভাই, চা নেবেন নাকি শাপলা কলির জল?"</p>
+                </div>
+                <div class="bg-gray-100 rounded-xl p-4 text-center hover:bg-green-50 transition duration-300">
+                    <div class="text-4xl mb-2">🤣</div>
+                    <p class="text-sm text-gray-700 font-medium">"পাটোয়ারী ভাইয়ের স্লোগান: শাপলা কলি ফুটবে, ঢাকা-৮ জুটবে!"</p>
+                </div>
+                <div class="bg-gray-100 rounded-xl p-4 text-center hover:bg-blue-50 transition duration-300">
+                    <div class="text-4xl mb-2">😆</div>
+                    <p class="text-sm text-gray-700 font-medium">"ফেসবুক লাইভে কে কতক্ষণ: আব্বাস vs পাটোয়ারী বিতর্ক!"</p>
+                </div>
+                <div class="bg-gray-100 rounded-xl p-4 text-center hover:bg-purple-50 transition duration-300">
+                    <div class="text-4xl mb-2">🎭</div>
+                    <p class="text-sm text-gray-700 font-medium">"ধান শীষ বনাম শাপলা কলি: সোশ্যাল মিডিয়া যুদ্ধ!"</p>
+                </div>
+            </div>
             
-            // Add animation
-            funnyQuoteElement.classList.add('opacity-0');
-            setTimeout(() => {
-                funnyQuoteElement.classList.remove('opacity-0');
-            }, 300);
-        });
-    }
-    
-    // Copy quote functionality
-    if (copyQuoteButton) {
-        copyQuoteButton.addEventListener('click', function() {
-            const textToCopy = funnyQuoteElement.textContent;
-            navigator.clipboard.writeText(textToCopy).then(() => {
-                showAlert('উক্তিটি কপি করা হয়েছে!', 'success');
-            }).catch(err => {
-                console.error('Failed to copy text: ', err);
-                showAlert('কপি করতে সমস্যা হয়েছে', 'error');
-            });
-        });
-    }
-    
-    // Generate meme button
-    const generateMemeButton = document.getElementById('generateMeme');
-    const memeDisplay = document.getElementById('memeDisplay');
-    const memeEmoji = document.getElementById('memeEmoji');
-    const memeText = document.getElementById('memeText');
-    const copyMemeButton = document.getElementById('copyMeme');
-    const shareMemeButton = document.getElementById('shareMeme');
-    
-    if (generateMemeButton && memeDisplay && memeEmoji && memeText) {
-        generateMemeButton.addEventListener('click', function() {
-            // Random emoji
-            const randomEmoji = memeData.emojis[Math.floor(Math.random() * memeData.emojis.length)];
+            <!-- New Row of Memes -->
+            <div class="grid grid-cols-2 gap-4 mt-4">
+                <div class="bg-gradient-to-r from-yellow-50 to-orange-50 rounded-xl p-4 text-center border border-yellow-200">
+                    <div class="text-3xl mb-2">🌾</div>
+                    <p class="text-sm text-gray-700 font-medium">"ধান শীষ যখন দোলে, ভোট আসে গোলে গোলে!"</p>
+                </div>
+                <div class="bg-gradient-to-r from-green-50 to-teal-50 rounded-xl p-4 text-center border border-green-200">
+                    <div class="text-3xl mb-2">🌱</div>
+                    <p class="text-sm text-gray-700 font-medium">"শাপলা কলি যখন ফোটে, ভোটের বাক্স ভরে ওঠে!"</p>
+                </div>
+                <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-4 text-center border border-blue-200">
+                    <div class="text-3xl mb-2">📱</div>
+                    <p class="text-sm text-gray-700 font-medium">"লাইক শেয়ার কমেন্ট দাও, প্রার্থীকে সামনে নিয়ে যাও!"</p>
+                </div>
+                <div class="bg-gradient-to-r from-pink-50 to-red-50 rounded-xl p-4 text-center border border-pink-200">
+                    <div class="text-3xl mb-2">🔥</div>
+                    <p class="text-sm text-gray-700 font-medium">"সোশ্যাল মিডিয়া জ্বলে উঠেছে, ঢাকা-৮ গরম হয়ে গেছে!"</p>
+                </div>
+            </div>
             
-            // Random meme (70% chance regular meme, 30% chance rhyme)
-            let randomMeme;
-            if (Math.random() < 0.7) {
-                randomMeme = memeData.memes[Math.floor(Math.random() * memeData.memes.length)];
-            } else {
-                randomMeme = memeData.rhymes[Math.floor(Math.random() * memeData.rhymes.length)];
-            }
+            <!-- Rhyming Memes Section -->
+            <div class="mt-6">
+                <h4 class="font-bold text-gray-800 mb-4 text-center">ছন্দে ছন্দে মজার মেম</h4>
+                <div class="space-y-3">
+                    <div class="bg-gradient-to-r from-cyan-50 to-blue-50 p-4 rounded-xl border border-cyan-200">
+                        <p class="text-gray-700 text-center font-medium">
+                            "ধান শীষ নিয়ে আসি, উন্নয়ন দেখাই<br>
+                            শাপলা কলি দিয়ে যাই, নতুন আশা জাগাই!"
+                        </p>
+                    </div>
+                    <div class="bg-gradient-to-r from-lime-50 to-green-50 p-4 rounded-xl border border-lime-200">
+                        <p class="text-gray-700 text-center font-medium">
+                            "ফেসবুকে লাইভ চলে, কমেন্টের ঝড় ওঠে<br>
+                            কে জিতবে ঢাকা-৮? উত্তর কেউ জানে না!"
+                        </p>
+                    </div>
+                    <div class="bg-gradient-to-r from-orange-50 to-amber-50 p-4 rounded-xl border border-orange-200">
+                        <p class="text-gray-700 text-center font-medium">
+                            "আব্বাস স্যারের ধানের শীষ, পাটোয়ারীর শাপলা কলি<br>
+                            দুজনের প্রতীকেই আছে, বাংলাদেশের বলি!"
+                        </p>
+                    </div>
+                </div>
+            </div>
             
-            // Update display
-            memeEmoji.textContent = randomEmoji;
-            memeText.textContent = randomMeme;
+            <div class="mt-6">
+                <button id="generateMeme" class="w-full bangladesh-gradient hover:opacity-90 text-white font-medium py-3 px-4 rounded-lg transition duration-300 shadow-md hover:shadow-lg">
+                    <i class="fas fa-random mr-2"></i>নতুন মেম জেনারেট করুন
+                </button>
+                <p class="text-xs text-gray-500 mt-2 text-center">প্রতিবার ক্লিক করলে নতুন মজার মেম দেখুন!</p>
+            </div>
             
-            // Show meme display with animation
-            memeDisplay.classList.remove('hidden');
-            memeDisplay.classList.add('opacity-0');
-            
-            setTimeout(() => {
-                memeDisplay.classList.remove('opacity-0');
-            }, 10);
-            
-            // Add bounce animation to emoji
-            memeEmoji.classList.add('animate-bounce');
-            setTimeout(() => {
-                memeEmoji.classList.remove('animate-bounce');
-            }, 1000);
-        });
-    }
-    
-    // Copy meme functionality
-    if (copyMemeButton && memeText) {
-        copyMemeButton.addEventListener('click', function() {
-            const textToCopy = memeText.textContent;
-            navigator.clipboard.writeText(textToCopy).then(() => {
-                showAlert('মেমটি কপি করা হয়েছে!', 'success');
-            }).catch(err => {
-                console.error('Failed to copy text: ', err);
-                showAlert('কপি করতে সমস্যা হয়েছে', 'error');
-            });
-        });
-    }
-    
-    // Share meme functionality
-    if (shareMemeButton && memeText && memeEmoji) {
-        shareMemeButton.addEventListener('click', function() {
-            const shareText = `${memeEmoji.textContent} ${memeText.textContent}\n\n#ঢাকা৮ #ভোটযুদ্ধ #ধানশীষ #শাপলাকলি`;
-            
-            if (navigator.share) {
-                navigator.share({
-                    title: 'ঢাকা-৮ ভোটযুদ্ধ মেম',
-                    text: shareText,
-                    url: window.location.href
-                }).catch(err => {
-                    console.error('Error sharing:', err);
-                    fallbackShare(shareText);
-                });
-            } else {
-                fallbackShare(shareText);
-            }
-        });
-    }
-    
-    function fallbackShare(text) {
-        // Create a temporary textarea to copy text
-        const textarea = document.createElement('textarea');
-        textarea.value = text;
-        document.body.appendChild(textarea);
-        textarea.select();
-        document.execCommand('copy');
-        document.body.removeChild(textarea);
-        showAlert('মেমটি কপি করা হয়েছে! এখন শেয়ার করুন।', 'success');
-    }
-    
-    // Prediction buttons
-    const predictionButtons = document.querySelectorAll('.predict-btn');
-    const predictionResult = document.getElementById('predictionResult');
-    const predictionText = document.getElementById('predictionText');
-    const resetPredictionsButton = document.getElementById('resetPredictions');
-    const playRhymeButton = document.getElementById('playRhyme');
-    
-    predictionButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const candidate = this.getAttribute('data-candidate');
-            const candidateNames = {
-                'Mirza Abbas': 'মির্জা আব্বাস',
-                'Nasiruddin Patwary': 'নাসির উদ্দিন পাটোয়ারী',
-                'Meghna Alam': 'মেঘনা আলম',
-                'Tridip Kumar Saha': 'ত্রিদিপ কুমার সাহা'
-            };
-            
-            predictionText.textContent = `আপনি ভবিষ্যদ্বাণী করেছেন: ${candidateNames[candidate]} ঢাকা-৮ আসনে জিতবেন!`;
-            predictionResult.classList.remove('hidden');
-            
-            // Save prediction to localStorage
-            const predictions = JSON.parse(localStorage.getItem('predictions') || '{"Mirza Abbas": 0, "Nasiruddin Patwary": 0, "Meghna Alam": 0, "Tridip Kumar Saha": 0}');
-            predictions[candidate]++;
-            localStorage.setItem('predictions', JSON.stringify(predictions));
-            
-            // Update prediction display
-            updatePredictionDisplay(predictions);
-            
-            // Show confetti effect
-            showConfetti();
-        });
-    });
-    
-    // Reset predictions
-    if (resetPredictionsButton) {
-        resetPredictionsButton.addEventListener('click', function() {
-            if (confirm('আপনি কি সব ভবিষ্যদ্বাণী রিসেট করতে চান?')) {
-                localStorage.removeItem('predictions');
-                updatePredictionDisplay({
-                    'Mirza Abbas': 0,
-                    'Nasiruddin Patwary': 0,
-                    'Meghna Alam': 0,
-                    'Tridip Kumar Saha': 0
-                });
-                showAlert('সব ভবিষ্যদ্বাণী রিসেট করা হয়েছে!', 'success');
-            }
-        });
-    }
-    
-    // Play rhyme button
-    if (playRhymeButton) {
-        playRhymeButton.addEventListener('click', function() {
-            const randomRhyme = memeData.rhymes[Math.floor(Math.random() * memeData.rhymes.length)];
-            showAlert(randomRhyme, 'info');
-        });
-    }
-    
-    // Initialize prediction display
-    const initialPredictions = JSON.parse(localStorage.getItem('predictions') || '{"Mirza Abbas": 0, "Nasiruddin Patwary": 0, "Meghna Alam": 0, "Tridip Kumar Saha": 0}');
-    updatePredictionDisplay(initialPredictions);
-}
-
-// Update prediction display
-function updatePredictionDisplay(predictions) {
-    const total = predictions['Mirza Abbas'] + predictions['Nasiruddin Patwary'] + predictions['Meghna Alam'] + predictions['Tridip Kumar Saha'];
-    
-    // Update total predictions count
-    document.getElementById('totalPredictions').textContent = total;
-    
-    if (total > 0) {
-        const abbasPercent = ((predictions['Mirza Abbas'] / total) * 100).toFixed(1);
-        const patwaryPercent = ((predictions['Nasiruddin Patwary'] / total) * 100).toFixed(1);
-        const meghnaPercent = ((predictions['Meghna Alam'] / total) * 100).toFixed(1);
-        const tridipPercent = ((predictions['Tridip Kumar Saha'] / total) * 100).toFixed(1);
-        
-        document.getElementById('abbasPredictions').textContent = `${abbasPercent}%`;
-        document.getElementById('patwaryPredictions').textContent = `${patwaryPercent}%`;
-        document.getElementById('meghnaPredictions').textContent = `${meghnaPercent}%`;
-        document.getElementById('tridipPredictions').textContent = `${tridipPercent}%`;
-        
-        document.getElementById('abbasPredictionBar').style.width = `${abbasPercent}%`;
-        document.getElementById('patwaryPredictionBar').style.width = `${patwaryPercent}%`;
-        document.getElementById('meghnaPredictionBar').style.width = `${meghnaPercent}%`;
-        document.getElementById('tridipPredictionBar').style.width = `${tridipPercent}%`;
-    } else {
-        document.getElementById('abbasPredictions').textContent = '0%';
-        document.getElementById('patwaryPredictions').textContent = '0%';
-        document.getElementById('meghnaPredictions').textContent = '0%';
-        document.getElementById('tridipPredictions').textContent = '0%';
-        
-        document.getElementById('abbasPredictionBar').style.width = '25%';
-        document.getElementById('patwaryPredictionBar').style.width = '25%';
-        document.getElementById('meghnaPredictionBar').style.width = '25%';
-        document.getElementById('tridipPredictionBar').style.width = '25%';
-    }
-}
-
-// Confetti effect function
-function showConfetti() {
-    const confettiCount = 100;
-    const confettiContainer = document.createElement('div');
-    confettiContainer.style.position = 'fixed';
-    confettiContainer.style.top = '0';
-    confettiContainer.style.left = '0';
-    confettiContainer.style.width = '100%';
-    confettiContainer.style.height = '100%';
-    confettiContainer.style.pointerEvents = 'none';
-    confettiContainer.style.zIndex = '9999';
-    document.body.appendChild(confettiContainer);
-    
-    for (let i = 0; i < confettiCount; i++) {
-        const confetti = document.createElement('div');
-        confetti.style.position = 'absolute';
-        confetti.style.width = '10px';
-        confetti.style.height = '10px';
-        confetti.style.backgroundColor = getRandomColor();
-        confetti.style.borderRadius = '50%';
-        confetti.style.left = `${Math.random() * 100}vw`;
-        confetti.style.top = '-10px';
-        confetti.style.opacity = '0.8';
-        
-        confettiContainer.appendChild(confetti);
-        
-        // Animation
-        const animation = confetti.animate([
-            { transform: 'translateY(0) rotate(0deg)', opacity: 1 },
-            { transform: `translateY(${window.innerHeight}px) rotate(${360 + Math.random() * 360}deg)`, opacity: 0 }
-        ], {
-            duration: 1000 + Math.random() * 2000,
-            easing: 'cubic-bezier(0.215, 0.61, 0.355, 1)'
-        });
-        
-        animation.onfinish = () => {
-            confetti.remove();
-            if (confettiContainer.children.length === 0) {
-                confettiContainer.remove();
-            }
-        };
-    }
-    
-    setTimeout(() => {
-        if (confettiContainer.parentNode) {
-            confettiContainer.remove();
-        }
-    }, 3000);
-}
-
-function getRandomColor() {
-    const colors = ['#3b82f6', '#10b981', '#ef4444', '#8b5cf6', '#f59e0b', '#ec4899'];
-    return colors[Math.floor(Math.random() * colors.length)];
-}
+            <!-- Generated Meme Display Area -->
+            <div id="memeDisplay" class="hidden mt-4 p-4 bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl border border-purple-200">
+                <div class="text-center">
+                    <div class="text-4xl mb-3" id="memeEmoji">😄</div>
+                    <p class="text-gray-800 font-medium text-lg" id="memeText"></p>
+                    <div class="mt-3 flex justify-center space-x-4">
+                        <button id="copyMeme" class="bg-gray-800 hover:bg-gray-900 text-white text-xs px-3 py-1 rounded-lg">
+                            <i class="fas fa-copy mr-1"></i> কপি করুন
+                        </button>
+                        <button id="shareMeme" class="bg-blue-600 hover:bg-blue-700 text-white text-xs px-3 py-1 rounded-lg">
+                            <i class="fas fa-share-alt mr-1"></i> শেয়ার করুন
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
                 
                 <!-- Prediction Game -->
                 <div class="bg-white rounded-2xl shadow-xl p-8">
