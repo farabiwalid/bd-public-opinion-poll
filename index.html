@@ -347,7 +347,7 @@
                         <div class="mb-4">
                             <span class="inline-block bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">প্রতীক: শাপলা কলি</span>
                         </div>
-                        <p class="text-gray-600 text-sm mb-4">সোশ্যাল মিডিয়ায় সক্রিয় রাজনীতিবিদ। যুব ভোটারদের কাছে জনপ্রিয়। নারকেল ব্যবসায়ী হিসেবে পরিচিত।</p>
+                        <p class="text-gray-600 text-sm mb-4">সোশ্যাল মিডিয়ায় সক্রিয় রাজনীতিবিদ। যুব ভোটারদের কাছে জনপ্রিয়।</p>
                         <div class="flex space-x-2">
                             <span class="inline-block bg-gray-100 text-gray-800 px-2 py-1 rounded text-xs">তরুণ নেতা</span>
                             <span class="inline-block bg-gray-100 text-gray-800 px-2 py-1 rounded text-xs">সোশ্যাল মিডিয়া স্টার</span>
@@ -368,7 +368,7 @@
                         <div class="mb-4">
                             <span class="inline-block bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-medium">প্রতীক: ট্রাক</span>
                         </div>
-                        <p class="text-gray-600 text-sm mb-4">তরুণ প্রজন্মের প্রতিনিধি। নারী নেতৃত্বের জন্য সংগ্রামরত। সামাজিক আন্দোলনে সক্রিয় ভূমিকা পালন করছেন।</p>
+                        <p class="text-gray-600 text-sm mb-4">সামাজিক আন্দোলনে সক্রিয় ভূমিকা পালন করছেন।</p>
                         <div class="flex space-x-2">
                             <span class="inline-block bg-gray-100 text-gray-800 px-2 py-1 rounded text-xs">নারী নেতা</span>
                             <span class="inline-block bg-gray-100 text-gray-800 px-2 py-1 rounded text-xs">তরুণ প্রজন্ম</span>
@@ -509,40 +509,318 @@
             </div>
         </section>
 
-        <!-- Fun Section -->
-        <section id="fun" class="mb-16 fade-in">
-            <h2 class="text-3xl font-bold text-gray-900 mb-2 border-b pb-2"><i class="fas fa-laugh-beam mr-2"></i>মজার অংশ</h2>
-            <p class="text-gray-600 mb-6">ঢাকা-৮ আসনের ভোটযুদ্ধ নিয়ে মজার কিছু তথ্য এবং গেম</p>
+       // Add this to your existing JavaScript code
+
+// Meme Generator Data
+const memeData = {
+    emojis: ["😂", "🤣", "😆", "🎭", "🌾", "🌱", "📱", "🔥", "💥", "✨", "🎯", "🎪", "🎤", "🎉", "🏆"],
+    
+    memes: [
+        "ধান শীষ যখন দোলে, ভোট আসে গোলে গোলে!",
+        "শাপলা কলি যখন ফোটে, ভোটের বাক্স ভরে ওঠে!",
+        "লাইক শেয়ার কমেন্ট দাও, প্রার্থীকে সামনে নিয়ে যাও!",
+        "সোশ্যাল মিডিয়া জ্বলে উঠেছে, ঢাকা-৮ গরম হয়ে গেছে!",
+        "ধান শীষ নিয়ে আসি, উন্নয়ন দেখাই, শাপলা কলি দিয়ে যাই, নতুন আশা জাগাই!",
+        "ফেসবুকে লাইভ চলে, কমেন্টের ঝড় ওঠে, কে জিতবে ঢাকা-৮? উত্তর কেউ জানে না!",
+        "আব্বাস স্যারের ধানের শীষ, পাটোয়ারীর শাপলা কলি, দুজনের প্রতীকেই আছে, বাংলাদেশের বলি!",
+        "ভোটের মাঠে ধান শীষ, সোশ্যাল মিডিয়ায় শাপলা কলি, দুই নেতার দুই মিশন!",
+        "ধান শীষের ঝলকানি, শাপলা কলির সজীবতা, ঢাকা-৮ এর ভোটযুদ্ধে রংবেরংের ভোটারতা!",
+        "আব্বাস স্যার বলে: ধান শীষে দেশ গড়ি, পাটোয়ারী বলে: শাপলা কলিতে ভোট জড়ি!",
+        "ফেসবুক লাইভে রেকর্ড ভাঙছে, ইউটিউবে সাবস্ক্রাইবার বাড়ছে, ঢাকা-৮ তে কে হবে চ্যাম্পিয়ন?",
+        "ধান শীষের সোনালি আভা, শাপলা কলির সাদা ছটা, দুজনার ডিজিটাল ক্যাম্পেইনেই আছে মজা!",
+        "আব্বাস স্যারের পোস্টে লাইক ১০K, পাটোয়ারীর পোস্টে লাইক ১২K, কে কার চেয়ে এগিয়ে দেখুন এবার!",
+        "শাপলা কলি ফুটবে বলে, পাটোয়ারী ভাই লাইভে দুলে, আব্বাস স্যার হেসে বলে: ধান শীষের জয় হবেই!",
+        "ডিজিটাল ক্যাম্পেইনে দুই নেতা, ফেসবুক-টিকটক-ইউটিউবে ভোটারদের নেতা!"
+    ],
+    
+    rhymes: [
+        "ঢাকা-৮ আসনটা গরম গরম, ধান শীষ নাকি শাপলা কলি কে হবে মন? ফেসবুকে লাইভ, টিকটকে ড্যান্স, ভোট দিয়ে বলো কার হবে চান্স!",
+        "ধান শীষের ঝংকার, শাপলা কলির সুর, দুই নেতার প্রচারে ভোটারদের দূর!",
+        "আব্বাস স্যারের বক্তৃতা দীর্ঘ, পাটোয়ারীর কথা মিষ্টি, কে জিতবে ঢাকা-৮? ভোটেই আছে ইতি!",
+        "সোশ্যাল মিডিয়ায় আলোচনা, ট্রেন্ডিং তো নয়কো ফাঁকা, ধান শীষ বনাম শাপলা কলির এই যুদ্ধে কে হবে সাক্ষী?"
+    ]
+};
+
+// Initialize Fun Section
+function initFunSection() {
+    // Funny quotes
+    let quoteIndex = 0;
+    const funnyQuoteElement = document.getElementById('funnyQuote');
+    const nextQuoteButton = document.getElementById('nextQuote');
+    const quoteNumberElement = document.getElementById('quoteNumber');
+    const totalQuotesElement = document.getElementById('totalQuotes');
+    const copyQuoteButton = document.getElementById('copyQuote');
+    
+    // Set total quotes count
+    if (totalQuotesElement) {
+        totalQuotesElement.textContent = funnyQuotes.length;
+    }
+    
+    if (funnyQuoteElement && nextQuoteButton) {
+        nextQuoteButton.addEventListener('click', function() {
+            quoteIndex = (quoteIndex + 1) % funnyQuotes.length;
+            funnyQuoteElement.textContent = funnyQuotes[quoteIndex];
+            if (quoteNumberElement) {
+                quoteNumberElement.textContent = quoteIndex + 1;
+            }
             
-            <div class="grid md:grid-cols-2 gap-8">
-                <!-- Meme Gallery -->
-                <div class="bg-white rounded-2xl shadow-xl p-8">
-                    <h3 class="text-2xl font-bold text-gray-800 mb-6">মেমেস গ্যালারি</h3>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="bg-gray-100 rounded-xl p-4 text-center">
-                            <div class="text-4xl mb-2">😂</div>
-                            <p class="text-sm text-gray-700">"আব্বাস স্যার বললেন: পাটোয়ারী ভাই, কফি খাবেন নারকেল জল?"</p>
-                        </div>
-                        <div class="bg-gray-100 rounded-xl p-4 text-center">
-                            <div class="text-4xl mb-2">🤣</div>
-                            <p class="text-sm text-gray-700">"পাটোয়ারী: আমি তো নারকেল বিক্রি করি, রাজনীতি নয়!"</p>
-                        </div>
-                        <div class="bg-gray-100 rounded-xl p-4 text-center">
-                            <div class="text-4xl mb-2">😆</div>
-                            <p class="text-sm text-gray-700">"ফেসবুক লাইভে কে কতক্ষণ টিকবে: আব্বাস vs পাটোয়ারী"</p>
-                        </div>
-                        <div class="bg-gray-100 rounded-xl p-4 text-center">
-                            <div class="text-4xl mb-2">🎭</div>
-                            <p class="text-sm text-gray-700">"ধান শীষ vs শাপলা কলি: আসল যুদ্ধ সোশ্যাল মিডিয়ায়"</p>
-                        </div>
-                    </div>
-                    
-                    <div class="mt-6">
-                        <button id="generateMeme" class="w-full bangladesh-gradient hover:opacity-90 text-white font-medium py-3 px-4 rounded-lg">
-                            <i class="fas fa-random mr-2"></i>নতুন মেম জেনারেট করুন
-                        </button>
-                    </div>
-                </div>
+            // Add animation
+            funnyQuoteElement.classList.add('opacity-0');
+            setTimeout(() => {
+                funnyQuoteElement.classList.remove('opacity-0');
+            }, 300);
+        });
+    }
+    
+    // Copy quote functionality
+    if (copyQuoteButton) {
+        copyQuoteButton.addEventListener('click', function() {
+            const textToCopy = funnyQuoteElement.textContent;
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                showAlert('উক্তিটি কপি করা হয়েছে!', 'success');
+            }).catch(err => {
+                console.error('Failed to copy text: ', err);
+                showAlert('কপি করতে সমস্যা হয়েছে', 'error');
+            });
+        });
+    }
+    
+    // Generate meme button
+    const generateMemeButton = document.getElementById('generateMeme');
+    const memeDisplay = document.getElementById('memeDisplay');
+    const memeEmoji = document.getElementById('memeEmoji');
+    const memeText = document.getElementById('memeText');
+    const copyMemeButton = document.getElementById('copyMeme');
+    const shareMemeButton = document.getElementById('shareMeme');
+    
+    if (generateMemeButton && memeDisplay && memeEmoji && memeText) {
+        generateMemeButton.addEventListener('click', function() {
+            // Random emoji
+            const randomEmoji = memeData.emojis[Math.floor(Math.random() * memeData.emojis.length)];
+            
+            // Random meme (70% chance regular meme, 30% chance rhyme)
+            let randomMeme;
+            if (Math.random() < 0.7) {
+                randomMeme = memeData.memes[Math.floor(Math.random() * memeData.memes.length)];
+            } else {
+                randomMeme = memeData.rhymes[Math.floor(Math.random() * memeData.rhymes.length)];
+            }
+            
+            // Update display
+            memeEmoji.textContent = randomEmoji;
+            memeText.textContent = randomMeme;
+            
+            // Show meme display with animation
+            memeDisplay.classList.remove('hidden');
+            memeDisplay.classList.add('opacity-0');
+            
+            setTimeout(() => {
+                memeDisplay.classList.remove('opacity-0');
+            }, 10);
+            
+            // Add bounce animation to emoji
+            memeEmoji.classList.add('animate-bounce');
+            setTimeout(() => {
+                memeEmoji.classList.remove('animate-bounce');
+            }, 1000);
+        });
+    }
+    
+    // Copy meme functionality
+    if (copyMemeButton && memeText) {
+        copyMemeButton.addEventListener('click', function() {
+            const textToCopy = memeText.textContent;
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                showAlert('মেমটি কপি করা হয়েছে!', 'success');
+            }).catch(err => {
+                console.error('Failed to copy text: ', err);
+                showAlert('কপি করতে সমস্যা হয়েছে', 'error');
+            });
+        });
+    }
+    
+    // Share meme functionality
+    if (shareMemeButton && memeText && memeEmoji) {
+        shareMemeButton.addEventListener('click', function() {
+            const shareText = `${memeEmoji.textContent} ${memeText.textContent}\n\n#ঢাকা৮ #ভোটযুদ্ধ #ধানশীষ #শাপলাকলি`;
+            
+            if (navigator.share) {
+                navigator.share({
+                    title: 'ঢাকা-৮ ভোটযুদ্ধ মেম',
+                    text: shareText,
+                    url: window.location.href
+                }).catch(err => {
+                    console.error('Error sharing:', err);
+                    fallbackShare(shareText);
+                });
+            } else {
+                fallbackShare(shareText);
+            }
+        });
+    }
+    
+    function fallbackShare(text) {
+        // Create a temporary textarea to copy text
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+        showAlert('মেমটি কপি করা হয়েছে! এখন শেয়ার করুন।', 'success');
+    }
+    
+    // Prediction buttons
+    const predictionButtons = document.querySelectorAll('.predict-btn');
+    const predictionResult = document.getElementById('predictionResult');
+    const predictionText = document.getElementById('predictionText');
+    const resetPredictionsButton = document.getElementById('resetPredictions');
+    const playRhymeButton = document.getElementById('playRhyme');
+    
+    predictionButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const candidate = this.getAttribute('data-candidate');
+            const candidateNames = {
+                'Mirza Abbas': 'মির্জা আব্বাস',
+                'Nasiruddin Patwary': 'নাসির উদ্দিন পাটোয়ারী',
+                'Meghna Alam': 'মেঘনা আলম',
+                'Tridip Kumar Saha': 'ত্রিদিপ কুমার সাহা'
+            };
+            
+            predictionText.textContent = `আপনি ভবিষ্যদ্বাণী করেছেন: ${candidateNames[candidate]} ঢাকা-৮ আসনে জিতবেন!`;
+            predictionResult.classList.remove('hidden');
+            
+            // Save prediction to localStorage
+            const predictions = JSON.parse(localStorage.getItem('predictions') || '{"Mirza Abbas": 0, "Nasiruddin Patwary": 0, "Meghna Alam": 0, "Tridip Kumar Saha": 0}');
+            predictions[candidate]++;
+            localStorage.setItem('predictions', JSON.stringify(predictions));
+            
+            // Update prediction display
+            updatePredictionDisplay(predictions);
+            
+            // Show confetti effect
+            showConfetti();
+        });
+    });
+    
+    // Reset predictions
+    if (resetPredictionsButton) {
+        resetPredictionsButton.addEventListener('click', function() {
+            if (confirm('আপনি কি সব ভবিষ্যদ্বাণী রিসেট করতে চান?')) {
+                localStorage.removeItem('predictions');
+                updatePredictionDisplay({
+                    'Mirza Abbas': 0,
+                    'Nasiruddin Patwary': 0,
+                    'Meghna Alam': 0,
+                    'Tridip Kumar Saha': 0
+                });
+                showAlert('সব ভবিষ্যদ্বাণী রিসেট করা হয়েছে!', 'success');
+            }
+        });
+    }
+    
+    // Play rhyme button
+    if (playRhymeButton) {
+        playRhymeButton.addEventListener('click', function() {
+            const randomRhyme = memeData.rhymes[Math.floor(Math.random() * memeData.rhymes.length)];
+            showAlert(randomRhyme, 'info');
+        });
+    }
+    
+    // Initialize prediction display
+    const initialPredictions = JSON.parse(localStorage.getItem('predictions') || '{"Mirza Abbas": 0, "Nasiruddin Patwary": 0, "Meghna Alam": 0, "Tridip Kumar Saha": 0}');
+    updatePredictionDisplay(initialPredictions);
+}
+
+// Update prediction display
+function updatePredictionDisplay(predictions) {
+    const total = predictions['Mirza Abbas'] + predictions['Nasiruddin Patwary'] + predictions['Meghna Alam'] + predictions['Tridip Kumar Saha'];
+    
+    // Update total predictions count
+    document.getElementById('totalPredictions').textContent = total;
+    
+    if (total > 0) {
+        const abbasPercent = ((predictions['Mirza Abbas'] / total) * 100).toFixed(1);
+        const patwaryPercent = ((predictions['Nasiruddin Patwary'] / total) * 100).toFixed(1);
+        const meghnaPercent = ((predictions['Meghna Alam'] / total) * 100).toFixed(1);
+        const tridipPercent = ((predictions['Tridip Kumar Saha'] / total) * 100).toFixed(1);
+        
+        document.getElementById('abbasPredictions').textContent = `${abbasPercent}%`;
+        document.getElementById('patwaryPredictions').textContent = `${patwaryPercent}%`;
+        document.getElementById('meghnaPredictions').textContent = `${meghnaPercent}%`;
+        document.getElementById('tridipPredictions').textContent = `${tridipPercent}%`;
+        
+        document.getElementById('abbasPredictionBar').style.width = `${abbasPercent}%`;
+        document.getElementById('patwaryPredictionBar').style.width = `${patwaryPercent}%`;
+        document.getElementById('meghnaPredictionBar').style.width = `${meghnaPercent}%`;
+        document.getElementById('tridipPredictionBar').style.width = `${tridipPercent}%`;
+    } else {
+        document.getElementById('abbasPredictions').textContent = '0%';
+        document.getElementById('patwaryPredictions').textContent = '0%';
+        document.getElementById('meghnaPredictions').textContent = '0%';
+        document.getElementById('tridipPredictions').textContent = '0%';
+        
+        document.getElementById('abbasPredictionBar').style.width = '25%';
+        document.getElementById('patwaryPredictionBar').style.width = '25%';
+        document.getElementById('meghnaPredictionBar').style.width = '25%';
+        document.getElementById('tridipPredictionBar').style.width = '25%';
+    }
+}
+
+// Confetti effect function
+function showConfetti() {
+    const confettiCount = 100;
+    const confettiContainer = document.createElement('div');
+    confettiContainer.style.position = 'fixed';
+    confettiContainer.style.top = '0';
+    confettiContainer.style.left = '0';
+    confettiContainer.style.width = '100%';
+    confettiContainer.style.height = '100%';
+    confettiContainer.style.pointerEvents = 'none';
+    confettiContainer.style.zIndex = '9999';
+    document.body.appendChild(confettiContainer);
+    
+    for (let i = 0; i < confettiCount; i++) {
+        const confetti = document.createElement('div');
+        confetti.style.position = 'absolute';
+        confetti.style.width = '10px';
+        confetti.style.height = '10px';
+        confetti.style.backgroundColor = getRandomColor();
+        confetti.style.borderRadius = '50%';
+        confetti.style.left = `${Math.random() * 100}vw`;
+        confetti.style.top = '-10px';
+        confetti.style.opacity = '0.8';
+        
+        confettiContainer.appendChild(confetti);
+        
+        // Animation
+        const animation = confetti.animate([
+            { transform: 'translateY(0) rotate(0deg)', opacity: 1 },
+            { transform: `translateY(${window.innerHeight}px) rotate(${360 + Math.random() * 360}deg)`, opacity: 0 }
+        ], {
+            duration: 1000 + Math.random() * 2000,
+            easing: 'cubic-bezier(0.215, 0.61, 0.355, 1)'
+        });
+        
+        animation.onfinish = () => {
+            confetti.remove();
+            if (confettiContainer.children.length === 0) {
+                confettiContainer.remove();
+            }
+        };
+    }
+    
+    setTimeout(() => {
+        if (confettiContainer.parentNode) {
+            confettiContainer.remove();
+        }
+    }, 3000);
+}
+
+function getRandomColor() {
+    const colors = ['#3b82f6', '#10b981', '#ef4444', '#8b5cf6', '#f59e0b', '#ec4899'];
+    return colors[Math.floor(Math.random() * colors.length)];
+}
                 
                 <!-- Prediction Game -->
                 <div class="bg-white rounded-2xl shadow-xl p-8">
