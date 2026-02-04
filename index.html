@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dhaka-8 Voting Battle | Mirza Abbas vs Nasiruddin</title>
+    <title>ঢাকা-৮ ভোটযুদ্ধ | Mirza Abbas vs Nasiruddin Patwary</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Chart.js CDN -->
@@ -57,13 +57,15 @@
         .candidate-card { transition: all 0.3s ease; }
         .candidate-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15); }
         .party-bnp { background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%); }
-        .party-al { background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%); }
         .party-ncp { background: linear-gradient(135deg, #059669 0%, #10b981 100%); }
-        .party-jasad { background: linear-gradient(135deg, #7c3aed 0%, #8b5cf6 100%); }
+        .party-gop { background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%); }
+        .party-cpb { background: linear-gradient(135deg, #7c3aed 0%, #8b5cf6 100%); }
         .glow-effect { box-shadow: 0 0 20px rgba(245, 158, 11, 0.5); }
         .typewriter { overflow: hidden; border-right: .15em solid orange; white-space: nowrap; animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite; }
         @keyframes typing { from { width: 0 } to { width: 100% } }
         @keyframes blink-caret { from, to { border-color: transparent } 50% { border-color: orange; } }
+        .social-hover { transition: all 0.3s ease; }
+        .social-hover:hover { transform: translateY(-5px); }
     </style>
 </head>
 <body class="bg-gray-50 min-h-screen">
@@ -76,8 +78,8 @@
                         <div class="w-8 h-8 bg-red-500 rounded-full"></div>
                     </div>
                     <div>
-                        <h1 class="text-xl font-bold">ধাকা-৮ ভোটযুদ্ধ</h1>
-                        <p class="text-xs text-white/80">মির্জা আব্বাস vs নাসিরুদ্দিন পাটোয়ারী</p>
+                        <h1 class="text-xl font-bold">ঢাকা-৮ ভোটযুদ্ধ</h1>
+                        <p class="text-xs text-white/80">মির্জা আব্বাস vs নাসির উদ্দিন পাটোয়ারী</p>
                     </div>
                 </div>
                 
@@ -91,18 +93,15 @@
                     <a href="#contact" class="nav-link hover:text-yellow-300 font-medium transition"><i class="fas fa-envelope mr-1"></i> যোগাযোগ</a>
                     <a href="#fun" class="nav-link hover:text-yellow-300 font-medium transition"><i class="fas fa-laugh-beam mr-1"></i> মজার অংশ</a>
                     
-                    <!-- Social Media Links in Header -->
+                    <!-- Hello Bangladeshi Social Media Links -->
                     <div class="flex space-x-3 ml-4">
-                        <a href="https://facebook.com" target="_blank" class="bg-blue-600 hover:bg-blue-700 w-8 h-8 rounded-full flex items-center justify-center">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="https://twitter.com" target="_blank" class="bg-blue-400 hover:bg-blue-500 w-8 h-8 rounded-full flex items-center justify-center">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="https://youtube.com" target="_blank" class="bg-red-600 hover:bg-red-700 w-8 h-8 rounded-full flex items-center justify-center">
+                        <a href="https://youtube.com/@hellobangladeshitv" target="_blank" class="bg-red-600 hover:bg-red-700 w-8 h-8 rounded-full flex items-center justify-center social-hover">
                             <i class="fab fa-youtube"></i>
                         </a>
-                        <a href="https://instagram.com" target="_blank" class="bg-pink-600 hover:bg-pink-700 w-8 h-8 rounded-full flex items-center justify-center">
+                        <a href="https://facebook.com/hellobangladeshiofficial" target="_blank" class="bg-blue-600 hover:bg-blue-700 w-8 h-8 rounded-full flex items-center justify-center social-hover">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://instagram.com/hellobangladeshiofficial" target="_blank" class="bg-pink-600 hover:bg-pink-700 w-8 h-8 rounded-full flex items-center justify-center social-hover">
                             <i class="fab fa-instagram"></i>
                         </a>
                     </div>
@@ -119,16 +118,13 @@
                     <a href="#fun" class="nav-link hover:text-yellow-300"><i class="fas fa-laugh-beam mr-2"></i>মজার অংশ</a>
                     
                     <div class="flex space-x-3 pt-3">
-                        <a href="https://facebook.com" target="_blank" class="bg-blue-600 hover:bg-blue-700 w-8 h-8 rounded-full flex items-center justify-center">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="https://twitter.com" target="_blank" class="bg-blue-400 hover:bg-blue-500 w-8 h-8 rounded-full flex items-center justify-center">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="https://youtube.com" target="_blank" class="bg-red-600 hover:bg-red-700 w-8 h-8 rounded-full flex items-center justify-center">
+                        <a href="https://youtube.com/@hellobangladeshitv" target="_blank" class="bg-red-600 hover:bg-red-700 w-8 h-8 rounded-full flex items-center justify-center">
                             <i class="fab fa-youtube"></i>
                         </a>
-                        <a href="https://instagram.com" target="_blank" class="bg-pink-600 hover:bg-pink-700 w-8 h-8 rounded-full flex items-center justify-center">
+                        <a href="https://facebook.com/hellobangladeshiofficial" target="_blank" class="bg-blue-600 hover:bg-blue-700 w-8 h-8 rounded-full flex items-center justify-center">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://instagram.com/hellobangladeshiofficial" target="_blank" class="bg-pink-600 hover:bg-pink-700 w-8 h-8 rounded-full flex items-center justify-center">
                             <i class="fab fa-instagram"></i>
                         </a>
                     </div>
@@ -146,19 +142,19 @@
                         <i class="fas fa-fist-raised text-white text-4xl"></i>
                     </div>
                 </div>
-                <h2 class="text-4xl font-bold text-gray-900 mb-4 typewriter">ধাকা-৮ আসনের ভোটযুদ্ধ</h2>
-                <p class="text-xl text-gray-700 mb-6">মির্জা আব্বাস বনাম নাসিরুদ্দিন পাটোয়ারীর ঐতিহাসিক লড়াই</p>
+                <h2 class="text-4xl font-bold text-gray-900 mb-4 typewriter">ঢাকা-৮ আসনের ঐতিহাসিক ভোটযুদ্ধ</h2>
+                <p class="text-xl text-gray-700 mb-6">মির্জা আব্বাস বনাম নাসির উদ্দিন পাটোয়ারীর সোশ্যাল মিডিয়া লড়াই</p>
                 
                 <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl p-8 mb-8 border border-gray-200">
                     <div class="grid md:grid-cols-2 gap-8 items-center">
                         <div class="text-center">
                             <div class="party-bnp w-32 h-32 rounded-full mx-auto flex items-center justify-center mb-4 candidate-card">
-                                <img src="https://via.placeholder.com/150/1e40af/FFFFFF?text=MA" class="w-28 h-28 rounded-full border-4 border-white shadow-lg" alt="Mirza Abbas">
+                                <i class="fas fa-user-tie text-white text-5xl"></i>
                             </div>
                             <h3 class="text-2xl font-bold text-blue-800">মির্জা আব্বাস</h3>
-                            <p class="text-blue-600 font-medium">বিএনপি প্রার্থী</p>
+                            <p class="text-blue-600 font-medium">বাংলাদেশ জাতীয়তাবাদী দল (বিএনপি)</p>
                             <div class="mt-4">
-                                <span class="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">ধান শীষ</span>
+                                <span class="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">প্রতীক: ধানের শীষ</span>
                             </div>
                         </div>
                         
@@ -167,17 +163,17 @@
                                 <span class="text-red-500">VS</span>
                             </div>
                             <div class="text-2xl text-gray-600">সোশ্যাল মিডিয়া যুদ্ধ</div>
-                            <div class="text-lg text-gray-500 mt-2">কে জিতবেন?</div>
+                            <div class="text-lg text-gray-500 mt-2">কে জিতবেন ঢাকা-৮ আসন?</div>
                         </div>
                         
                         <div class="text-center md:col-span-2 md:mt-8">
                             <div class="party-ncp w-32 h-32 rounded-full mx-auto flex items-center justify-center mb-4 candidate-card">
-                                <img src="https://via.placeholder.com/150/059669/FFFFFF?text=NP" class="w-28 h-28 rounded-full border-4 border-white shadow-lg" alt="Nasiruddin Patwary">
+                                <i class="fas fa-user-graduate text-white text-5xl"></i>
                             </div>
-                            <h3 class="text-2xl font-bold text-green-800">নাসিরুদ্দিন পাটোয়ারী</h3>
+                            <h3 class="text-2xl font-bold text-green-800">নাসির উদ্দিন পাটোয়ারী</h3>
                             <p class="text-green-600 font-medium">জাতীয় নাগরিক পার্টি (এনসিপি)</p>
                             <div class="mt-4">
-                                <span class="inline-block bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">নারকেল</span>
+                                <span class="inline-block bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">প্রতীক: শাপলা কলি</span>
                             </div>
                         </div>
                     </div>
@@ -194,12 +190,12 @@
         <!-- Vote Now Section -->
         <section id="vote" class="mb-16 fade-in">
             <h2 class="text-3xl font-bold text-gray-900 mb-2 border-b pb-2"><i class="fas fa-vote-yea mr-2"></i>ভোট দিন</h2>
-            <p class="text-gray-600 mb-6">ধাকা-৮ আসনে আপনার পছন্দের প্রার্থীকে ভোট দিন। এক ডিভাইস থেকে একবার ভোট দিতে পারবেন।</p>
+            <p class="text-gray-600 mb-6">ঢাকা-৮ আসনে আপনার পছন্দের প্রার্থীকে ভোট দিন। এক ডিভাইস থেকে একবার ভোট দিতে পারবেন।</p>
             
             <div id="voteStatus" class="hidden mb-6 p-4 rounded-lg"></div>
             
             <div class="bg-white rounded-2xl shadow-xl p-8">
-                <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">ধাকা-৮ আসনের প্রার্থী নির্বাচন করুন</h3>
+                <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">ঢাকা-৮ আসনের ৪ প্রার্থীর মধ্যে নির্বাচন করুন</h3>
                 
                 <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8" id="candidateList">
                     <!-- Candidates will be loaded here -->
@@ -223,11 +219,11 @@
         <!-- Live Results Section -->
         <section id="results" class="mb-16 fade-in">
             <h2 class="text-3xl font-bold text-gray-900 mb-2 border-b pb-2"><i class="fas fa-chart-line mr-2"></i>লাইভ ফলাফল</h2>
-            <p class="text-gray-600 mb-6">ধাকা-৮ আসনের রিয়েল-টাইম ভোটের ফলাফল দেখুন</p>
+            <p class="text-gray-600 mb-6">ঢাকা-৮ আসনের রিয়েল-টাইম ভোটের ফলাফল দেখুন</p>
             
             <div class="bg-white rounded-2xl shadow-xl p-8 mb-8">
                 <div class="flex flex-col md:flex-row md:items-center justify-between mb-8">
-                    <h3 class="text-xl font-bold text-gray-800">ধাকা-৮ আসনের ভোট গণনা</h3>
+                    <h3 class="text-xl font-bold text-gray-800">ঢাকা-৮ আসনের ভোট গণনা</h3>
                     <div class="flex space-x-4 mt-4 md:mt-0">
                         <button id="refreshResults" class="bangladesh-gradient hover:opacity-90 text-white font-medium py-2 px-6 rounded-lg">
                             <i class="fas fa-sync-alt mr-2"></i>রিফ্রেশ করুন
@@ -313,8 +309,8 @@
 
         <!-- Candidates Section -->
         <section id="candidates" class="mb-16 fade-in">
-            <h2 class="text-3xl font-bold text-gray-900 mb-2 border-b pb-2"><i class="fas fa-users mr-2"></i>ধাকা-৮ আসনের প্রার্থীরা</h2>
-            <p class="text-gray-600 mb-6">ধাকা-৮ আসনে প্রতিদ্বন্দ্বিতা করা প্রার্থীদের সম্পর্কে বিস্তারিত তথ্য</p>
+            <h2 class="text-3xl font-bold text-gray-900 mb-2 border-b pb-2"><i class="fas fa-users mr-2"></i>ঢাকা-৮ আসনের প্রার্থীরা</h2>
+            <p class="text-gray-600 mb-6">ঢাকা-৮ আসনে প্রতিদ্বন্দ্বিতা করা ৪ প্রার্থীর বিস্তারিত তথ্য</p>
             
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                 <!-- Candidate 1: Mirza Abbas -->
@@ -328,12 +324,12 @@
                         <h3 class="text-xl font-bold text-gray-800 mb-2">মির্জা আব্বাস</h3>
                         <p class="text-blue-600 font-medium mb-3">বাংলাদেশ জাতীয়তাবাদী দল (বিএনপি)</p>
                         <div class="mb-4">
-                            <span class="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">প্রতীক: ধান শীষ</span>
+                            <span class="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">প্রতীক: ধানের শীষ</span>
                         </div>
-                        <p class="text-gray-600 text-sm mb-4">ধাকা-৮ আসনের বর্তমান সাংসদ। দীর্ঘদিন ধরে রাজনীতিতে সক্রিয়।</p>
+                        <p class="text-gray-600 text-sm mb-4">ঢাকা-৮ আসনের বর্তমান সাংসদ। দীর্ঘদিন ধরে রাজনীতিতে সক্রিয়। সাবেক মেয়র ও অভিজ্ঞ রাজনীতিবিদ।</p>
                         <div class="flex space-x-2">
                             <span class="inline-block bg-gray-100 text-gray-800 px-2 py-1 rounded text-xs">সাবেক মেয়র</span>
-                            <span class="inline-block bg-gray-100 text-gray-800 px-2 py-1 rounded text-xs">রাজনীতিবিদ</span>
+                            <span class="inline-block bg-gray-100 text-gray-800 px-2 py-1 rounded text-xs">প্রতিষ্ঠিত নেতা</span>
                         </div>
                     </div>
                 </div>
@@ -346,12 +342,12 @@
                         </div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">নাসিরুদ্দিন পাটোয়ারী</h3>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">নাসির উদ্দিন পাটোয়ারী</h3>
                         <p class="text-green-600 font-medium mb-3">জাতীয় নাগরিক পার্টি (এনসিপি)</p>
                         <div class="mb-4">
-                            <span class="inline-block bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">প্রতীক: নারকেল</span>
+                            <span class="inline-block bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">প্রতীক: শাপলা কলি</span>
                         </div>
-                        <p class="text-gray-600 text-sm mb-4">সোশ্যাল মিডিয়ায় সক্রিয় রাজনীতিবিদ। যুব ভোটারদের কাছে জনপ্রিয়।</p>
+                        <p class="text-gray-600 text-sm mb-4">সোশ্যাল মিডিয়ায় সক্রিয় রাজনীতিবিদ। যুব ভোটারদের কাছে জনপ্রিয়। নারকেল ব্যবসায়ী হিসেবে পরিচিত।</p>
                         <div class="flex space-x-2">
                             <span class="inline-block bg-gray-100 text-gray-800 px-2 py-1 rounded text-xs">তরুণ নেতা</span>
                             <span class="inline-block bg-gray-100 text-gray-800 px-2 py-1 rounded text-xs">সোশ্যাল মিডিয়া স্টার</span>
@@ -359,41 +355,41 @@
                     </div>
                 </div>
                 
-                <!-- Candidate 3: Other Candidates -->
+                <!-- Candidate 3: Meghna Alam -->
                 <div class="bg-white rounded-2xl shadow-xl overflow-hidden candidate-card">
-                    <div class="party-al h-40 flex items-center justify-center">
+                    <div class="party-gop h-40 flex items-center justify-center">
                         <div class="w-32 h-32 bg-white rounded-full flex items-center justify-center border-4 border-white shadow-lg">
                             <i class="fas fa-user-md text-red-600 text-5xl"></i>
                         </div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">ডা. মোহাম্মদ হানিফ</h3>
-                        <p class="text-red-600 font-medium mb-3">আওয়ামী লীগ</p>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">মেঘনা আলম</h3>
+                        <p class="text-red-600 font-medium mb-3">গণ অধিকার পরিষদ (জিওপি)</p>
                         <div class="mb-4">
-                            <span class="inline-block bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-medium">প্রতীক: নৌকা</span>
+                            <span class="inline-block bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-medium">প্রতীক: ট্রাক</span>
                         </div>
-                        <p class="text-gray-600 text-sm mb-4">চিকিৎসক ও সমাজসেবক। স্বাস্থ্য খাতে অবদানের জন্য পরিচিত।</p>
+                        <p class="text-gray-600 text-sm mb-4">তরুণ প্রজন্মের প্রতিনিধি। নারী নেতৃত্বের জন্য সংগ্রামরত। সামাজিক আন্দোলনে সক্রিয় ভূমিকা পালন করছেন।</p>
                         <div class="flex space-x-2">
-                            <span class="inline-block bg-gray-100 text-gray-800 px-2 py-1 rounded text-xs">চিকিৎসক</span>
-                            <span class="inline-block bg-gray-100 text-gray-800 px-2 py-1 rounded text-xs">সমাজসেবক</span>
+                            <span class="inline-block bg-gray-100 text-gray-800 px-2 py-1 rounded text-xs">নারী নেতা</span>
+                            <span class="inline-block bg-gray-100 text-gray-800 px-2 py-1 rounded text-xs">তরুণ প্রজন্ম</span>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Candidate 4: Other Candidates -->
+                <!-- Candidate 4: Tridip Kumar Saha -->
                 <div class="bg-white rounded-2xl shadow-xl overflow-hidden candidate-card">
-                    <div class="party-jasad h-40 flex items-center justify-center">
+                    <div class="party-cpb h-40 flex items-center justify-center">
                         <div class="w-32 h-32 bg-white rounded-full flex items-center justify-center border-4 border-white shadow-lg">
                             <i class="fas fa-user-tag text-purple-600 text-5xl"></i>
                         </div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">রাশেদ খান মেনন</h3>
-                        <p class="text-purple-600 font-medium mb-3">বাংলাদেশের ওয়ার্কার্স পার্টি</p>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">ত্রিদিপ কুমার সাহা</h3>
+                        <p class="text-purple-600 font-medium mb-3">বাংলাদেশের কমিউনিস্ট পার্টি (সিপিবি)</p>
                         <div class="mb-4">
-                            <span class="inline-block bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">প্রতীক: হাতুড়ি</span>
+                            <span class="inline-block bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">প্রতীক: হাতুড়ি ও কাস্তে</span>
                         </div>
-                        <p class="text-gray-600 text-sm mb-4">দীর্ঘদিনের বামপন্থী নেতা। শ্রমিক অধিকারের জন্য সংগ্রামরত।</p>
+                        <p class="text-gray-600 text-sm mb-4">দীর্ঘদিনের বামপন্থী নেতা। শ্রমিক অধিকারের জন্য সংগ্রামরত। মেহনতি মানুষের প্রতিনিধি হিসেবে পরিচিত।</p>
                         <div class="flex space-x-2">
                             <span class="inline-block bg-gray-100 text-gray-800 px-2 py-1 rounded text-xs">বামপন্থী নেতা</span>
                             <span class="inline-block bg-gray-100 text-gray-800 px-2 py-1 rounded text-xs">শ্রমিক নেতা</span>
@@ -469,22 +465,43 @@
                     </div>
                     
                     <div class="mt-8">
-                        <h4 class="font-bold text-gray-800 mb-4">সোশ্যাল মিডিয়াতে আমরা</h4>
-                        <div class="flex space-x-4">
-                            <a href="https://facebook.com" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white w-12 h-12 rounded-full flex items-center justify-center text-xl transition">
-                                <i class="fab fa-facebook-f"></i>
+                        <h4 class="font-bold text-gray-800 mb-4">হ্যালো বাংলাদেশি সোশ্যাল মিডিয়া</h4>
+                        <div class="grid grid-cols-3 gap-3">
+                            <a href="https://youtube.com/@hellobangladeshitv" target="_blank" class="bg-red-600 hover:bg-red-700 text-white p-3 rounded-lg flex flex-col items-center justify-center social-hover">
+                                <i class="fab fa-youtube text-xl mb-1"></i>
+                                <span class="text-xs">YouTube</span>
                             </a>
-                            <a href="https://twitter.com" target="_blank" class="bg-blue-400 hover:bg-blue-500 text-white w-12 h-12 rounded-full flex items-center justify-center text-xl transition">
-                                <i class="fab fa-twitter"></i>
+                            <a href="https://facebook.com/hellobangladeshiofficial" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-lg flex flex-col items-center justify-center social-hover">
+                                <i class="fab fa-facebook-f text-xl mb-1"></i>
+                                <span class="text-xs">Facebook</span>
                             </a>
-                            <a href="https://youtube.com" target="_blank" class="bg-red-600 hover:bg-red-700 text-white w-12 h-12 rounded-full flex items-center justify-center text-xl transition">
-                                <i class="fab fa-youtube"></i>
+                            <a href="https://instagram.com/hellobangladeshiofficial" target="_blank" class="bg-pink-600 hover:bg-pink-700 text-white p-3 rounded-lg flex flex-col items-center justify-center social-hover">
+                                <i class="fab fa-instagram text-xl mb-1"></i>
+                                <span class="text-xs">Instagram</span>
                             </a>
-                            <a href="https://instagram.com" target="_blank" class="bg-pink-600 hover:bg-pink-700 text-white w-12 h-12 rounded-full flex items-center justify-center text-xl transition">
-                                <i class="fab fa-instagram"></i>
+                            <a href="https://x.com/hellobdofficial" target="_blank" class="bg-black hover:bg-gray-800 text-white p-3 rounded-lg flex flex-col items-center justify-center social-hover">
+                                <i class="fab fa-twitter text-xl mb-1"></i>
+                                <span class="text-xs">Twitter/X</span>
                             </a>
-                            <a href="https://tiktok.com" target="_blank" class="bg-black hover:bg-gray-800 text-white w-12 h-12 rounded-full flex items-center justify-center text-xl transition">
-                                <i class="fab fa-tiktok"></i>
+                            <a href="https://tiktok.com/@hellobangladeshiofficial" target="_blank" class="bg-gray-800 hover:bg-gray-900 text-white p-3 rounded-lg flex flex-col items-center justify-center social-hover">
+                                <i class="fab fa-tiktok text-xl mb-1"></i>
+                                <span class="text-xs">TikTok</span>
+                            </a>
+                            <a href="https://whatsapp.com/channel/0029Vao5qD3HgZWWODlsiX3s" target="_blank" class="bg-green-600 hover:bg-green-700 text-white p-3 rounded-lg flex flex-col items-center justify-center social-hover">
+                                <i class="fab fa-whatsapp text-xl mb-1"></i>
+                                <span class="text-xs">WhatsApp</span>
+                            </a>
+                            <a href="https://t.me/hellobangladeshiofficial" target="_blank" class="bg-blue-500 hover:bg-blue-600 text-white p-3 rounded-lg flex flex-col items-center justify-center social-hover">
+                                <i class="fab fa-telegram text-xl mb-1"></i>
+                                <span class="text-xs">Telegram</span>
+                            </a>
+                            <a href="https://github.com/hellobangladeshi" target="_blank" class="bg-gray-700 hover:bg-gray-800 text-white p-3 rounded-lg flex flex-col items-center justify-center social-hover">
+                                <i class="fab fa-github text-xl mb-1"></i>
+                                <span class="text-xs">GitHub</span>
+                            </a>
+                            <a href="https://linkedin.com/in/hellobangladeshi" target="_blank" class="bg-blue-700 hover:bg-blue-800 text-white p-3 rounded-lg flex flex-col items-center justify-center social-hover">
+                                <i class="fab fa-linkedin text-xl mb-1"></i>
+                                <span class="text-xs">LinkedIn</span>
                             </a>
                         </div>
                     </div>
@@ -495,7 +512,7 @@
         <!-- Fun Section -->
         <section id="fun" class="mb-16 fade-in">
             <h2 class="text-3xl font-bold text-gray-900 mb-2 border-b pb-2"><i class="fas fa-laugh-beam mr-2"></i>মজার অংশ</h2>
-            <p class="text-gray-600 mb-6">ধাকা-৮ আসনের ভোটযুদ্ধ নিয়ে মজার কিছু তথ্য এবং গেম</p>
+            <p class="text-gray-600 mb-6">ঢাকা-৮ আসনের ভোটযুদ্ধ নিয়ে মজার কিছু তথ্য এবং গেম</p>
             
             <div class="grid md:grid-cols-2 gap-8">
                 <!-- Meme Gallery -->
@@ -504,19 +521,19 @@
                     <div class="grid grid-cols-2 gap-4">
                         <div class="bg-gray-100 rounded-xl p-4 text-center">
                             <div class="text-4xl mb-2">😂</div>
-                            <p class="text-sm text-gray-700">"আব্বাস স্যার বললেন: পাটোয়ারী ভাই, কফি খাবেন?"</p>
+                            <p class="text-sm text-gray-700">"আব্বাস স্যার বললেন: পাটোয়ারী ভাই, কফি খাবেন নারকেল জল?"</p>
                         </div>
                         <div class="bg-gray-100 rounded-xl p-4 text-center">
                             <div class="text-4xl mb-2">🤣</div>
-                            <p class="text-sm text-gray-700">"পাটোয়ারী: আমি তো নারকেল বিক্রি করি, কথা নয়!"</p>
+                            <p class="text-sm text-gray-700">"পাটোয়ারী: আমি তো নারকেল বিক্রি করি, রাজনীতি নয়!"</p>
                         </div>
                         <div class="bg-gray-100 rounded-xl p-4 text-center">
                             <div class="text-4xl mb-2">😆</div>
-                            <p class="text-sm text-gray-700">"ফেসবুক লাইভে কে কতক্ষণ টিকবে?"</p>
+                            <p class="text-sm text-gray-700">"ফেসবুক লাইভে কে কতক্ষণ টিকবে: আব্বাস vs পাটোয়ারী"</p>
                         </div>
                         <div class="bg-gray-100 rounded-xl p-4 text-center">
                             <div class="text-4xl mb-2">🎭</div>
-                            <p class="text-sm text-gray-700">"সোশ্যাল মিডিয়া যুদ্ধ: রাউন্ড ৫"</p>
+                            <p class="text-sm text-gray-700">"ধান শীষ vs শাপলা কলি: আসল যুদ্ধ সোশ্যাল মিডিয়ায়"</p>
                         </div>
                     </div>
                     
@@ -530,7 +547,7 @@
                 <!-- Prediction Game -->
                 <div class="bg-white rounded-2xl shadow-xl p-8">
                     <h3 class="text-2xl font-bold text-gray-800 mb-6">ভবিষ্যদ্বাণী করুন</h3>
-                    <p class="text-gray-600 mb-6">আপনার মতে কে জিতবেন ধাকা-৮ আসন?</p>
+                    <p class="text-gray-600 mb-6">আপনার মতে কে জিতবেন ঢাকা-৮ আসন?</p>
                     
                     <div class="space-y-4">
                         <div class="flex items-center justify-between bg-blue-50 p-4 rounded-lg">
@@ -550,7 +567,7 @@
                                 <div class="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center text-white mr-3">
                                     <i class="fas fa-user"></i>
                                 </div>
-                                <span class="font-medium">নাসিরুদ্দিন পাটোয়ারী</span>
+                                <span class="font-medium">নাসির উদ্দিন পাটোয়ারী</span>
                             </div>
                             <button class="predict-btn bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg" data-candidate="Nasiruddin Patwary">
                                 ভবিষ্যদ্বাণী করুন
@@ -574,7 +591,7 @@
                         </div>
                         
                         <div class="flex items-center justify-between">
-                            <span>নাসিরুদ্দিন পাটোয়ারী</span>
+                            <span>নাসির উদ্দিন পাটোয়ারী</span>
                             <span id="patwaryPredictions" class="font-bold text-green-600">0%</span>
                         </div>
                         <div class="w-full bg-gray-200 rounded-full h-2 mt-1">
@@ -608,26 +625,23 @@
                             <div class="w-8 h-8 bg-red-500 rounded-full"></div>
                         </div>
                         <div>
-                            <h3 class="text-xl font-bold">ধাকা-৮ ভোটযুদ্ধ</h3>
-                            <p class="text-white/80 text-sm">মির্জা আব্বাস vs নাসিরুদ্দিন পাটোয়ারী</p>
+                            <h3 class="text-xl font-bold">ঢাকা-৮ ভোটযুদ্ধ</h3>
+                            <p class="text-white/80 text-sm">মির্জা আব্বাস vs নাসির উদ্দিন পাটোয়ারী</p>
                         </div>
                     </div>
-                    <p class="text-white/80 mb-6">এটি একটি বিনোদনমূলক ওয়েবসাইট। প্রকৃত নির্বাচনের সাথে এর কোন সম্পর্ক নেই।</p>
+                    <p class="text-white/80 mb-6">এটি একটি বিনোদনমূলক ওয়েবসাইট। প্রকৃত নির্বাচনের সাথে এর কোন সম্পর্ক নেই। হ্যালো বাংলাদেশির সহযোগিতায় তৈরি।</p>
                     <div class="flex space-x-4">
-                        <a href="https://facebook.com" target="_blank" class="text-white hover:text-yellow-300">
-                            <i class="fab fa-facebook-f text-xl"></i>
-                        </a>
-                        <a href="https://twitter.com" target="_blank" class="text-white hover:text-yellow-300">
-                            <i class="fab fa-twitter text-xl"></i>
-                        </a>
-                        <a href="https://youtube.com" target="_blank" class="text-white hover:text-yellow-300">
+                        <a href="https://youtube.com/@hellobangladeshitv" target="_blank" class="text-white hover:text-yellow-300 social-hover">
                             <i class="fab fa-youtube text-xl"></i>
                         </a>
-                        <a href="https://instagram.com" target="_blank" class="text-white hover:text-yellow-300">
+                        <a href="https://facebook.com/hellobangladeshiofficial" target="_blank" class="text-white hover:text-yellow-300 social-hover">
+                            <i class="fab fa-facebook-f text-xl"></i>
+                        </a>
+                        <a href="https://instagram.com/hellobangladeshiofficial" target="_blank" class="text-white hover:text-yellow-300 social-hover">
                             <i class="fab fa-instagram text-xl"></i>
                         </a>
-                        <a href="https://tiktok.com" target="_blank" class="text-white hover:text-yellow-300">
-                            <i class="fab fa-tiktok text-xl"></i>
+                        <a href="https://x.com/hellobdofficial" target="_blank" class="text-white hover:text-yellow-300 social-hover">
+                            <i class="fab fa-twitter text-xl"></i>
                         </a>
                     </div>
                 </div>
@@ -638,24 +652,28 @@
                         <li><a href="#home" class="text-white/80 hover:text-yellow-300"><i class="fas fa-chevron-right mr-1"></i> হোম</a></li>
                         <li><a href="#vote" class="text-white/80 hover:text-yellow-300"><i class="fas fa-chevron-right mr-1"></i> ভোট দিন</a></li>
                         <li><a href="#results" class="text-white/80 hover:text-yellow-300"><i class="fas fa-chevron-right mr-1"></i> ফলাফল</a></li>
-                        <li><a href="#contact" class="text-white/80 hover:text-yellow-300"><i class="fas fa-chevron-right mr-1"></i> যোগাযোগ</a></li>
+                        <li><a href="#candidates" class="text-white/80 hover:text-yellow-300"><i class="fas fa-chevron-right mr-1"></i> প্রার্থীরা</a></li>
                     </ul>
                 </div>
                 
                 <div>
                     <h4 class="text-lg font-bold mb-4">গুরুত্বপূর্ণ লিঙ্ক</h4>
                     <ul class="space-y-2">
-                        <li><a href="#disclaimer" class="text-white/80 hover:text-yellow-300"><i class="fas fa-chevron-right mr-1"></i> ডিসক্লেইমার</a></li>
+                        <li><a href="#contact" class="text-white/80 hover:text-yellow-300"><i class="fas fa-chevron-right mr-1"></i> যোগাযোগ</a></li>
                         <li><a href="#fun" class="text-white/80 hover:text-yellow-300"><i class="fas fa-chevron-right mr-1"></i> মজার অংশ</a></li>
                         <li><a href="https://www.ecs.gov.bd/" target="_blank" class="text-white/80 hover:text-yellow-300"><i class="fas fa-chevron-right mr-1"></i> নির্বাচন কমিশন</a></li>
-                        <li><a href="https://bangladesh.gov.bd/" target="_blank" class="text-white/80 hover:text-yellow-300"><i class="fas fa-chevron-right mr-1"></i> বাংলাদেশ সরকার</a></li>
+                        <li><a href="https://hellobangladeshiofficial.blogspot.com/" target="_blank" class="text-white/80 hover:text-yellow-300"><i class="fas fa-chevron-right mr-1"></i> হ্যালো বাংলাদেশি</a></li>
                     </ul>
                 </div>
             </div>
             
             <div class="border-t border-white/20 mt-8 pt-6 text-center">
-                <p class="text-white/80">© 2023 ধাকা-৮ ভোটযুদ্ধ। সকল অধিকার সংরক্ষিত।</p>
+                <p class="text-white/80">© 2023 ঢাকা-৮ ভোটযুদ্ধ। হ্যালো বাংলাদেশির সহযোগিতায় তৈরি।</p>
                 <p class="text-white/60 text-sm mt-1">এটি একটি শিক্ষামূলক ও বিনোদনমূলক প্রকল্প। প্রকৃত নির্বাচনের সাথে সম্পর্কিত নয়।</p>
+                <div class="mt-4 flex justify-center space-x-6">
+                    <a href="https://solo.to/hellobangladeshi" target="_blank" class="text-white/70 hover:text-yellow-300 text-sm">solo.to/hellobangladeshi</a>
+                    <a href="https://about.me/hellobangladeshi" target="_blank" class="text-white/70 hover:text-yellow-300 text-sm">about.me/hellobangladeshi</a>
+                </div>
             </div>
         </div>
     </footer>
@@ -680,41 +698,41 @@
             let allVotes = [];
             let charts = {};
             
-            // Dhaka-8 Candidates Data
+            // Dhaka-8 Candidates Data - Corrected as per your JSON
             const dhaka8Candidates = [
                 { 
                     id: 'mirza_abbas', 
                     name: 'মির্জা আব্বাস', 
                     party: 'বাংলাদেশ জাতীয়তাবাদী দল (বিএনপি)', 
-                    symbol: 'ধান শীষ',
+                    symbol: 'ধানের শীষ',
                     symbolEmoji: '🌾',
                     color: 'blue',
-                    description: 'ধাকা-৮ আসনের বর্তমান সাংসদ, দীর্ঘদিনের রাজনীতিবিদ'
+                    description: 'ঢাকা-৮ আসনের বর্তমান সাংসদ, দীর্ঘদিনের রাজনীতিবিদ'
                 },
                 { 
                     id: 'nasiruddin_patwary', 
-                    name: 'নাসিরুদ্দিন পাটোয়ারী', 
+                    name: 'নাসির উদ্দিন পাটোয়ারী', 
                     party: 'জাতীয় নাগরিক পার্টি (এনসিপি)', 
-                    symbol: 'নারকেল',
-                    symbolEmoji: '🥥',
+                    symbol: 'শাপলা কলি',
+                    symbolEmoji: '🌱',
                     color: 'green',
-                    description: 'সোশ্যাল মিডিয়ায় সক্রিয়, তরুণ ভোটারদের কাছে জনপ্রিয়'
+                    description: 'সোশ্যাল মিডিয়ায় সক্রিয়, যুব ভোটারদের কাছে জনপ্রিয়'
                 },
                 { 
-                    id: 'dr_hanif', 
-                    name: 'ডা. মোহাম্মদ হানিফ', 
-                    party: 'আওয়ামী লীগ', 
-                    symbol: 'নৌকা',
-                    symbolEmoji: '⛵',
+                    id: 'meghna_alam', 
+                    name: 'মেঘনা আলম', 
+                    party: 'গণ অধিকার পরিষদ (জিওপি)', 
+                    symbol: 'ট্রাক',
+                    symbolEmoji: '🚚',
                     color: 'red',
-                    description: 'চিকিৎসক ও সমাজসেবক, স্বাস্থ্য খাতে অবদান'
+                    description: 'তরুণ প্রজন্মের প্রতিনিধি, নারী নেতৃত্বের জন্য সংগ্রামরত'
                 },
                 { 
-                    id: 'rashed_menon', 
-                    name: 'রাশেদ খান মেনন', 
-                    party: 'বাংলাদেশের ওয়ার্কার্স পার্টি', 
-                    symbol: 'হাতুড়ি',
-                    symbolEmoji: '🔨',
+                    id: 'tridip_kumar_saha', 
+                    name: 'ত্রিদিপ কুমার সাহা', 
+                    party: 'বাংলাদেশের কমিউনিস্ট পার্টি (সিপিবি)', 
+                    symbol: 'হাতুড়ি ও কাস্তে',
+                    symbolEmoji: '⚒️',
                     color: 'purple',
                     description: 'দীর্ঘদিনের বামপন্থী নেতা, শ্রমিক অধিকারের জন্য সংগ্রাম'
                 }
@@ -724,12 +742,12 @@
             const funnyQuotes = [
                 "আব্বাস ভাই বলেন: কথা দিয়ে রাজনীতি হয়, কাজ দিয়ে দেশ চলে। পাটোয়ারী ভাই বলেন: নারকেল দিয়ে ভোট হয়, কথা দিয়ে সেলফি চলে!",
                 "ফেসবুক লাইভে আব্বাস স্যার ২ ঘণ্টা, পাটোয়ারী ভাই ৩ ঘণ্টা - কে কার চেয়ে বেশি কথা বলতে পারে?",
-                "ধান শীষ vs নারকেল: আসল যুদ্ধ সোশ্যাল মিডিয়ায়!",
-                "পাটোয়ারী ভাইয়ের নারকেল বিক্রি, আব্বাস স্যারের ধান শীষের রাজনীতি - কে জিতবে ধাকা-৮ আসন?",
+                "ধান শীষ vs শাপলা কলি: আসল যুদ্ধ সোশ্যাল মিডিয়ায়!",
+                "পাটোয়ারী ভাইয়ের নারকেল বিক্রি, আব্বাস স্যারের ধান শীষের রাজনীতি - কে জিতবে ঢাকা-৮ আসন?",
                 "সোশ্যাল মিডিয়া যুদ্ধ: রাউন্ড ৫ - কে কতটা ভাইরাল হতে পারে?",
                 "আব্বাস: 'আমি ৩০ বছর ধরে রাজনীতি করছি।' পাটোয়ারী: 'আমি ৩০ মিনিটে ৩০ হাজার লাইক পাই!'",
-                "ধাকা-৮ আসনে ভোট যুদ্ধ নয়, সোশ্যাল মিডিয়া স্কিল যুদ্ধ!",
-                "নারকেল দিয়ে শুরু, ধান শীষ দিয়ে শেষ - মজার এই ভোটযুদ্ধ!"
+                "ঢাকা-৮ আসনে ভোট যুদ্ধ নয়, সোশ্যাল মিডিয়া স্কিল যুদ্ধ!",
+                "শাপলা কলি দিয়ে শুরু, ধান শীষ দিয়ে শেষ - মজার এই ভোটযুদ্ধ!"
             ];
             
             // Utility Functions
@@ -901,8 +919,8 @@
                             id: selectedCandidate.id,
                             name: selectedCandidate.name,
                             party: selectedCandidate.party,
-                            votes: 1,
-                            symbol: selectedCandidate.symbol
+                            symbol: selectedCandidate.symbol,
+                            votes: 1
                         });
                     } else {
                         // Update existing candidate
@@ -1041,7 +1059,7 @@
                                 legend: { display: false },
                                 title: { 
                                     display: true, 
-                                    text: 'ধাকা-৮ আসনের প্রার্থীদের ভোট',
+                                    text: 'ঢাকা-৮ আসনের প্রার্থীদের ভোট',
                                     font: { size: 16 }
                                 }
                             },
@@ -1173,7 +1191,7 @@
                 generateMemeButton?.addEventListener('click', function() {
                     const memes = [
                         "🎭 নতুন মেম: আব্বাস স্যার ফেসবুক লাইভে ৫ ঘণ্টা!",
-                        "😂 পাটোয়ারী ভাইয়ের নতুন সেলফি: নারকেল হাতে!",
+                        "😂 পাটোয়ারী ভাইয়ের নতুন সেলফি: শাপলা কলি হাতে!",
                         "🤣 সোশ্যাল মিডিয়া যুদ্ধ: রাউন্ড ১০ শুরু!",
                         "😆 কে বেশি ভাইরাল? আজকের স্ট্যাটাস দেখুন!",
                         "🎪 মজার ফ্যাক্ট: দুই নেতার গড় ফেসবুক লাইভ = ৩.৫ ঘণ্টা!"
@@ -1191,7 +1209,7 @@
                 predictionButtons.forEach(button => {
                     button.addEventListener('click', function() {
                         const candidate = this.getAttribute('data-candidate');
-                        predictionText.textContent = `আপনি ভবিষ্যদ্বাণী করেছেন: ${candidate} ধাকা-৮ আসনে জিতবেন!`;
+                        predictionText.textContent = `আপনি ভবিষ্যদ্বাণী করেছেন: ${candidate} ঢাকা-৮ আসনে জিতবেন!`;
                         predictionResult.classList.remove('hidden');
                         
                         // Save prediction to localStorage
